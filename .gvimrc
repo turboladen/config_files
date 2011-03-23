@@ -31,7 +31,7 @@ set ignorecase      " Search regardless of case
 set scs             " Smart search (override 'ic' when pattern has uppers
 set showmatch       " Show the matching bracket for the last ')'?
 set background=dark " set background
-colorscheme ir_black
+"colorscheme ir_black
 set lines=60        " Set window size
 set number
 set mousehide       " Hide mouse pointer while typing

@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'pp'
+require 'ap'
 
 if RUBY_PLATFORM =~ /mswin32|mingw32/
   require 'win32console'
