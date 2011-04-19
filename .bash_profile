@@ -36,12 +36,8 @@ proml
 # Use Vi for the command line
 set -o vi
 
-# Set path for use with MacPorts
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin
-
 # Set path for use with User gems
 #export PATH=$PATH:/Users/sloveless/.gem/ruby/1.8/bin
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Set term colors
 export CLICOLOR=1
@@ -53,12 +49,11 @@ set output-meta on
 set convert-meta off
 
 # Settings for development
-export VIM_APP_DIR=/Applications/MacPorts/
+#export VIM_APP_DIR=/Applications/MacPorts/
+export VIM_APP_DIR=/Applications/
 
 # Change to the dev dir
 cd $HOME/Development/pelco/
 
-export t=/Users/sloveless/Development/pelco/libraries/ruby/tim
-export n=/Users/sloveless/Development/pelco/products/nsm5200/trunk
-
 if [[ -s /Users/sloveless/.rvm/scripts/rvm ]] ; then source /Users/sloveless/.rvm/scripts/rvm ; fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
