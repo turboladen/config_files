@@ -24,3 +24,9 @@ Wirble.colorize
 # start bond
 Bond.start
 
+class Object
+  def interesting_methods
+    (self.methods - Object.new.methods).sort
+  end
+end
+
