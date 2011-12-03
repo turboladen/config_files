@@ -49,6 +49,9 @@ set convert-meta off
 #export VIM_APP_DIR=/Applications/MacPorts/
 export VIM_APP_DIR=/Applications/
 
+# Source in `git` auto-completions
+source /usr/local/etc/bash_completion.d/git-completion.bash
+
 # Change to the dev dir
 cd $HOME/Development/pelco/
 
