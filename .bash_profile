@@ -1,8 +1,48 @@
+source ~/.bash_aliases
+
+#-------------------------------------------------------------------
+# Determine OS
+#-------------------------------------------------------------------
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+	platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+	platform='darwin'
+fi
+
+#-------------------------------------------------------------------
+# OSX
+#-------------------------------------------------------------------
+if [[ $platform = 'darwin' ]]; then
+	#-------------------------------------------------------------------
+	# Settings for development
+	#-------------------------------------------------------------------
+	export VIM_APP_DIR=/Applications/
+
+	#-------------------------------------------------------------------
+	# Set PATH to use homebrew first
+	#-------------------------------------------------------------------
+	export PATH=/usr/local/bin:/usr/local/share/python:$PATH
+
+	#-------------------------------------------------------------------
+	# Source in `git` auto-completions
+	#-------------------------------------------------------------------
+	source /usr/local/etc/bash_completion.d/git-completion.bash
+
+	#-------------------------------------------------------------------
+	# Source in homebrew completions
+	#-------------------------------------------------------------------
+	source `brew --prefix` /Library/Contributions/brew_bash_completion.sh
+fi
+
+#-------------------------------------------------------------------
+# Git fork hack
+#-------------------------------------------------------------------
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-# Git fork hack
 function proml {
   local        BLUE="\[\033[0;34m\]"
   local         RED="\[\033[0;31m\]"
@@ -28,15 +68,15 @@ PS2='> '
 PS4='+ '
 }
 proml
-# End Git fork hack
 
+#-------------------------------------------------------------------
 # Use Vi for the command line
+#-------------------------------------------------------------------
 set -o vi
 
-# Set path for use with User gems
-#export PATH=$PATH:/Users/sloveless/.gem/ruby/1.8/bin
-
+#-------------------------------------------------------------------
 # Set term colors
+#-------------------------------------------------------------------
 export CLICOLOR=1
 export LSCOLORS=ExfxcxdxbxegedabagEcEd
 export TERM=xterm-color
@@ -45,15 +85,22 @@ set input-meta on
 set output-meta on
 set convert-meta off
 
-# Settings for development
-#export VIM_APP_DIR=/Applications/MacPorts/
-export VIM_APP_DIR=/Applications/
-
-# Source in `git` auto-completions
-source /usr/local/etc/bash_completion.d/git-completion.bash
-
+#-------------------------------------------------------------------
 # Change to the dev dir
+#-------------------------------------------------------------------
 cd $HOME/Development/pelco/
 
-if [[ -s /Users/sloveless/.rvm/scripts/rvm ]] ; then source /Users/sloveless/.rvm/scripts/rvm ; fi
+# Set Subversion editor
+svninstalled=`type -P svn`
+if [[ -n $svninstalled ]]; then
+	export SVN_EDITOR=vim
+fi
+
+#-------------------------------------------------------------------
+# rvm
+# Make this work with OS X Lion... for now...
+#-------------------------------------------------------------------
+if [[ `uname -v` =~ "Darwin Kernel Version 11" ]] ; then
+  export CC=/usr/bin/gcc-4.2
+fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
