@@ -33,7 +33,7 @@ if [[ $platform = 'darwin' ]]; then
 	#-------------------------------------------------------------------
 	# Source in homebrew completions
 	#-------------------------------------------------------------------
-	source `brew --prefix` /Library/Contributions/brew_bash_completion.sh
+	source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 fi
 
 #-------------------------------------------------------------------
@@ -88,7 +88,7 @@ set convert-meta off
 #-------------------------------------------------------------------
 # Change to the dev dir
 #-------------------------------------------------------------------
-cd $HOME/Development/pelco/
+#cd $HOME/Development/pelco/
 
 # Set Subversion editor
 svninstalled=`type -P svn`
