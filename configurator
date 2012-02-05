@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+
+class Configurator < Thor
+  include Thor::Actions
+
+  def self.source_root
+    File.dirname(__FILE__)
+  end
+
+  desc "hoe", "Copies the hoe_templates stuff to ~/.hoe_templates"
+  method_options force: false
+  def hoe
+    default_dir = "/.hoe_templates"
+    destination_root = Dir.home + default_dir
+
+    if yes?("Copy to ~/.hoe_templates?")
+      remove_dir destination_root if options[:force]
+      directory("hoe_templates", Dir.home + default_dir)
+    end
+  end
+end
+
+Configurator.start
+
