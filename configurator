@@ -9,15 +9,15 @@ class Configurator < Thor
     File.dirname(__FILE__)
   end
 
-  desc "hoe", "Copies the hoe_templates stuff to ~/.hoe_templates"
+  desc "hoe", "Copies the hoe_templates stuff to ~/.hoe_template"
   method_options force: false
   def hoe
-    default_dir = "/.hoe_templates"
+    default_dir = "/.hoe_template"
     destination_root = Dir.home + default_dir
 
-    if yes?("Copy to ~/.hoe_templates?")
+    if yes?("Copy to ~/.hoe_template?")
       remove_dir destination_root if options[:force]
-      directory("hoe_templates", Dir.home + default_dir)
+      directory("hoe_template", Dir.home + default_dir)
     end
   end
 end
