@@ -23,7 +23,7 @@ if [[ $platform = 'darwin' ]]; then
 	#-------------------------------------------------------------------
 	# Set PATH to use homebrew first
 	#-------------------------------------------------------------------
-	export PATH=/usr/local/bin:/usr/local/share/python:$PATH
+	export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH:~/bin
 
 	#-------------------------------------------------------------------
 	# Source in `git` auto-completions
