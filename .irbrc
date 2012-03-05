@@ -2,7 +2,7 @@ if RUBY_PLATFORM =~ /mswin32|mingw32/
   require 'win32console'
 end
 
-requires = %w(awesome_print wirble bond looksee)
+requires = %w(awesome_print wirble looksee)
 
 had_to_install = false
 
@@ -33,9 +33,6 @@ end
 # start wirble (with color)
 Wirble.init
 Wirble.colorize
-
-# start bond
-Bond.start
 
 IRB.conf[:AUTO_INDENT] = true
 
