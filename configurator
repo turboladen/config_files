@@ -20,6 +20,18 @@ class Configurator < Thor
       directory("hoe_template", Dir.home + default_dir)
     end
   end
+
+  desc "git", "Sets up Steve's git config"
+  def git
+    puts "Setting up your git stuff now..."
+    `git config --global user.name "Steve Loveless"`
+    `git config --global user.email "steve.loveless@gmail.com"`
+    `git config --global core.editor vim`
+    `git config --global alias.ci 'commit'`
+    `git config --global alias.st 'status'`
+    `git config color.ui true`
+    puts "Done.  Have you configured your SSH keys?"
+  end
 end
 
 Configurator.start
