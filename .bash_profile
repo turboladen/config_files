@@ -92,6 +92,7 @@ set convert-meta off
 
 # Set Subversion editor
 svninstalled=`type -P svn`
+
 if [[ -n $svninstalled ]]; then
 	export SVN_EDITOR=vim
 fi
@@ -100,7 +101,14 @@ fi
 # rvm
 # Make this work with OS X Lion... for now...
 #-------------------------------------------------------------------
-if [[ `uname -v` =~ "Darwin Kernel Version 11" ]] ; then
-  export CC=/usr/bin/gcc-4.2
-fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+PATH=$PATH:$HOME/.rvm/bin 	# Add RVM to PATH for scripting
+
+rvminstalled=`type -P rvm`
+
+if [[ -n $rvminstalled ]]; then
+	if [[ `uname -v` =~ "Darwin Kernel Version 11" ]] ; then
+	  export CC=/usr/bin/gcc-4.2
+	fi
+
+fi
