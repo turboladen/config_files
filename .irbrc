@@ -1,5 +1,7 @@
 if RUBY_PLATFORM =~ /mswin32|mingw32/
   require 'win32console'
+#elsif RUBY_PLATFORM =~ /java/
+#  return ''
 end
 
 requires = %w(awesome_print wirble looksee)
