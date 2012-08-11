@@ -100,7 +100,7 @@ fi
 # rvm
 # Make this work with OS X Lion... for now...
 #-------------------------------------------------------------------
-if [[ `uname -v` =~ "Darwin Kernel Version 11" ]] ; then
-  export CC=/usr/bin/gcc-4.2
-fi
+#if [[ `uname -v` =~ "Darwin Kernel Version 11" ]] ; then
+#  export CC=/usr/bin/gcc-4.2
+#fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
