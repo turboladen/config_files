@@ -47,14 +47,14 @@ end
 
 require 'irbtools'
 
-if RUBY_PLATFORM == "java"
-  require 'looksee'
-  module Looksee::ObjectMixin
-    alias :l :ls
-  end
-else
-require 'irbtools/configure'
+unless RUBY_PLATFORM == "java"
+  require 'irbtools/configure'
   Irbtools.add_package(:more)
+end
+
+require 'looksee'
+module Looksee::ObjectMixin
+  alias :l :ls
 end
 
 Irbtools.start
