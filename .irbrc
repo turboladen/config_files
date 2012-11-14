@@ -28,7 +28,8 @@ libraries.each do |lib|
   end
 
   installed_gems = `gem list`
-  unless installed_gems =~ /#{lib} \(#{lib_version}/
+  unless installed_gems =~ /#{lib} \(#{lib_version}/ ||
+    $:.any? { |path| path =~ /#{lib}-#{lib_version}/ }
     warn "Couldn't load #{lib}-#{lib_version} from .irbrc. Installing..."
     `gem install #{lib} --version #{lib_version}`
 
