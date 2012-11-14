@@ -1,40 +1,62 @@
-if RUBY_PLATFORM =~ /mswin32|mingw32/
-  require 'win32console'
-#elsif RUBY_PLATFORM =~ /java/
-#  return ''
-end
+require 'rubygems' unless defined? Gem
 
-requires = %w(awesome_print wirble looksee)
+libraries = %w[irbtools]
+
+libraries += case RUBY_PLATFORM
+when /mswin32|mingw32/
+  %w[win32console]
+when "java"
+  %w[looksee]
+when /darwin/
+  %w[terminal-notifier]
+else
+  RUBY_VERSION < '1.9' ? [] : %w[irbtools-more]
+end
 
 had_to_install = false
 
-requires.each do |lib|
-  begin
-    if defined? ::Bundler
-      $:.unshift "#{ENV['GEM_HOME']}/gems/#{lib}-#{Gem.latest_version_for(lib)}/lib/"
-    end
+libraries.each do |lib|
+  lib_version = if lib == "irbtools" && RUBY_VERSION < '1.9'
+    '1.2.2'
+  else
+    Gem.latest_version_for(lib).to_s
+  end
 
-    require lib
-  rescue LoadError => err
-    warn "Couldn't load #{lib} from .irbrc: #{err}; Installing..."
-    `gem install #{lib}`
+  if defined? ::Bundler
+    puts "Adding #{lib}-#{lib_version} to load path..."
+    $:.unshift "#{ENV['GEM_HOME']}/gems/#{lib}-#{lib_version}/lib/"
+  end
+
+  installed_gems = `gem list`
+  unless installed_gems =~ /#{lib} \(#{lib_version}/
+    warn "Couldn't load #{lib}-#{lib_version} from .irbrc. Installing..."
+    `gem install #{lib} --version #{lib_version}`
+
     had_to_install = true
   end
 end
 
 if had_to_install
-  puts <<-MSG
+  abort <<-REASON
 You had deps specified in your ~/.irbrc that weren't installed.  Those were
 detected and installed for you, but you'll need to restart IRB to make use of
 those.  Exiting so you can do that...
-  MSG
-
-  exit 0
+  REASON
 end
 
-# start wirble (with color)
-Wirble.init
-Wirble.colorize
+require 'irbtools'
+
+if RUBY_PLATFORM == "java"
+  require 'looksee'
+  module Looksee::ObjectMixin
+    alias :l :ls
+  end
+else
+require 'irbtools/configure'
+  Irbtools.add_package(:more)
+end
+
+Irbtools.start
 
 IRB.conf[:AUTO_INDENT] = true
 

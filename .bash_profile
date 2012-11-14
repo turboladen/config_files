@@ -37,6 +37,11 @@ if [[ $platform = 'darwin' ]]; then
 fi
 
 #-------------------------------------------------------------------
+# Don't forget these...
+#-------------------------------------------------------------------
+export PATH=$PATH:/usr/bin:/usr/sbin
+
+#-------------------------------------------------------------------
 # Git fork hack
 #-------------------------------------------------------------------
 function parse_git_branch {
@@ -92,15 +97,8 @@ set convert-meta off
 
 # Set Subversion editor
 svninstalled=`type -P svn`
+
 if [[ -n $svninstalled ]]; then
 	export SVN_EDITOR=vim
 fi
 
-#-------------------------------------------------------------------
-# rvm
-# Make this work with OS X Lion... for now...
-#-------------------------------------------------------------------
-#if [[ `uname -v` =~ "Darwin Kernel Version 11" ]] ; then
-#  export CC=/usr/bin/gcc-4.2
-#fi
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
