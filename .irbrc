@@ -1,69 +1,84 @@
-require 'rubygems' unless defined? Gem
-
-libraries = %w[irbtools]
-
-libraries += case RUBY_PLATFORM
-when /mswin32|mingw32/
-  %w[win32console]
-when "java"
-  %w[looksee]
-when /darwin/
-  %w[terminal-notifier]
-else
-  RUBY_VERSION < '1.9' ? [] : %w[irbtools-more]
-end
-
-had_to_install = false
-
-libraries.each do |lib|
-  lib_version = if lib == "irbtools" && RUBY_VERSION < '1.9'
-    '1.2.2'
-  else
-    Gem.latest_version_for(lib).to_s
-  end
-
-  if defined? ::Bundler
-    puts "Adding #{lib}-#{lib_version} to load path..."
-    $:.unshift "#{ENV['GEM_HOME']}/gems/#{lib}-#{lib_version}/lib/"
-  end
-
-  installed_gems = `gem list`
-  unless installed_gems =~ /#{lib} \(#{lib_version}/ ||
-    $:.any? { |path| path =~ /#{lib}-#{lib_version}/ }
-    warn "Couldn't load #{lib}-#{lib_version} from .irbrc. Installing..."
-    `gem install #{lib} --version #{lib_version}`
-
-    had_to_install = true
-  end
-end
-
-if had_to_install
-  abort <<-REASON
-You had deps specified in your ~/.irbrc that weren't installed.  Those were
-detected and installed for you, but you'll need to restart IRB to make use of
-those.  Exiting so you can do that...
-  REASON
-end
-
-require 'irbtools'
-
-unless RUBY_PLATFORM == "java"
-  require 'irbtools/configure'
-  Irbtools.add_package(:more)
-end
-
-require 'looksee'
-module Looksee::ObjectMixin
-  alias :l :ls
-end
-
-Irbtools.start
-
 IRB.conf[:AUTO_INDENT] = true
+
+
+@libraries = %w[irb/completion awesome_print wirble]
+@libraries << 'looksee' unless RUBY_VERSION >= '2.0.0'
+
+@libraries += case RUBY_PLATFORM
+              when /mswin32|mingw32/
+                %w[win32console]
+              when /darwin/
+                #%w[terminal-notifier]
+                []
+              end
+
+
+# load .irbc_rails in rails environments
+if ENV['RAILS_ENV'] || defined? Rails
+  # Add all gems in the global gemset to the $LOAD_PATH so they can be used even
+  # in places like 'rails console'.
+  if defined?(::Bundler)
+    all_global_gem_paths = Dir.glob("#{Gem.default_dir}/gems/*")
+
+    all_global_gem_paths.each do |p|
+      gem_path = "#{p}/lib"
+      $:.unshift(gem_path)
+    end
+  end
+
+  # hirb: some nice stuff for Rails
+  @libraries << 'hirb'
+
+  def enable_hirb(config='ActiveRecord::Base')
+    Hirb.enable
+    Hirb::Formatter.dynamic_config[config]
+  end
+
+  # set a nice prompt
+  rails_root = File.basename(Dir.pwd)
+  IRB.conf[:PROMPT] ||= {}
+  IRB.conf[:PROMPT][:RAILS] = {
+    :PROMPT_I => "#{rails_root}> ", # normal prompt
+    :PROMPT_S => "#{rails_root}* ", # prompt when continuing a string
+    :PROMPT_C => "#{rails_root}? ", # prompt when continuing a statement
+    :RETURN   => "=> %s\n"          # prefixes output
+  }
+  IRB.conf[:PROMPT_MODE] = :RAILS
+else
+  IRB.conf[:PROMPT_MODE] = :SIMPLE
+end
+
+@libraries.each do |lib|
+  begin
+    puts "Requiring library: #{lib}"
+    require lib
+  rescue LoadError
+    puts "#{lib} not installed; installing now..."
+    Gem.install lib
+    require lib
+  end
+
+  case lib
+  when 'awesome_print'
+    AwesomePrint.irb!
+  when 'wirble'
+    Wirble.init
+    Wirble.colorize
+  when 'hirb'
+    puts "Dont' forget to run `enable_hirb`!"
+  end
+end
 
 class Object
   def interesting_methods
-    (self.methods - Object.new.methods).sort
+    case self.class
+    when Class
+      self.public_methods.sort - Object.public_methods
+    when Module
+      self.public_methods.sort - Module.public_methods
+    else
+      self.public_methods.sort - Object.new.public_methods
+    end
   end
 end
 
