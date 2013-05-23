@@ -1,8 +1,6 @@
 IRB.conf[:AUTO_INDENT] = true
 
-
-@libraries = %w[irb/completion awesome_print wirble]
-@libraries << 'looksee' unless RUBY_VERSION >= '2.0.0'
+@libraries = %w[irb/completion awesome_print wirble looksee]
 
 @libraries += case RUBY_PLATFORM
               when /mswin32|mingw32/
@@ -45,7 +43,16 @@ if ENV['RAILS_ENV'] || defined? Rails
   }
   IRB.conf[:PROMPT_MODE] = :RAILS
 else
-  IRB.conf[:PROMPT_MODE] = :SIMPLE
+  IRB.conf[:PROMPT][:MY_PROMPT] = { # name of prompt mode
+    :PROMPT_I => "%03n:%i> ",
+    :PROMPT_S => "%03n:%i%l ",
+    :PROMPT_C => "%03n:%i*> ",
+    :PROMPT_N => ".. ",
+    :RETURN => "=> %s\n"
+  }
+
+  IRB.conf[:PROMPT_MODE] = :MY_PROMPT
+  IRB.conf[:AUTO_INDENT] = true
 end
 
 @libraries.each do |lib|
