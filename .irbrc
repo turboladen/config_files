@@ -10,11 +10,35 @@ IRB.conf[:AUTO_INDENT] = true
                 []
               end
 
+def do_bundler
+  if defined?(::Bundler)
+    #all_global_gem_paths = Dir.glob("#{Gem.default_dir}/gems/*")
+    all_global_gem_paths = Dir.glob("#{Gem.dir}/gems/*")
+
+    all_global_gem_paths.each do |p|
+      gem_path = "#{p}/lib"
+      $:.unshift(gem_path)
+    end
+  end
+end
+
+def undo_bundler
+  if defined?(::Bundler)
+    #all_global_gem_paths = Dir.glob("#{Gem.default_dir}/gems/*")
+    all_global_gem_paths = Dir.glob("#{Gem.dir}/gems/*")
+
+    all_global_gem_paths.each do |p|
+      gem_path = "#{p}/lib"
+      $:.delete(gem_path)
+    end
+  end
+end
 
 # load .irbc_rails in rails environments
 if ENV['RAILS_ENV'] || defined? Rails
   # Add all gems in the global gemset to the $LOAD_PATH so they can be used even
   # in places like 'rails console'.
+=begin
   if defined?(::Bundler)
     all_global_gem_paths = Dir.glob("#{Gem.default_dir}/gems/*")
 
@@ -23,6 +47,8 @@ if ENV['RAILS_ENV'] || defined? Rails
       $:.unshift(gem_path)
     end
   end
+=end
+  do_bundler
 
   # hirb: some nice stuff for Rails
   @libraries << 'hirb'
@@ -56,13 +82,17 @@ else
 end
 
 @libraries.each do |lib|
+  retry_count = 0
+
   begin
+    break if retry_count == 2
     puts "Requiring library: #{lib}"
     require lib
   rescue LoadError
     puts "#{lib} not installed; installing now..."
     Gem.install lib
-    require lib
+    retry_count += 1
+    retry
   end
 
   case lib
@@ -89,3 +119,7 @@ class Object
   end
 end
 
+
+#if ENV['RAILS_ENV'] || defined? Rails
+#  undo_bundler
+#end
