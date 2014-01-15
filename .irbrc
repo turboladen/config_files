@@ -34,7 +34,7 @@ def undo_bundler
   end
 end
 
-# load .irbc_rails in rails environments
+# load .irbrc in rails environments
 if ENV['RAILS_ENV'] || defined? Rails
   # Add all gems in the global gemset to the $LOAD_PATH so they can be used even
   # in places like 'rails console'.
