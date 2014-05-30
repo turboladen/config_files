@@ -12,7 +12,6 @@ IRB.conf[:AUTO_INDENT] = true
 
 def do_bundler
   if defined?(::Bundler)
-    #all_global_gem_paths = Dir.glob("#{Gem.default_dir}/gems/*")
     all_global_gem_paths = Dir.glob("#{Gem.dir}/gems/*")
 
     all_global_gem_paths.each do |p|
@@ -24,7 +23,6 @@ end
 
 def undo_bundler
   if defined?(::Bundler)
-    #all_global_gem_paths = Dir.glob("#{Gem.default_dir}/gems/*")
     all_global_gem_paths = Dir.glob("#{Gem.dir}/gems/*")
 
     all_global_gem_paths.each do |p|
@@ -34,29 +32,14 @@ def undo_bundler
   end
 end
 
-# load .irbrc in rails environments
+# load .irbc_rails in rails environments
 if ENV['RAILS_ENV'] || defined? Rails
   # Add all gems in the global gemset to the $LOAD_PATH so they can be used even
   # in places like 'rails console'.
-=begin
-  if defined?(::Bundler)
-    all_global_gem_paths = Dir.glob("#{Gem.default_dir}/gems/*")
-
-    all_global_gem_paths.each do |p|
-      gem_path = "#{p}/lib"
-      $:.unshift(gem_path)
-    end
-  end
-=end
   do_bundler
 
   # hirb: some nice stuff for Rails
-  @libraries << 'hirb'
-
-  def enable_hirb(config='ActiveRecord::Base')
-    Hirb.enable
-    Hirb::Formatter.dynamic_config[config]
-  end
+  # @libraries << 'hirb'
 
   # set a nice prompt
   rails_root = File.basename(Dir.pwd)
@@ -94,16 +77,6 @@ end
     retry_count += 1
     retry
   end
-
-  case lib
-  when 'awesome_print'
-    AwesomePrint.irb!
-  when 'wirble'
-    Wirble.init
-    Wirble.colorize
-  when 'hirb'
-    puts "Dont' forget to run `enable_hirb`!"
-  end
 end
 
 class Object
@@ -117,6 +90,32 @@ class Object
       self.public_methods.sort - Object.new.public_methods
     end
   end
+end
+
+if defined? Wirble
+  Wirble.init
+  Wirble.colorize
+end
+
+if defined? AwesomePrint
+  AwesomePrint.irb!
+
+  IRB::Irb.class_eval do
+    def output_value
+      is_json = JSON.parse(@context.last_value) rescue nil
+
+      if is_json
+       puts @context.last_value.blue
+      else
+        ap @context.last_value
+      end
+    end
+  end
+end
+
+if defined? Hirb
+  Hirb.enable
+  Hirb::Formatter.dynamic_config['ActiveRecord::Base']
 end
 
 
