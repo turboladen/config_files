@@ -102,10 +102,11 @@ if defined? AwesomePrint
 
   IRB::Irb.class_eval do
     def output_value
+      require 'json'
       is_json = JSON.parse(@context.last_value) rescue nil
 
       if is_json
-       puts @context.last_value.blue
+       puts JSON.pretty_generate(JSON(@context.last_value)).blue
       else
         ap @context.last_value
       end
