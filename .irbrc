@@ -8,6 +8,8 @@ IRB.conf[:AUTO_INDENT] = true
               when /darwin/
                 #%w[terminal-notifier]
                 []
+              else
+                []
               end
 
 def do_bundler
@@ -106,9 +108,13 @@ if defined? AwesomePrint
       is_json = JSON.parse(@context.last_value) rescue nil
 
       if is_json
-       puts JSON.pretty_generate(JSON(@context.last_value)).blue
+        puts JSON.pretty_generate(JSON.parse(@context.last_value)).blue
+        #puts JSON.pretty_generate(@context.last_value).blue
+      elsif @context.respond_to? :to_sym
+        ap @context.last_value
       else
         ap @context.last_value
+        #puts @context.last_value
       end
     end
   end
