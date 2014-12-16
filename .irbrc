@@ -1,131 +1,26 @@
-IRB.conf[:AUTO_INDENT] = true
+require '/Users/sloveless/Development/projects/hairballs/lib/hairballs'
 
-@libraries = %w[irb/completion awesome_print wirble looksee]
+require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/themes/turboladen'
+require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/themes/turboladen_rails'
 
-@libraries += case RUBY_PLATFORM
-              when /mswin32|mingw32/
-                %w[win32console]
-              when /darwin/
-                #%w[terminal-notifier]
-                []
-              else
-                []
-              end
+require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/awesome_print'
+require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/irb_history'
+require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/interesting_methods'
+require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/object_ri'
+require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/colorize_json'
+require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/wirble'
+require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/quick_benchmark'
 
-def do_bundler
-  if defined?(::Bundler)
-    all_global_gem_paths = Dir.glob("#{Gem.dir}/gems/*")
-
-    all_global_gem_paths.each do |p|
-      gem_path = "#{p}/lib"
-      $:.unshift(gem_path)
-    end
-  end
-end
-
-def undo_bundler
-  if defined?(::Bundler)
-    all_global_gem_paths = Dir.glob("#{Gem.dir}/gems/*")
-
-    all_global_gem_paths.each do |p|
-      gem_path = "#{p}/lib"
-      $:.delete(gem_path)
-    end
-  end
-end
-
-# load .irbc_rails in rails environments
-if ENV['RAILS_ENV'] || defined? Rails
-  # Add all gems in the global gemset to the $LOAD_PATH so they can be used even
-  # in places like 'rails console'.
-  do_bundler
-
-  # hirb: some nice stuff for Rails
-  # @libraries << 'hirb'
-
-  # set a nice prompt
-  rails_root = File.basename(Dir.pwd)
-  IRB.conf[:PROMPT] ||= {}
-  IRB.conf[:PROMPT][:RAILS] = {
-    :PROMPT_I => "#{rails_root}> ", # normal prompt
-    :PROMPT_S => "#{rails_root}* ", # prompt when continuing a string
-    :PROMPT_C => "#{rails_root}? ", # prompt when continuing a statement
-    :RETURN   => "=> %s\n"          # prefixes output
-  }
-  IRB.conf[:PROMPT_MODE] = :RAILS
+if Hairballs.rails?
+  Hairballs.use_theme(:turboladen_rails)
+  #Hairballs.use_plugin(:awesome_print)
 else
-  IRB.conf[:PROMPT][:MY_PROMPT] = { # name of prompt mode
-    :PROMPT_I => "%03n:%i> ",
-    :PROMPT_S => "%03n:%i%l ",
-    :PROMPT_C => "%03n:%i*> ",
-    :PROMPT_N => ".. ",
-    :RETURN => "=> %s\n"
-  }
-
-  IRB.conf[:PROMPT_MODE] = :MY_PROMPT
-  IRB.conf[:AUTO_INDENT] = true
+  Hairballs.use_theme(:turboladen)
 end
 
-@libraries.each do |lib|
-  retry_count = 0
-
-  begin
-    break if retry_count == 2
-    puts "Requiring library: #{lib}"
-    require lib
-  rescue LoadError
-    puts "#{lib} not installed; installing now..."
-    Gem.install lib
-    retry_count += 1
-    retry
-  end
-end
-
-class Object
-  def interesting_methods
-    case self.class
-    when Class
-      self.public_methods.sort - Object.public_methods
-    when Module
-      self.public_methods.sort - Module.public_methods
-    else
-      self.public_methods.sort - Object.new.public_methods
-    end
-  end
-end
-
-if defined? Wirble
-  Wirble.init
-  Wirble.colorize
-end
-
-if defined? AwesomePrint
-  AwesomePrint.irb!
-
-  IRB::Irb.class_eval do
-    def output_value
-      require 'json'
-      is_json = JSON.parse(@context.last_value) rescue nil
-
-      if is_json
-        puts JSON.pretty_generate(JSON.parse(@context.last_value)).blue
-        #puts JSON.pretty_generate(@context.last_value).blue
-      elsif @context.respond_to? :to_sym
-        ap @context.last_value
-      else
-        ap @context.last_value
-        #puts @context.last_value
-      end
-    end
-  end
-end
-
-if defined? Hirb
-  Hirb.enable
-  Hirb::Formatter.dynamic_config['ActiveRecord::Base']
-end
-
-
-#if ENV['RAILS_ENV'] || defined? Rails
-#  undo_bundler
-#end
+Hairballs.load_plugin(:irb_history, global_history_file: false)
+Hairballs.load_plugin(:interesting_methods)
+Hairballs.load_plugin(:object_ri)
+Hairballs.load_plugin(:wirble)
+Hairballs.load_plugin(:colorize_json)
+Hairballs.load_plugin(:quick_benchmark)
