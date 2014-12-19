@@ -1,15 +1,19 @@
-require '/Users/sloveless/Development/projects/hairballs/lib/hairballs'
+hairballs_path = Dir.glob("#{Gem.dir}/gems/hairballs-*/lib")
+$LOAD_PATH.unshift(hairballs_path.first) unless hairballs_path.empty?
+require 'hairballs'
 
-require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/themes/turboladen'
-require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/themes/turboladen_rails'
+require 'hairballs/themes/turboladen'
+require 'hairballs/themes/turboladen_rails'
 
-require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/awesome_print'
-require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/irb_history'
-require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/interesting_methods'
-require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/object_ri'
-require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/colorize_json'
-require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/wirble'
-require '/Users/sloveless/Development/projects/hairballs/lib/hairballs/plugins/quick_benchmark'
+require 'hairballs/plugins/awesome_print'
+require 'hairballs/plugins/irb_history'
+require 'hairballs/plugins/interesting_methods'
+require 'hairballs/plugins/object_ri'
+require 'hairballs/plugins/colorize_json'
+require 'hairballs/plugins/wirble'
+require 'hairballs/plugins/quick_benchmark'
+require 'hairballs/plugins/require_project_lib'
+require 'hairballs/plugins/tab_completion_for_files'
 
 if Hairballs.rails?
   Hairballs.use_theme(:turboladen_rails)
@@ -24,3 +28,5 @@ Hairballs.load_plugin(:object_ri)
 Hairballs.load_plugin(:wirble)
 Hairballs.load_plugin(:colorize_json)
 Hairballs.load_plugin(:quick_benchmark)
+Hairballs.load_plugin(:require_project_lib)
+Hairballs.load_plugin(:tab_completion_for_files)
