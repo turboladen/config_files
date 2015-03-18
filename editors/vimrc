@@ -1,0 +1,109 @@
+""---------------------------------------------------------------------------""
+" .vimrc
+"  
+"  Partially borrowed from:
+"    * http://mixandgo.com/blog/vim-config-for-rails-ninjas
+""---------------------------------------------------------------------------""
+autocmd!
+" set noshowmode
+" set showmode
+let mapleader = " "
+set encoding=utf-8 nobomb
+
+set nocompatible            " Required for vundle
+filetype off                " Required for vundle
+
+""---------------------------------------------------------------------------""
+" Load Vundle stuff first
+""---------------------------------------------------------------------------""
+source ~/.vim/_vundle.vim
+
+""---------------------------------------------------------------------------""
+" General
+""---------------------------------------------------------------------------""
+" Auto-reload buffers when files are changed on disk
+set autoread
+
+" Detect file type and syntax
+filetype plugin indent on
+syntax on
+syntax enable
+syntax sync fromstart
+set autoindent
+
+" Reload the .vimrc file after changes
+au BufWritePost .vimrc so $MYVIMRC
+
+""---------------------------------------------------------------------------""
+" Theme, UI
+""---------------------------------------------------------------------------""
+" colorscheme Tomorrow-Night
+" colorscheme Tomorrow
+" colorscheme Tomorrow-Night-Eighties
+colorscheme Seti
+set cursorline
+
+if has("gui_running")
+  set bs=2
+  set guifont=Inconsolata:h14
+endif
+
+set ruler
+set number            " Show line nums in the gutter
+set nowrap            " Don't wrap long lines
+set laststatus=2      " show a status line even if there's only 1 window
+set colorcolumn=80    " Show ruler
+
+" Time out on key codes but not mappings
+set notimeout
+set ttimeout
+set ttimeoutlen=100
+
+" Disable Ex mode
+nnoremap Q <nop>
+
+"----
+" Improve scrolling speed
+"----
+set ttyfast
+set ttyscroll=3
+set lazyredraw
+
+"----
+" Folding
+"----
+set foldmethod=indent
+set foldlevel=1
+set foldnestmax=10
+set nofoldenable
+
+"----
+" Listchars/whitespace
+"----
+set list          " Show whitespace
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_,extends:❯,precedes:❮
+
+" Syntax coloring lines that are too long just slows down the world
+set synmaxcol=1200
+
+" Use only 1 space after "." when joining lines instead of 2
+" set nojoinspaces
+
+" Don't reset cursor to start of line when moving around
+set nostartofline
+
+""---------------------------------------------------------------------------""
+" Allow project-specific .vimrc
+""---------------------------------------------------------------------------""
+set exrc
+set secure
+
+""---------------------------------------------------------------------------""
+" Backup, tmp settings
+""---------------------------------------------------------------------------""
+set backupdir^=~/.vim/backup//
+set directory^=~/.vim/tmp//
+set noswapfile
+
+autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window %")
+
