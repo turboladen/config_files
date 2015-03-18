@@ -2,6 +2,8 @@
 
 require 'thor'
 
+# This thing is just a tool for setting up my environment. Make sure to
+# install dependencies first.
 class Configurator < Thor
   include Thor::Actions
 
@@ -9,21 +11,21 @@ class Configurator < Thor
     File.dirname(__FILE__)
   end
 
-  desc "hoe", "Copies the hoe_templates stuff to ~/.hoe_template"
+  desc 'hoe', 'Copies the hoe_templates stuff to ~/.hoe_template'
   method_options force: false
   def hoe
-    default_dir = "/.hoe_template"
+    default_dir = '/.hoe_template'
     destination_root = Dir.home + default_dir
 
-    if yes?("Copy to ~/.hoe_template?")
-      remove_dir destination_root if options[:force]
-      directory("hoe_template", Dir.home + default_dir)
-    end
+    return unless yes?('Copy to ~/.hoe_template?')
+
+    remove_dir destination_root if options[:force]
+    directory('hoe_template', Dir.home + default_dir)
   end
 
-  desc "git", "Sets up Steve's git config"
+  desc 'git', "Sets up Steve's git config"
   def git
-    puts "Setting up your git stuff now..."
+    puts 'Setting up your git stuff now...'
 
     `git config --global user.name "Steve Loveless"`
     `git config --global user.email "steve.loveless@gmail.com"`
@@ -36,9 +38,8 @@ class Configurator < Thor
     `git config --global diff.tool vimdiff`
     `git config --global difftool.prompt false`
 
-    puts "Done.  Have you configured your SSH keys?"
+    puts 'Done.  Have you configured your SSH keys?'
   end
 end
 
 Configurator.start
-
