@@ -1,6 +1,6 @@
 hairballs_path = Dir.glob("#{Gem.dir}/gems/hairballs-*/lib")
 $LOAD_PATH.unshift(hairballs_path.first) unless hairballs_path.empty?
-require 'hairballs'
+#require 'hairballs'
 
 require 'hairballs/themes/turboladen'
 require 'hairballs/themes/turboladen_rails'
@@ -14,6 +14,7 @@ require 'hairballs/plugins/wirble'
 require 'hairballs/plugins/quick_benchmark'
 require 'hairballs/plugins/require_project_lib'
 require 'hairballs/plugins/tab_completion_for_files'
+#require 'hairballs/plugins/binding_dot_irb'
 
 if Hairballs.rails?
   Hairballs.use_theme(:turboladen_rails)
@@ -30,3 +31,4 @@ Hairballs.load_plugin(:colorize_json)
 Hairballs.load_plugin(:quick_benchmark)
 Hairballs.load_plugin(:require_project_lib)
 Hairballs.load_plugin(:tab_completion_for_files)
+#Hairballs.load_plugin(:binding_dot_irb)
