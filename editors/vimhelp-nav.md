@@ -16,6 +16,9 @@ Buffers
 * CTRL-W HJKL   - Send window to left/top/bottom/right
 * CTRL-W -/+    - Make window smaller/bigger
 * CTRL-W =      - Make windows the same size
+* <leader>bc    - Close the buffer but keep the window
+* CTRL-^        - Open the alternate (usually last) buffer. Works with a count
+                  modifier.
 
 Tags
 ----
@@ -32,6 +35,24 @@ Folds
 * zo/zc/za/zO/zC/zA     = Open/close/toggle/{recursively..} fold
 * zr/zm/zR/zM           = Reduce/more folds
 * zv                    = Expand folds to reveal cursor
+
+Explorer Mode + vim-vinegar
+---------------------------
+
+* i   - Toggle view mode
+* d   - Create a new directory
+* %   - Create and open a new file
+* D   - Delete a directory or file
+* R   - Rename a file
+* o   - Open file in a horizontal split
+* v   - Open file in a vertical split
+
+### tpope/vim-vinegar
+
+* `-`       - Hop up to the directory listing.
+* `.`       - When viewing the listing, pre-populate in the `:` command
+* `~`       - Go home
+
 
 kien/ctrlp.vim, tacahiroy/ctrlp-funky
 -------------------------------------
@@ -55,12 +76,10 @@ mileszs/ack.vim
 
 * cmd-shift-f   - :Ack [options] {pattern} [{directories}]
 
-tpope/vim-vinegar
-----------------
+rcking/ag.vim
+-------------
 
-* `-`       - Hop up to the directory listing.
-* `.`       - When viewing the listing, pre-populate in the `:` command
-* `~`       - Go home
+* \
 
 skwp/greplace.vim: Global replace
 -----------------
@@ -88,3 +107,10 @@ vim-multiple-cursors
 --------------------
 
 * <C-n>
+
+lucapette/vim-ruby-doc
+----------------------
+
+* RB      - Search rubydocs.info for Ruby
+* RS      - Search relishapp.com for RSpec
+* RR      - Search api.rubyonrails.org for Rails

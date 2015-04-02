@@ -11,6 +11,6 @@ au BufEnter *.rb syn match error contained "\<byebug\>"
 " yardoc
 "-----------------------------------------------------------------------------
 hi link yardGenericTag rubyInstanceVariable
-" hi link yardTypeList rubyConstant
+hi link yardTypeList rubyConstant
 hi link yardType rubyConstant
-
+" hi link yardLiteral rubyLocalVariableOrMethod

@@ -24,12 +24,13 @@ let g:syntastic_aggregate_errors = 1
 "------------------------------------------------------------------------------
 " ctrlp
 "------------------------------------------------------------------------------
-let g:ctrlp_cmd = 'CtrlPMRU'        " Default to MRU find
+" let g:ctrlp_cmd = 'CtrlPMRU'        " Default to MRU find
 hi def link CtrlPMatch CursorLine
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git\|node_modules\|bin\|\.hg\|\.svn\|build\|log\|resources\|coverage\|doc\|tmp\|public/assets\|vendor\|Android',
   \ 'file': '\.jpg$\|\.exe$\|\.so$\|tags$\|\.dll$'
   \ }
+nnoremap <C-p> :CtrlPMRU<CR>
 
 "------------------------------------------------------------------------------
 " ctrlp-funky
@@ -47,7 +48,9 @@ nmap <F8> :TagbarToggle<CR>
 "------------------------------------------------------------------------------
 " let g:vim_tags_auto_generate=1
 " let g:vim_tags_use_vim_dispatch=1
-map <Leader>ct :!ctags -R --exclude=.git --exclude=logs --exclude=doc .<CR>
+
+" Basic options are set in ~/.ctags
+map <Leader>ct :!ctags .<CR>
 
 "------------------------------------------------------------------------------
 " vim-javascript-syntax
@@ -86,16 +89,48 @@ endif
 " unite
 "------------------------------------------------------------------------------
 " Mimic CtrlP
-nnoremap <C-p> :Unite file_rec/async<CR>
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
+" nnoremap <C-p> :Unite file_rec/async<CR>
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#filters#sorter_default#use(['sorter_rank'])
 
-" Ack
-nnoremap <space>/ :Unite grep:.<CR>
+" " Ack
+" nnoremap <space>/ :Unite grep:.<CR>
 
-" yankring/yankstack
-let g:unite_source_history_yank_enable = 1
-nnoremap <space>y :Unite history/yank<CR>
+" " yankring/yankstack
+" let g:unite_source_history_yank_enable = 1
+" nnoremap <space>y :Unite history/yank<CR>
 
-" LustyJuggler
-nnoremap <space>s :Unite -quick-match buffer<CR>
+" " LustyJuggler
+" nnoremap <space>s :Unite -quick-match buffer<CR>
+
+"------------------------------------------------------------------------------
+" ag.vim
+" https://robots.thoughtbot.com/faster-grepping-in-vim
+"------------------------------------------------------------------------------
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects
+  " .gitignore
+  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind \ (backward slash) to grep shortcut
+" command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
+
+"------------------------------------------------------------------------------
+" vim-ruby-doc
+"------------------------------------------------------------------------------
+let g:ruby_doc_command='open'
