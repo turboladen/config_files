@@ -37,22 +37,12 @@ au BufWritePost .vimrc so $MYVIMRC
 ""---------------------------------------------------------------------------""
 " Theme, UI
 ""---------------------------------------------------------------------------""
-" colorscheme Tomorrow-Night
-" colorscheme Tomorrow
-" colorscheme Tomorrow-Night-Eighties
-colorscheme Seti
 set cursorline
-
-if has("gui_running")
-  set bs=2
-  set guifont=Inconsolata:h14
-endif
-
 set ruler
-set number            " Show line nums in the gutter
-set nowrap            " Don't wrap long lines
-set laststatus=2      " show a status line even if there's only 1 window
-set colorcolumn=80    " Show ruler
+set number                " Show line nums in the gutter
+set nowrap                " Don't wrap long lines
+set laststatus=2          " show a status line even if there's only 1 window
+set colorcolumn=80,120    " Show rulers
 
 " Time out on key codes but not mappings
 set notimeout
@@ -91,6 +81,16 @@ set synmaxcol=1200
 
 " Don't reset cursor to start of line when moving around
 set nostartofline
+
+if has("gui_running")
+  set bs=2
+  set guifont=Inconsolata:h14
+endif
+
+" colorscheme Tomorrow-Night
+" colorscheme Tomorrow
+" colorscheme Tomorrow-Night-Eighties
+colorscheme Seti
 
 ""---------------------------------------------------------------------------""
 " Allow project-specific .vimrc
