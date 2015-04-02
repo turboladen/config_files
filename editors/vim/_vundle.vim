@@ -14,8 +14,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Color Scheme
-" Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'trusktr/seti.vim'
+Plugin 'noahfrederick/vim-hemisu'
 
 ""----------------------------------------------------------------------------
 " UI tweaks
@@ -63,11 +64,13 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-eunuch'
 
 " Plugin 'szw/vim-tags'
-" Plugin 'kien/ctrlp.vim'
-" Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
+" Plugin 'LustyJuggler'
+" Plugin 'Shougo/unite.vim'
+" Plugin 'Shougo/vimproc.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'jwhitley/vim-matchit'
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -80,6 +83,7 @@ Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'ruby-matchit'
 Plugin 'jgdavey/vim-blockle'
 Plugin 'tpope/vim-bundler'
+Plugin 'lucapette/vim-ruby-doc'
 
 ""----------------------------------------------------------------------------
 " Text-completion
@@ -97,6 +101,9 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-dispatch'
+
+Plugin 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
+" Plugin 'nicwest/QQ.vim'             " Postman for vim
 
 " Git-specific
 Plugin 'tpope/vim-fugitive'
