@@ -114,3 +114,14 @@ lucapette/vim-ruby-doc
 * RB      - Search rubydocs.info for Ruby
 * RS      - Search relishapp.com for RSpec
 * RR      - Search api.rubyonrails.org for Rails
+
+tommcdo/vim-exchange
+--------------------
+
+Vimcast: http://vimcasts.org/episodes/swapping-two-regions-of-text-with-exchange-vim/
+
+* `cx{motion}`    - Select first text object for exchanging. Repeat (or .) on
+                    on second text to exchange with.
+* `cxx{motion}`   - Like `cx` but for the current line.
+* `X{motion}`     - Like `cx` but for visual mode.
+* `cxc`           - Clearn any exchange `{motion}`.

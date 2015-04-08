@@ -65,6 +65,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-eunuch'
 Plugin 'jwhitley/vim-matchit'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tommcdo/vim-exchange'
 
 " Searching
 " Plugin 'szw/vim-tags'
