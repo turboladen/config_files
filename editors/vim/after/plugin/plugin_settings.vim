@@ -67,6 +67,16 @@ nmap <F8> :TagbarToggle<CR>
 map <Leader>ct :!ctags .<CR>
 
 "------------------------------------------------------------------------------
+" skwp/greplace.vim
+"------------------------------------------------------------------------------
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  let g:grep_cmd_opts = '--line-numbers --noheading'
+endif
+
+"------------------------------------------------------------------------------
 " vim-javascript-syntax
 "------------------------------------------------------------------------------
 au FileType javascript call JavaScriptFold()
