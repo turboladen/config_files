@@ -104,6 +104,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-repeat'
 
 Plugin 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
 " Plugin 'nicwest/QQ.vim'             " Postman for vim
