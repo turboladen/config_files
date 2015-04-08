@@ -3,7 +3,7 @@
 CURRENT_SESSION=${PWD##*/}
 
 # Start up the tmux session with specific name
-tmux new-session -s $CURRENT_SESSION -n editor -d
+tmux -2 new-session -s $CURRENT_SESSION -n editor -d
 
 # VIM window
 tmux send-keys -t $CURRENT_SESSION 'vim' C-m

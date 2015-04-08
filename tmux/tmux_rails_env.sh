@@ -3,7 +3,7 @@
 CURRENT_SESSION=${PWD##*/}
 
 # Start up the tmux session with specific name. First window is for editing.
-tmux new-session -s $CURRENT_SESSION -n editor -d
+tmux -2 new-session -s $CURRENT_SESSION -n editor -d
 
 # VIM window
 tmux send-keys -t $CURRENT_SESSION 'vim' C-m
@@ -25,7 +25,6 @@ tmux send-keys -t $CURRENT_SESSION:2.1 'foreman start' C-m
 
 # Run the server
 # tmux send-keys -t $CURRENT_SESSION:2.1 'z $CURRENT_SESSION' C-m
-tmux send-keys -t $CURRENT_SESSION:2.2 'rails server' C-m
 
 # Select the first window
 tmux select-window -t $CURRENT_SESSION:1
