@@ -33,6 +33,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_ruby_rubocop_args = "--force-exclusion --display-cop-names --no-color"
 let g:syntastic_aggregate_errors = 1
 
 "------------------------------------------------------------------------------
