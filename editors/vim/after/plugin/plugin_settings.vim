@@ -72,9 +72,9 @@ map <Leader>ct :!ctags .<CR>
 au FileType javascript call JavaScriptFold()
 
 "------------------------------------------------------------------------------
-" vim-markdown
+" gabrieleana/vim-markdown
 "------------------------------------------------------------------------------
-let g:vim_markdown_folding_disabled=1
+let g:markdown_mapping_switch_status = '<Leader>ms'
 
 "------------------------------------------------------------------------------
 " mileszs/ack.vim
