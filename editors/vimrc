@@ -75,7 +75,8 @@ set nofoldenable
 " Listchars/whitespace
 "----
 set list          " Show whitespace
-set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_,extends:❯,precedes:❮
+" set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_,extends:❯,precedes:❮
+set listchars=tab:▸\ ,trail:·,nbsp:_,extends:❯,precedes:❮
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=1200
