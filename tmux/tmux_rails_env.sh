@@ -24,7 +24,7 @@ tmux send-keys -t $CURRENT_SESSION:2.1 'z core' C-m
 tmux send-keys -t $CURRENT_SESSION:2.1 'foreman start' C-m
 
 # Run the server
-# tmux send-keys -t $CURRENT_SESSION:2.1 'z $CURRENT_SESSION' C-m
+tmux send-keys -t $CURRENT_SESSION:2.2 'bin/rails server' C-m
 
 # Select the first window
 tmux select-window -t $CURRENT_SESSION:1
