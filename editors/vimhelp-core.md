@@ -44,7 +44,7 @@ Tags
 * `:ts`         - List tags that match the last search
 * `:tn`/`:tp`   - Go to next/previous matching tag
 
-### kien/ctrlp.vim, tacahiroy/ctrlp-funky ###
+### [kien/ctrlp.vim](https://github.com/kien/ctrlp.vim) ###
 
 * `:CtrlPBuffer`    - Find in buffer mode
 * `:CtrlPMRU`       - Find in MRU mode
@@ -53,9 +53,12 @@ Tags
 * `<C-r>`           - Switch to regexp mode
 * `<C-f>`/`<C-b>`   - Cycle between modes
 * `<C-j>`/`<C-k>`   - Navigate result set
+
+### [tacahiroy/ctrlp-funky](https://github.com/tacahiroy/ctrlp-funky) ###
+
 * `<Leader>fu>`     - Find tag in file
 
-### majutsushi/tagbar ###
+### [majutsushi/tagbar](https://github.com/majutsushi/tagbar) ###
 
 Like RubyMine's `Structure` window.
 
@@ -81,7 +84,7 @@ Explorer Mode
 * `o`   - Open file in a horizontal split
 * `v`   - Open file in a vertical split
 
-### tpope/vim-vinegar ###
+### [tpope/vim-vinegar](https://github.com/tpope/vim-vinegar) ###
 
 * `-`       - Hop up to the directory listing.
 * `.`       - When viewing the listing, pre-populate in the `:` command
@@ -90,30 +93,30 @@ Explorer Mode
 Searching, Replacing
 --------------------
 
-### mileszs/ack.vim ###
+### [mileszs/ack.vim](https://github.com/mileszs/ack.vim) ###
 
 Format: `:Ack [options] {pattern} [{directories}]`
 
 * `<Leader>/`   - `:Ack<Space>`
 
-### rcking/ag.vim ###
+### [rcking/ag.vim](https://github.com/rking/ag.vim) ###
 
 Format: `:Ag [options] {pattern} [{directory}]`
 
 * `\`       - :Ag<SPACE>
 * `K`       - Search for word under cursor
 
-Once the quickfix window is open:
+Once the quick-fix window is open:
 
-* `e`       - open file and close the quickfix window
+* `e`       - open file and close the quick-fix window
 * `o`       - open (same as enter)
 * `go`      - preview file (open but maintain focus on ag.vim results)
 * `t`/`T`   - open in new tab (/silently)
 * `h`/`H`   - open in horizontal split (/silently)
 * `v`/`gv`  - open in vertical split (/silently)
-* `q`       - close the quickfix window
+* `q`       - close the quick-fix window
 
-### skwp/greplace.vim ###
+### [skwp/greplace.vim](https://github.com/skwp/greplace.vim) ###
 
 Global replace
 

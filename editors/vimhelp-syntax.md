@@ -4,19 +4,19 @@ Syntax, Code Manipulation
 Any Language
 ------------
 
-### tpope/vim-commentary ###
+### [tpope/vim-commentary](https://github.com/tpope/vim-commentary) ###
 
 * `gcc` - Comment out a line (takes a count)
 * `gc`  - Comment out target of a motion (ex. gcap to comment out a paragraph)
 
-### tpope/vim-surround ###
+### [tpope/vim-surround](https://github.com/tpope/vim-surround) ###
 
 * `cs[from][to]`      - With cursor in a string, change [from] to [to] (ex `cs"'`)
 * `ds[delimiter]`     - Remove [delimiters] from string.
 * `ys{motion}[char]`  - (Insert) Surround `{motion}` with `[char]`
 * `S[char]`           - (Visual) Surround selected with `[char]`
 
-### terryma/vim-multiple-cursors ###
+### [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) ###
 
 * `<C-n>`         - Press on top of a word to highlight that word. Press again
                     to jump to the next instance of that word. Once all are
@@ -24,7 +24,7 @@ Any Language
 * `<C-p>`         - Jump back to previous highlighted word.
 * `<C-x>`         - Skip the currently highlighted word.
 
-### tommcdo/vim-exchange ###
+### [tommcdo/vim-exchange](https://github.com/tommcdo/vim-exchange) ###
 
 Vimcast: http://vimcasts.org/episodes/swapping-two-regions-of-text-with-exchange-vim/
 
@@ -34,7 +34,7 @@ Vimcast: http://vimcasts.org/episodes/swapping-two-regions-of-text-with-exchange
 * `X{motion}`     - Like `cx` but for visual mode.
 * `cxc`           - Clearn any exchange `{motion}`.
 
-### AndrewRadev/splitjoin.vim ###
+### [AndrewRadev/splitjoin.vim](https://github.com/AndrewRadev/splitjoin.vim) ###
 
 * gS    - split a one-liner into multiple lines
 * gJ    - (with cursor on first line of a block) to join a block
@@ -42,20 +42,20 @@ Vimcast: http://vimcasts.org/episodes/swapping-two-regions-of-text-with-exchange
 Ruby
 ----
 
-### rorymckinley/vim-rubyhash ###
+### [rorymckinley/vim-rubyhash](https://github.com/rorymckinley/vim-rubyhash) ###
 
 * `rr` - Convert all keys to symbols
 * `rt` - Convert all keys to strings
 * `rr` - Convert all keys to Ruby 1.9 format
 
-### jgdavey/vim-blockle.git ###
+### [jgdavey/vim-blockle.git](https://github.com/jgdavey/vim-blockle) ###
 
 * `<Leader>b`   - Toggle Ruby block style
 
 Markdown
 --------
 
-### gabrieleana/vim-markdown ###
+### [gabrieleana/vim-markdown](https://github.com/gabrielelana/vim-markdown) ###
 
 * `[[`          - Goto previous H* section
 * `]]`          - Goto next H* section
