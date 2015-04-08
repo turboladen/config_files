@@ -80,24 +80,11 @@ let g:vim_markdown_folding_disabled=1
 " mileszs/ack.vim
 " https://github.com/carlhuda/janus/blob/0e34a62fac3a38ccc459bf3a6dab6ef1ec6dc9a5/janus/vim/tools/janus/after/plugin/ack.vim
 "------------------------------------------------------------------------------
-if has("gui_macvim") && has("gui_running")
-  " Command-Shift-F on OSX
-  map <D-F> :Ack<space>
-else
-  " Define <C-F> to a dummy value to see if it would set <C-f> as well.
-  map <C-F> :dummy
-
-  if maparg("<C-f>") == ":dummy"
-    " <leader>f on systems where <C-f> == <C-F>
-    map <Leader>f :Ack<space>
-  else
-    " <C-F> if we can still map <C-f> to <S-Down>
-    map <C-F>f :Ack<space>
-  endif
-
-  map <C-f> <S-Down>
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
 endif
 
+map <Leader>/ :Ack<space>
 
 "------------------------------------------------------------------------------
 " unite

@@ -89,12 +89,27 @@ majutsushi/tagbar: Like RubyMine's `Structure` window.
 mileszs/ack.vim
 ---------------
 
-* cmd-shift-f   - :Ack [options] {pattern} [{directories}]
+Format: `:Ack [options] {pattern} [{directories}]`
+
+* `<Leader>/`   - `:Ack<Space>`
 
 rcking/ag.vim
 -------------
 
-* \
+Format: `:Ag [options] {pattern} [{directory}]`
+
+* `\`       - :Ag<SPACE>
+* `K`       - Search for word under cursor
+
+Once the quickfix window is open:
+
+* `e`       - open file and close the quickfix window
+* `o`       - open (same as enter)
+* `go`      - preview file (open but maintain focus on ag.vim results)
+* `t`/`T`   - open in new tab (/silently)
+* `h`/`H`   - open in horizontal split (/silently)
+* `v`/`gv`  - open in vertical split (/silently)
+* `q`       - close the quickfix window
 
 skwp/greplace.vim: Global replace
 -----------------
