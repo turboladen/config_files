@@ -36,3 +36,27 @@ Notes:
     * `tmux select-pane -t:[0-9]`
 * Toggle layouts:
     * `<prefix><space>`
+
+Buffers
+-------
+
+* Enter copy mode:
+    * `<prefix>Esc`
+* Put last buffer
+    * `<prefix>]`
+
+All the following assume you're in copy mode.
+
+* Start selecting text:
+    * `v`
+* Yank text:
+    * `y`
+* Capture the whole pane:
+    * `<prefix>:`     (command mode)
+    * `capture-pane`
+* List copy buffers:
+    * `<prefix>:`     (command mode)
+    * `list-buffers`
+* Choose an older buffer
+    * `<prefix>:`     (command mode)
+    * `choose-buffer`
