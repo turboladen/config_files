@@ -55,6 +55,7 @@ Plugin 'gabrielelana/vim-markdown'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'jimenezrick/vimerl'
 Plugin 'tpope/vim-git'
+Plugin 'tejr/vim-tmux'
 
 ""----------------------------------------------------------------------------
 " Shortcuts, navigation
