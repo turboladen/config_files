@@ -1,10 +1,24 @@
 "------------------------------------------------------------------------------
 " vim-airline
 "------------------------------------------------------------------------------
+let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
+
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_them='badwolf'
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+"------------------------------------------------------------------------------
+" tmuxline.vim
+"------------------------------------------------------------------------------
+let g:tmuxline_preset = 'full'
+" let g:tmuxline_powerline_separators = 0
 
 "------------------------------------------------------------------------------
 " syntastic

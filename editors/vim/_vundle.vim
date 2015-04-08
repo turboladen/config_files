@@ -22,6 +22,7 @@ Plugin 'noahfrederick/vim-hemisu'
 " UI tweaks
 ""----------------------------------------------------------------------------
 Plugin 'bling/vim-airline'
+Plugin 'edkolev/tmuxline.vim'
 Plugin 'bling/vim-bufferline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'chrisbra/NrrwRgn'
@@ -62,7 +63,10 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-eunuch'
+Plugin 'jwhitley/vim-matchit'
+Plugin 'terryma/vim-multiple-cursors'
 
+" Searching
 " Plugin 'szw/vim-tags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
@@ -71,8 +75,6 @@ Plugin 'tacahiroy/ctrlp-funky'
 " Plugin 'Shougo/vimproc.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
-Plugin 'jwhitley/vim-matchit'
-Plugin 'terryma/vim-multiple-cursors'
 
 ""----------------------------------------------------------------------------
 " Language-specific plugins

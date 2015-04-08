@@ -43,6 +43,10 @@ set number                " Show line nums in the gutter
 set nowrap                " Don't wrap long lines
 set laststatus=2          " show a status line even if there's only 1 window
 set colorcolumn=80,120    " Show rulers
+set t_Co=256              " 256 colors
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
 
 " Time out on key codes but not mappings
 set notimeout
@@ -83,8 +87,11 @@ set synmaxcol=1200
 set nostartofline
 
 if has("gui_running")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    set guifont=Inconsolata:h14
+  endif
   set bs=2
-  set guifont=Inconsolata:h14
 endif
 
 " colorscheme Tomorrow-Night
@@ -110,6 +117,9 @@ set noswapfile
 ""---------------------------------------------------------------------------""
 autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window %")
 
+""---------------------------------------------------------------------------""
+" Buffers
+""---------------------------------------------------------------------------""
 " Close a buffer but don't close the window
 map <leader>bc :bprevious<CR>:bdelete #<CR>
 
