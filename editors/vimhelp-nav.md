@@ -1,6 +1,21 @@
 Navigation
 ==========
 
+Spelling
+--------
+
+http://vimcasts.org/episodes/spell-checking/
+
+* `:set [no]spell`  - Turn on spell checker
+* `]s`/`[s`         - Navigate forward/backward to misspellings
+* `z=`              - list spelling suggestions
+* `zg`              - Mark highlighted word as a "good" word
+* `zug`             - Undo marking highlighted word as a "good" word
+* `zw`              - Mark highlighted word as "wrong" (misspelled)
+* `zuw`             - Undo marking highlighted word as "wrong" (misspelled)
+* `:runtime spell/cleanadd.vim`   - Clean up spelling file
+
+
 Buffers
 -------
 
