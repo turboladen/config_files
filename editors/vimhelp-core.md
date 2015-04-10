@@ -16,8 +16,8 @@ http://vimcasts.org/episodes/spell-checking/
 * `:runtime spell/cleanadd.vim`   - Clean up spelling file
 
 
-Buffers
--------
+Buffers & Windows
+-----------------
 
 * `<C-w>[direction]`  - Switch buffers
 * `<C-w>s`            - Split horizontally
@@ -58,12 +58,6 @@ Tags
 
 * `<Leader>fu>`     - Find tag in file
 
-### [majutsushi/tagbar](https://github.com/majutsushi/tagbar) ###
-
-Like RubyMine's `Structure` window.
-
-* `F8`    - :ToggleTagbar
-
 Folds
 -----
 
@@ -72,53 +66,4 @@ Folds
 * `zr`/`zm`         = Reduce/more folds
 * `zR`/`zM`         = Reduce/more folds recursively
 * `zv`              = Expand folds to reveal cursor
-
-Explorer Mode
--------------
-
-* `i`   - Toggle view mode
-* `d`   - Create a new directory
-* `%`   - Create and open a new file
-* `D`   - Delete a directory or file
-* `R`   - Rename a file
-* `o`   - Open file in a horizontal split
-* `v`   - Open file in a vertical split
-
-### [tpope/vim-vinegar](https://github.com/tpope/vim-vinegar) ###
-
-* `-`       - Hop up to the directory listing.
-* `.`       - When viewing the listing, pre-populate in the `:` command
-* `~`       - Go home
-
-Searching, Replacing
---------------------
-
-### [mileszs/ack.vim](https://github.com/mileszs/ack.vim) ###
-
-Format: `:Ack [options] {pattern} [{directories}]`
-
-* `<Leader>/`   - `:Ack<Space>`
-
-### [rcking/ag.vim](https://github.com/rking/ag.vim) ###
-
-Format: `:Ag [options] {pattern} [{directory}]`
-
-* `\`       - :Ag<SPACE>
-* `K`       - Search for word under cursor
-
-Once the quick-fix window is open:
-
-* `e`       - open file and close the quick-fix window
-* `o`       - open (same as enter)
-* `go`      - preview file (open but maintain focus on ag.vim results)
-* `t`/`T`   - open in new tab (/silently)
-* `h`/`H`   - open in horizontal split (/silently)
-* `v`/`gv`  - open in vertical split (/silently)
-* `q`       - close the quick-fix window
-
-### [skwp/greplace.vim](https://github.com/skwp/greplace.vim) ###
-
-Global replace
-
-* `:Gsearch`
 
