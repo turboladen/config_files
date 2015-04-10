@@ -100,6 +100,9 @@ endif
 " colorscheme Tomorrow-Night-Eighties
 colorscheme Seti
 
+" netrw
+let g:netrw_liststyle=3        " Default to tree view
+
 ""---------------------------------------------------------------------------""
 " Allow project-specific .vimrc
 ""---------------------------------------------------------------------------""
