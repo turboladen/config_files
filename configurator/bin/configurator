@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'thor'
+require 'find'
+require 'fileutils'
 
 # This thing is just a tool for setting up my environment. Make sure to
 # install dependencies first.
@@ -39,6 +41,55 @@ class Configurator < Thor
     `git config --global difftool.prompt false`
 
     puts 'Done.  Have you configured your SSH keys?'
+  end
+
+  desc 'vim', "Sets up Steve's vim files"
+  def vim
+    puts 'Setting up your Vim stuff now...'
+    unless Dir.exist?(File.join(Dir.home, '.vim', 'bundle', 'Vundle.vim'))
+      abort 'Install Vundle first!'
+    end
+
+    source_vim_dir = File.join(Dir.pwd, 'editors')
+    dest_vim_dir = File.join(Dir.home, '.vim')
+
+    dest_vimrc = File.join(Dir.home, '.vimrc')
+    unless File.exist?(dest_vimrc)
+      source_vimrc = File.join(source_vim_dir, 'vimrc')
+      puts_n_run("ln -s #{source_vimrc} #{dest_vimrc}") 
+    end
+
+    dest_vundle_file = File.join(dest_vim_dir, '_vundle')
+    unless File.exist?(dest_vundle_file)
+      source_vundle_file = File.join(source_vim_dir, '_vundle')
+      puts_n_run("ln -s #{source_vundle_file} #{dest_vundle_file}")
+    end
+
+    Dir.chdir(File.join('..', 'editors', 'vim'))
+
+    Find.find('.') do |file|
+      relative_object = File.absolute_path(file).sub(Dir.pwd, '')
+      full_dest_object = File.join(dest_vim_dir, relative_object)
+
+      if File.exist?(full_dest_object)
+        puts "Destination file/directory already exists: #{full_dest_object}"
+      else
+        if File.directory?(file)
+          puts "Creating directory: #{full_dest_object}"
+          Dir.mkdir(full_dest_object)
+        else
+          puts "Copying file '#{file}' to '#{full_dest_object}'"
+          FileUtils.cp(file, full_dest_object)
+        end
+      end
+    end
+  end
+
+  private
+
+  def puts_n_run(cmd)
+    puts "Running command: #{cmd}"
+    `#{cmd}`
   end
 end
 
