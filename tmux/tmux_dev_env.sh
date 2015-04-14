@@ -3,7 +3,7 @@
 CURRENT_SESSION=${PWD##*/}
 
 # Start up the tmux session with specific name
-tmux -2 new-session -s $CURRENT_SESSION -n editor -d
+tmux new-session -s $CURRENT_SESSION -n editor -d
 
 # VIM window
 tmux send-keys -t $CURRENT_SESSION 'vim' C-m
@@ -22,4 +22,4 @@ tmux new-window -n shell -t $CURRENT_SESSION
 tmux select-window -t 1
 
 # Attach the tmux session
-tmux attach -t $CURRENT_SESSION
+tmux -2 attach -t $CURRENT_SESSION
