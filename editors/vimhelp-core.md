@@ -34,6 +34,8 @@ Buffers & Windows
 * `<Leader>bc`        - Close the buffer but keep the window
 * `<C-^>`             - Open the alternate (usually last) buffer. Works with a
                         count modifier.
+* `zz`/`z.`           - Center the cursor in the window.
+* `z{height}<CR>`     - Make window {height} lines tall.
 
 Tags
 ----
