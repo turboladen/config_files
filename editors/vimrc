@@ -21,15 +21,6 @@ source ~/.vim/_vundle.vim
 ""---------------------------------------------------------------------------""
 " General
 ""---------------------------------------------------------------------------""
-" Auto-reload buffers when files are changed on disk
-set autoread
-
-" Detect file type and syntax
-filetype plugin indent on
-syntax on
-syntax enable
-syntax sync fromstart
-set autoindent
 
 " Reload the .vimrc file after changes
 au BufWritePost .vimrc so $MYVIMRC
@@ -74,7 +65,7 @@ set nofoldenable
 "----
 " Listchars/whitespace
 "----
-set list          " Show whitespace
+set list          " Show invisibles/whitespace
 " set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_,extends:❯,precedes:❮
 set listchars=tab:▸\ ,trail:·,nbsp:_,extends:❯,precedes:❮
 
@@ -124,6 +115,9 @@ autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window %"
 ""---------------------------------------------------------------------------""
 " Buffers
 ""---------------------------------------------------------------------------""
+" Auto-reload buffers when files are changed on disk
+set autoread
+
 " Close a buffer but don't close the window
 map <leader>bc :bprevious<CR>:bdelete #<CR>
 
@@ -132,3 +126,24 @@ map <leader>bc :bprevious<CR>:bdelete #<CR>
 ""---------------------------------------------------------------------------""
 set spell
 set spelllang=en_us
+
+""---------------------------------------------------------------------------""
+" Filetypes, syntax
+""---------------------------------------------------------------------------""
+" Detect file type and syntax
+filetype plugin indent on
+syntax on
+syntax enable
+syntax sync fromstart
+set autoindent
+
+if has("autocmd")
+  autocmd Filetype coffee setlocal ts=4 sts=2 sw=2 expandtab
+  autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+  autocmd Filetype javascript setlocal tabstop=4 softtabstop=0 shiftwidth=4 noexpandtab
+  autocmd Filetype qf setlocal nospell
+  autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd Filetype body_massage setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd Filetype vim setlocal ts=2 sts=2 sw=2 expandtab
+endif

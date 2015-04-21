@@ -1,15 +1,6 @@
 "-----------------------------------------------------------------------------
 " Ruby settings
-" 
-" For some reason, vim-ruby doesn't set these up
 "-----------------------------------------------------------------------------
-" set expandtab
-" set softtabstop=2
-" set shiftwidth=2
-" set tabstop=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
-
 "-----------------------------------------------------------------------------
 " Set up folding.
 "-----------------------------------------------------------------------------
