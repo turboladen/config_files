@@ -121,6 +121,21 @@ set autoread
 " Close a buffer but don't close the window
 map <leader>bc :bprevious<CR>:bdelete #<CR>
 
+function! CloseAllOtherBuffers()
+  let l:current_buffer_number = bufnr('%')
+  let l:lower_buffer_min_number = 1
+  let l:lower_buffer_max_number = l:current_buffer_number - 1
+  let l:upper_buffer_min_number = l:current_buffer_number + 1
+  let l:upper_buffer_max_number = 10000
+  let l:lower_range = join([l:lower_buffer_min_number, l:lower_buffer_max_number], ',')
+  let l:upper_range = join([l:upper_buffer_min_number, l:upper_buffer_max_number], ',')
+  let l:cmd =  l:lower_range . 'bd | ' . l:upper_range . 'bd'
+
+  exec(l:cmd)
+endfunction
+
+map <Leader>q :call CloseAllOtherBuffers()<CR>
+
 ""---------------------------------------------------------------------------""
 " Spelling
 ""---------------------------------------------------------------------------""
