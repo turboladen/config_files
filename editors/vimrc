@@ -36,11 +36,13 @@ nnoremap <Leader>v :source $MYVIMRC<CR>
 set cursorline
 set ruler
 set number                " Show line nums in the gutter
-set nowrap                " Don't wrap long lines
+" set nowrap                " Don't wrap long lines
+set wrap                  " Wrap long lines
+set linebreak
+set breakat=90
 set laststatus=2          " show a status line even if there's only 1 window
 set colorcolumn=80,120    " Show rulers
 set t_Co=256              " 256 colors
-set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
 
