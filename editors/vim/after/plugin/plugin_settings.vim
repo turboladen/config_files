@@ -1,4 +1,13 @@
 "------------------------------------------------------------------------------
+" nerdtree
+"------------------------------------------------------------------------------
+
+map <silent> <F2> :NERDTreeToggle<CR>
+map <silent> <F3> :NERDTreeFind<CR>
+" let g:NERDTreeMapActivateNode="<F3>"
+" let g:NERDTreeMapPreview="<F4>"
+
+"------------------------------------------------------------------------------
 " vim-airline
 "------------------------------------------------------------------------------
 let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
@@ -160,3 +169,26 @@ nnoremap \ :Ag<SPACE>
 " vim-ruby-doc
 "------------------------------------------------------------------------------
 let g:ruby_doc_command='open'
+
+"------------------------------------------------------------------------------
+" Shougo/neocomplete.vim
+"------------------------------------------------------------------------------
+let g:acp_enableAtStartup = 0
+" let g:neocomplete#enable_at_startup = 1   " Moved to ~/.vimrc
+let g:neocomplete#enable_smart_case = 1
+
+" <TAB>: completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-y>  neocomplete#close_popup()
+" inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+"------------------------------------------------------------------------------
+" Valloric/YouCompleteMe
+"------------------------------------------------------------------------------
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_complete_in_comments = 1
+" let g:ycm_disable_for_file_larger_than_kb = 1000  " Default is 1000

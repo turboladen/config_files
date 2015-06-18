@@ -18,6 +18,12 @@ netrw (Explorer Mode)
 * `.`       - When viewing the listing, pre-populate in the `:` command
 * `~`       - Go home
 
+### [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree)
+
+* `F2`    - Toggle open/close
+* `F3`    - Open to current file
+* `B`     - Toggle show/hide bookmarks
+* 
 
 Searching, Replacing
 --------------------

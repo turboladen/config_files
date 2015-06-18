@@ -63,6 +63,8 @@ Plugin 'tejr/vim-tmux'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-eunuch'
 Plugin 'jwhitley/vim-matchit'
 Plugin 'terryma/vim-multiple-cursors'
@@ -93,7 +95,8 @@ Plugin 'lucapette/vim-ruby-doc'
 " Text-completion
 ""----------------------------------------------------------------------------
 Plugin 'closetag.vim'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'tpope/vim-endwise'
 
 ""----------------------------------------------------------------------------
@@ -109,6 +112,7 @@ Plugin 'tpope/vim-repeat'
 
 Plugin 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
 " Plugin 'nicwest/QQ.vim'             " Postman for vim
+Plugin 'Shougo/vimshell.vim'        " For Shuogo/neocomplete.vim
 
 " Git-specific
 Plugin 'tpope/vim-fugitive'
@@ -130,3 +134,5 @@ call vundle#end()            " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
+" Reload after saving this so I can PluginInstall.
+au BufWritePost ~/.vim/_vundle.vim so $MYVIMRC
