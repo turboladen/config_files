@@ -1,6 +1,6 @@
 ""---------------------------------------------------------------------------""
 " .vimrc
-"  
+"
 "  Partially borrowed from:
 "    * http://mixandgo.com/blog/vim-config-for-rails-ninjas
 ""---------------------------------------------------------------------------""
@@ -45,6 +45,7 @@ set colorcolumn=80,120    " Show rulers
 set t_Co=256              " 256 colors
 set term=xterm-256color
 set termencoding=utf-8
+set magic                 " More familiar regexing
 
 " Time out on key codes but not mappings
 set notimeout
@@ -58,8 +59,9 @@ nnoremap Q <nop>
 " Improve scrolling speed
 "----
 set ttyfast
-set ttyscroll=3
+" set ttyscroll=3
 set lazyredraw
+set scrolloff=7
 
 "----
 " Folding
