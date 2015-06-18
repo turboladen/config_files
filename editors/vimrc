@@ -23,7 +23,12 @@ source ~/.vim/_vundle.vim
 ""---------------------------------------------------------------------------""
 
 " Reload the .vimrc file after changes
-au BufWritePost .vimrc so $MYVIMRC
+augroup reload_vimrc
+  autocmd!
+  autocmd BufWritePost $MYVIMRC so $MYVIMRC
+augroup END
+
+nnoremap <Leader>v :source $MYVIMRC<CR>
 
 ""---------------------------------------------------------------------------""
 " Theme, UI
