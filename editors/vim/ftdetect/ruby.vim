@@ -16,5 +16,6 @@ function! RubyMethodFold(line)
   return 0
 endfunction
 
-set foldexpr=RubyMethodFold(v:lnum)
-set foldmethod=expr
+" set foldexpr=RubyMethodFold(v:lnum)
+" set foldmethod=expr
+let ruby_fold=1

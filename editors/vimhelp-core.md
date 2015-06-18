@@ -15,7 +15,6 @@ http://vimcasts.org/episodes/spell-checking/
 * `zuw`             - Undo marking highlighted word as "wrong" (misspelled)
 * `:runtime spell/cleanadd.vim`   - Clean up spelling file
 
-
 Buffers & Windows
 -----------------
 
@@ -63,6 +62,7 @@ Tags
 Folds
 -----
 
+* `zi`              = Enable folding
 * `zo`/`zc`/`za`    = Open/close/toggle fold
 * `zO`/`zC`/`zA`    = Open/close/toggle fold recursively
 * `zr`/`zm`         = Reduce/more folds
