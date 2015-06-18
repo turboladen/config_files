@@ -26,6 +26,7 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'bling/vim-bufferline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'chrisbra/NrrwRgn'
+" Plugin 'RltvNmbr.vim'
 
 ""----------------------------------------------------------------------------
 " ftdetect plugins
@@ -71,10 +72,9 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tommcdo/vim-exchange'
 
 " Searching
-" Plugin 'szw/vim-tags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
-" Plugin 'LustyJuggler'
+Plugin 'LustyJuggler'
 " Plugin 'Shougo/unite.vim'
 " Plugin 'Shougo/vimproc.vim'
 Plugin 'mileszs/ack.vim'

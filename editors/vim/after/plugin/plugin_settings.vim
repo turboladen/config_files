@@ -76,7 +76,7 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git\|node_modules\|bin\|\.hg\|\.svn\|build\|log\|resources\|coverage\|doc\|tmp\|public/assets\|vendor\|Android',
   \ 'file': '\.jpg$\|\.exe$\|\.so$\|tags$\|\.dll$'
   \ }
-nnoremap <C-p> :CtrlPMRU<CR>
+" nnoremap <C-p> :CtrlPMRU<CR>
 
 "------------------------------------------------------------------------------
 " ctrlp-funky
@@ -103,7 +103,8 @@ map <Leader>ct :!ctags .<CR>
 "------------------------------------------------------------------------------
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  " set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup
 
   let g:grep_cmd_opts = '--line-numbers --noheading'
 endif
@@ -128,8 +129,13 @@ map <Leader>/ :Ack<space>
 "------------------------------------------------------------------------------
 " Mimic CtrlP
 " nnoremap <C-p> :Unite file_rec/async<CR>
+" nnoremap <C-p> :Unite file_rec<CR>
+" nnoremap <C-p> :Unite file_rec<CR>
 " call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " call unite#filters#sorter_default#use(['sorter_rank'])
+" let g:unite_source_grep_command='ag'
+" let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4'
+" let g:unite_source_grep_recursive_opt=''
 
 " " Ack
 " nnoremap <space>/ :Unite grep:.<CR>
@@ -163,9 +169,9 @@ endif
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
-" command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
+" nnoremap \ :Ag<SPACE>
+nnoremap <Leader>. :Ag<SPACE>
 
 
 "------------------------------------------------------------------------------
