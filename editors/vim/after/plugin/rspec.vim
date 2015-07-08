@@ -1,4 +1,4 @@
-"------------------------------------------------------------------------------der>t :call RunCurrentSpecFile()<CR>
+"------------------------------------------------------------------------------
 " thoughtbot/vim-rspec
 "------------------------------------------------------------------------------
 function! RSpecShellCommand()
@@ -20,3 +20,17 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+" Builds a the RSpec command for running the test on your current line, then
+" echos it and copies it to the system clipboard. Useful for when wanting to
+" run the same test in a different terminal.
+function! RSpecCommandForManualRunning()
+  let currentLine = line(".")
+  let command = RSpecShellCommand() . 'rspec ' . expand('%') . ':' . currentLine
+
+  " Copy to system clipboard
+  let @+ = command
+  echo command
+endfunction
+
+map <Leader>c :call RSpecCommandForManualRunning()<CR>
