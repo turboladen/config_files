@@ -128,13 +128,12 @@ map <Leader>/ :Ack<space>
 " unite
 "------------------------------------------------------------------------------
 " Mimic CtrlP
-" nnoremap <C-p> :Unite file_rec/async<CR>
-" nnoremap <C-p> :Unite file_rec<CR>
-" nnoremap <C-p> :Unite file_rec<CR>
+nnoremap <C-p> :Unite -start-insert bookmark tab buffer_tab file_rec/git<CR>
+let g:unite_source_history_yank_enable = 1
 " call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " call unite#filters#sorter_default#use(['sorter_rank'])
-" let g:unite_source_grep_command='ag'
-" let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4'
+let g:unite_source_grep_command='ag'
+let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4'
 " let g:unite_source_grep_recursive_opt=''
 
 " " Ack
@@ -153,23 +152,28 @@ map <Leader>/ :Ack<space>
 "------------------------------------------------------------------------------
 " The Silver Searcher
 if executable('ag')
+  " let g:ag_prg="ag --context --vimgrep --only-matching --silent"
+  " let g:ag_prg="ag --vimgrep --only-matching --silent"
+
+  let g:ag_highlight=1          " highlight term after search
+
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects
   " .gitignore
-  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_user_command = 'ag %s -l -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " let g:ctrlp_user_command = 'ag %s -l -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  " let g:ctrlp_use_caching = 0
 endif
 
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
-command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+" command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 " nnoremap \ :Ag<SPACE>
 nnoremap <Leader>. :Ag<SPACE>
 

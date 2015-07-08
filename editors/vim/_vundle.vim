@@ -4,136 +4,126 @@
 set nocompatible
 filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" vim-plug start
+call plug#begin('~/.vim/plugged')
 
 " Color Scheme
-Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'trusktr/seti.vim'
-Plugin 'noahfrederick/vim-hemisu'
+Plug 'trusktr/seti.vim'
+Plug 'chriskempson/vim-tomorrow-theme'
+" Plug 'croaky/vim-colors-github'
 
 ""----------------------------------------------------------------------------
 " UI tweaks
 ""----------------------------------------------------------------------------
-Plugin 'bling/vim-airline'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'bling/vim-bufferline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'chrisbra/NrrwRgn'
-" Plugin 'RltvNmbr.vim'
+Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'christoomey/vim-tmux-runner'
+Plug 'bling/vim-bufferline'
+Plug 'airblade/vim-gitgutter'
+" Plug 'chrisbra/NrrwRgn'
+Plug 'BufOnly.vim'                      " For cleaning out buffers
+" Plug 'wincent/terminus'
 
 ""----------------------------------------------------------------------------
 " ftdetect plugins
 ""----------------------------------------------------------------------------
 " JS/Coffeescript
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'kchmck/vim-coffee-script'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 " Ruby, Rails, etc
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-ragtag'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'noprompt/vim-yardoc'
+Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-rake', { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-ragtag', { 'for': ['ruby', 'eruby'] }
+Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'eruby'] }
+Plug 'noprompt/vim-yardoc', { 'for': ['ruby', 'eruby'] }
 
 " HTML, Markup
-Plugin 'avakhov/vim-yaml'
-Plugin 'tpope/vim-haml'
-Plugin 'heartsentwined/vim-emblem'
-Plugin 'slim-template/vim-slim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'gabrielelana/vim-markdown'
+Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
+Plug 'tpope/vim-haml', { 'for': 'haml' }
+Plug 'heartsentwined/vim-emblem', { 'for': 'emblem' }
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
+Plug 'mustache/vim-mustache-handlebars', { 'for': 'mustache' }
+Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 
 " Other languages
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'jimenezrick/vimerl'
-Plugin 'tpope/vim-git'
-Plugin 'tejr/vim-tmux'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'jimenezrick/vimerl', { 'for': 'erlang' }
+Plug 'tpope/vim-git'
+Plug 'tejr/vim-tmux'
+Plug 'sql.vim', { 'for': 'sql' }
+Plug 'exu/pgsql.vim', { 'for': 'sql' }
 
 ""----------------------------------------------------------------------------
 " Shortcuts, navigation
 ""----------------------------------------------------------------------------
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-vinegar'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-eunuch'
-Plugin 'jwhitley/vim-matchit'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tommcdo/vim-exchange'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+" Plug 'tpope/vim-eunuch'
+Plug 'jwhitley/vim-matchit'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tommcdo/vim-exchange'
 
 " Searching
-Plugin 'kien/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'LustyJuggler'
-" Plugin 'Shougo/unite.vim'
-" Plugin 'Shougo/vimproc.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
+" Plug 'kien/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
+  " { 'on': ['CtrlP', 'CtrlPMRU', 'CtrlPFunky'] } |
+
+" Plug 'LustyJuggler'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim', { 'dir': '~/.vim/plugged/vimproc.vim', 'do': './make make_mac.mak' }
+Plug 'Shougo/tabpagebuffer.vim'
+" Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
 
 ""----------------------------------------------------------------------------
 " Language-specific plugins
 ""----------------------------------------------------------------------------
 " Ruby, Rails
-Plugin 'rorymckinley/vim-rubyhash'
-Plugin 'ecomba/vim-ruby-refactoring'
-Plugin 'ruby-matchit'
-Plugin 'jgdavey/vim-blockle'
-Plugin 'tpope/vim-bundler'
-Plugin 'lucapette/vim-ruby-doc'
+Plug 'rorymckinley/vim-rubyhash', { 'for': ['ruby', 'eruby'] }
+Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby', 'eruby'] }
+Plug 'ruby-matchit', { 'for': ['ruby', 'eruby'] }
+" Plug 'jgdavey/vim-blockle', { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-bundler', { 'for': ['ruby', 'eruby'] }
+Plug 'lucapette/vim-ruby-doc', { 'for': ['ruby', 'eruby'] }
 
 ""----------------------------------------------------------------------------
 " Text-completion
 ""----------------------------------------------------------------------------
-Plugin 'closetag.vim'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'tpope/vim-endwise'
+Plug 'closetag.vim'
+" Plug 'Valloric/YouCompleteMe'
+Plug 'Shougo/neocomplete.vim'
+Plug 'tpope/vim-endwise'
 
 ""----------------------------------------------------------------------------
 " Tools
 ""----------------------------------------------------------------------------
-" Plugin 'henrik/vim-indexed-search'
-Plugin 'skwp/greplace.vim'
-Plugin 'AndrewRadev/splitjoin.vim'
-" Plugin 'scrooloose/syntastic'
-Plugin 'file:///Users/sloveless/Development/not_my_projects/syntastic'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-repeat'
+" Plug 'henrik/vim-indexed-search'
+Plug 'skwp/greplace.vim'
+Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'scrooloose/syntastic'
+Plug '/Users/sloveless/Development/not_my_projects/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-repeat'
 
-Plugin 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
-" Plugin 'nicwest/QQ.vim'             " Postman for vim
-Plugin 'Shougo/vimshell.vim'        " For Shuogo/neocomplete.vim
+Plug 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
+" Plug 'nicwest/QQ.vim'             " Postman for vim
+Plug 'Shougo/vimshell.vim'        " For Shuogo/neocomplete.vim
 
 " Git-specific
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-Plugin 'idanarye/vim-merginal'
+Plug 'tpope/vim-fugitive'
+" Plug 'gregsexton/gitv'
+" Plug 'idanarye/vim-merginal'
 
 ""----------------------------------------------------------------------------
-" END
+" PLUGIN END
 ""----------------------------------------------------------------------------
-call vundle#end()            " required
+call plug#end()
 
-
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
 " Reload after saving this so I can PluginInstall.
 au BufWritePost ~/.vim/_vundle.vim so $MYVIMRC
