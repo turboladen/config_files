@@ -34,9 +34,6 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 " Ruby, Rails, etc
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
-Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
-Plug 'tpope/vim-rake', { 'for': ['ruby', 'eruby'] }
-Plug 'tpope/vim-ragtag', { 'for': ['ruby', 'eruby'] }
 Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'eruby'] }
 Plug 'noprompt/vim-yardoc', { 'for': ['ruby', 'eruby'] }
 
@@ -73,8 +70,8 @@ Plug 'tommcdo/vim-exchange'
 " Plug 'kien/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
   " { 'on': ['CtrlP', 'CtrlPMRU', 'CtrlPFunky'] } |
 
-" Plug 'LustyJuggler'
-Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite.vim' " | Plug 'tsukkee/unite-tag'
+Plug 'Shougo/unite-outline'
 Plug 'Shougo/vimproc.vim', { 'dir': '~/.vim/plugged/vimproc.vim', 'do': './make make_mac.mak' }
 Plug 'Shougo/tabpagebuffer.vim'
 " Plug 'mileszs/ack.vim'
@@ -84,6 +81,9 @@ Plug 'rking/ag.vim'
 " Language-specific plugins
 ""----------------------------------------------------------------------------
 " Ruby, Rails
+Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-projectionist' | Plug 'tpope/vim-rake', { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-ragtag', { 'for': ['ruby', 'eruby'] }
 Plug 'rorymckinley/vim-rubyhash', { 'for': ['ruby', 'eruby'] }
 Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby', 'eruby'] }
 Plug 'ruby-matchit', { 'for': ['ruby', 'eruby'] }

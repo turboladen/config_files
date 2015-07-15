@@ -1,7 +1,11 @@
 "------------------------------------------------------------------------------
+" vim-plug
+"------------------------------------------------------------------------------
+au FileType vim-plug setlocal nospell
+
+"------------------------------------------------------------------------------
 " nerdtree
 "------------------------------------------------------------------------------
-
 map <silent> <F2> :NERDTreeToggle<CR>
 map <silent> <F3> :NERDTreeFind<CR>
 " let g:NERDTreeMapActivateNode="<F3>"
@@ -81,8 +85,8 @@ let g:ctrlp_custom_ignore = {
 "------------------------------------------------------------------------------
 " ctrlp-funky
 "------------------------------------------------------------------------------
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+" nnoremap <Leader>fu :CtrlPFunky<Cr>
+" nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 "------------------------------------------------------------------------------
 " tagbar
@@ -130,10 +134,11 @@ map <Leader>/ :Ack<space>
 " Mimic CtrlP
 nnoremap <C-p> :Unite -start-insert bookmark tab buffer_tab file_rec/git<CR>
 let g:unite_source_history_yank_enable = 1
-" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " call unite#filters#sorter_default#use(['sorter_rank'])
 let g:unite_source_grep_command='ag'
-let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4'
+let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4 --hidden
+                                        \ --ignore .DS_Store -g ""'
 " let g:unite_source_grep_recursive_opt=''
 
 " " Ack
@@ -145,6 +150,11 @@ let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4'
 
 " " LustyJuggler
 " nnoremap <space>s :Unite -quick-match buffer<CR>
+
+"------------------------------------------------------------------------------
+" Shougo/unite-outline
+"------------------------------------------------------------------------------
+nnoremap <Leader>fu :Unite outline<Cr>
 
 "------------------------------------------------------------------------------
 " ag.vim
