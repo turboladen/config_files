@@ -107,8 +107,7 @@ map <Leader>ct :!ctags .<CR>
 "------------------------------------------------------------------------------
 if executable('ag')
   " Use ag over grep
-  " set grepprg=ag\ --nogroup\ --nocolor
-  set grepprg=ag\ --nogroup
+  set grepprg="ag --nogroup --nocolor"
 
   let g:grep_cmd_opts = '--line-numbers --noheading'
 endif
@@ -123,7 +122,7 @@ let g:markdown_mapping_switch_status = '<Leader>ms'
 " https://github.com/carlhuda/janus/blob/0e34a62fac3a38ccc459bf3a6dab6ef1ec6dc9a5/janus/vim/tools/janus/after/plugin/ack.vim
 "------------------------------------------------------------------------------
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = "ag --vimgrep"
 endif
 
 map <Leader>/ :Ack<space>
@@ -166,9 +165,11 @@ if executable('ag')
   " let g:ag_prg="ag --vimgrep --only-matching --silent"
 
   let g:ag_highlight=1          " highlight term after search
+  let g:ag_working_path_mode="r"
 
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  " set grepprg="ag --nogroup --nocolor"
+  set grepprg="ag --nocolor"
 
   " Use ag in CtrlP for listing files. Lightning fast and respects
   " .gitignore
@@ -182,11 +183,12 @@ endif
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" bind \ (backward slash) to grep shortcut
+" bind . (backward slash) to grep shortcut
 " command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-" nnoremap \ :Ag<SPACE>
 nnoremap <Leader>. :Ag<SPACE>
 
+" TODO search
+nnoremap <Leader>o :Ag! --ignore=vendor todo<CR>
 
 "------------------------------------------------------------------------------
 " vim-ruby-doc
