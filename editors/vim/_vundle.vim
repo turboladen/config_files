@@ -22,7 +22,7 @@ Plug 'bling/vim-bufferline'
 Plug 'airblade/vim-gitgutter'
 " Plug 'chrisbra/NrrwRgn'
 Plug 'BufOnly.vim'                      " For cleaning out buffers
-" Plug 'wincent/terminus'
+Plug 'wincent/terminus'
 
 ""----------------------------------------------------------------------------
 " ftdetect plugins
