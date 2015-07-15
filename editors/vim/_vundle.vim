@@ -120,6 +120,8 @@ Plug 'tpope/vim-fugitive'
 " Plug 'gregsexton/gitv'
 " Plug 'idanarye/vim-merginal'
 
+Plug 'baverman/vial' | Plug 'baverman/vial-http'
+
 ""----------------------------------------------------------------------------
 " PLUGIN END
 ""----------------------------------------------------------------------------

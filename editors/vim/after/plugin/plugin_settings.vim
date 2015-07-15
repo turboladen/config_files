@@ -215,3 +215,11 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " let g:ycm_seed_identifiers_with_syntax = 1
 " let g:ycm_complete_in_comments = 1
 " let g:ycm_disable_for_file_larger_than_kb = 1000  " Default is 1000
+
+"------------------------------------------------------------------------------
+" baverman/vial-http
+"------------------------------------------------------------------------------
+au BufNewFile __vial_http__ nnoremap <buffer> <silent> <c-k> :b __vial_http_req__<cr>
+au BufNewFile __vial_http_req__ nnoremap <buffer> <silent> <c-k> :b __vial_http_hdr__<cr>
+au BufNewFile __vial_http_hdr__ nnoremap <buffer> <silent> <c-k> :b __vial_http__<cr>
+au BufNewFile __vial_http__ setlocal nospell
