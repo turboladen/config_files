@@ -114,6 +114,8 @@ Plug 'tpope/vim-repeat'
 Plug 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
 " Plug 'nicwest/QQ.vim'             " Postman for vim
 Plug 'Shougo/vimshell.vim'        " For Shuogo/neocomplete.vim
+" Plug 'tbabej/taskwiki'
+Plug 'vimwiki/vimwiki'
 
 " Git-specific
 Plug 'tpope/vim-fugitive'
