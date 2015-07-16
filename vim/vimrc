@@ -7,7 +7,6 @@
 autocmd!
 " set noshowmode
 " set showmode
-let mapleader = " "
 set encoding=utf-8 nobomb
 
 set nocompatible            " Required for vundle
@@ -16,7 +15,7 @@ filetype off                " Required for vundle
 ""---------------------------------------------------------------------------""
 " Load Vundle stuff first
 ""---------------------------------------------------------------------------""
-source ~/.vim/_vundle.vim
+source ~/.vim/plugins.vim
 
 ""---------------------------------------------------------------------------""
 " General
@@ -27,8 +26,6 @@ augroup reload_vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC so $MYVIMRC
 augroup END
-
-nnoremap <Leader>v :source $MYVIMRC<CR>
 
 ""---------------------------------------------------------------------------""
 " Theme, UI
@@ -51,9 +48,6 @@ set magic                 " More familiar regexing
 set notimeout
 set ttimeout
 set ttimeoutlen=100
-
-" Disable Ex mode
-nnoremap Q <nop>
 
 "----
 " Improve scrolling speed
@@ -128,32 +122,9 @@ autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window %"
 " Auto-reload buffers when files are changed on disk
 set autoread
 
-" Close a buffer but don't close the window
-map <leader>bc :bprevious<CR>:bdelete #<CR>
-
-function! CloseAllOtherBuffers()
-  let l:current_buffer_number = bufnr('%')
-  let l:lower_buffer_min_number = 1
-  let l:lower_buffer_max_number = l:current_buffer_number - 1
-  let l:upper_buffer_min_number = l:current_buffer_number + 1
-  let l:upper_buffer_max_number = 10000
-  let l:lower_range = join([l:lower_buffer_min_number, l:lower_buffer_max_number], ',')
-  let l:upper_range = join([l:upper_buffer_min_number, l:upper_buffer_max_number], ',')
-  let l:cmd =  l:lower_range . 'bd | ' . l:upper_range . 'bd'
-
-  exec(l:cmd)
-endfunction
-
-map <Leader>q :call CloseAllOtherBuffers()<CR>
-
 ""---------------------------------------------------------------------------""
 " Windows
 ""---------------------------------------------------------------------------""
-" Save some ring-finger key strokes
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
 
 ""---------------------------------------------------------------------------""
 " Spelling
@@ -192,17 +163,3 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-function! <SID>StripTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  %s/\s\+$//e
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-nnoremap <silent> <Leader>w :call <SID>StripTrailingWhitespaces()<CR>

@@ -31,5 +31,3 @@ set wildignore+=coverage/*
 
 " Ignore RubyMine stuff
 set wildignore+=.idea/*
-
-
