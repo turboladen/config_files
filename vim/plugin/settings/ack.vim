@@ -6,7 +6,4 @@ if exists(":Ack")
   if executable('ag')
     let g:ackprg = "ag --vimgrep"
   endif
-
-  map <Leader>/ :Ack<space>
 endif
-

@@ -3,7 +3,7 @@
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 "------------------------------------------------------------------------------
 " The Silver Searcher
-if executable('ag')
+if exists(":Ag")
   " let g:ag_prg="ag --context --vimgrep --only-matching --silent"
   " let g:ag_prg="ag --vimgrep --only-matching --silent"
 
@@ -12,7 +12,7 @@ if executable('ag')
 
   " Use ag over grep
   " set grepprg="ag --nogroup --nocolor"
-  set grepprg="ag --nocolor"
+  set grepprg=ag\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects
   " .gitignore
@@ -23,15 +23,4 @@ if executable('ag')
     " ag is fast enough that CtrlP doesn't need to cache
     let g:ctrlp_use_caching = 0
   endif
-
-  " bind . (backward slash) to grep shortcut
-  " command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-  nnoremap <Leader>. :Ag!<SPACE>
-
-  " TODO search
-  nnoremap <Leader>o :Ag! --ignore=vendor todo<CR>
-
-  " bind K to grep word under cursor
-  nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>
 endif
-

@@ -1,7 +1,7 @@
 "------------------------------------------------------------------------------
 " Shougo/neocomplete.vim
 "------------------------------------------------------------------------------
-if exists(":NeoCompleteEnable")
+" if exists(":NeoCompleteEnable")
   let g:acp_enableAtStartup = 0
   " let g:neocomplete#enable_at_startup = 1   " Moved to ~/.vimrc
   let g:neocomplete#enable_smart_case = 1
@@ -13,4 +13,4 @@ if exists(":NeoCompleteEnable")
   " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
   " inoremap <expr><C-y>  neocomplete#close_popup()
   " inoremap <expr><C-e>  neocomplete#cancel_popup()
-endif
+" endif

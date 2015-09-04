@@ -33,6 +33,4 @@ let g:syntastic_markdown_mdl_args = "--style ~/.mdl_style.rb"
 " let g:syntastic_text_language_check_args = '--language=en-US'
 let g:syntastic_aggregate_errors = 1
 
-map <Leader>y :SyntasticToggleMode<CR>
 " let g:syntastic_debug = 3
-

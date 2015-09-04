@@ -62,8 +62,8 @@ Plug 'exu/pgsql.vim', { 'for': 'sql' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 " Plug 'tpope/vim-eunuch'
 Plug 'jwhitley/vim-matchit'
 Plug 'terryma/vim-multiple-cursors'
@@ -126,7 +126,7 @@ Plug 'tpope/vim-fugitive'
 " Plug 'idanarye/vim-merginal'
 
 Plug 'baverman/vial' | Plug 'baverman/vial-http'
-Plug 'henrik/vim-ruby-runner', { 'for': ['ruby'] }
+" Plug 'henrik/vim-ruby-runner', { 'for': ['ruby'] }
 
 ""----------------------------------------------------------------------------
 " PLUGIN END
