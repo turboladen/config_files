@@ -26,6 +26,7 @@ Plug 'BufOnly.vim'                      " For cleaning out buffers
                                         " iTerm select to copy
 
 Plug 'yssl/QFEnter'                     " For opening items in QuickFix
+Plug 'junegunn/rainbow_parentheses.vim'
 
 ""----------------------------------------------------------------------------
 " ftdetect plugins
