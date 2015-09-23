@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/zsh
 
 CURRENT_SESSION=${PWD##*/}
 
