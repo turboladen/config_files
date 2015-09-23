@@ -79,6 +79,8 @@ COMPLETION_WAITING_DOTS="true"
 # plugins=(git myrails brew server chruby nyan rake-fast hgrep gem git-hubflow redis-cli history-substring-search)
 plugins=(git myrails brew chruby rake-fast hgrep gem git-hubflow redis-cli server vi-mode)
 
+source $ZSH/oh-my-zsh.sh
+
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 # Add customizations below
@@ -176,5 +178,3 @@ export LC_ALL=en_US.UTF-8
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
-
-source $ZSH/oh-my-zsh.sh
