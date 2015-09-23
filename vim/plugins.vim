@@ -76,7 +76,7 @@ Plug 'tommcdo/vim-exchange'
 
 Plug 'Shougo/unite.vim' " | Plug 'tsukkee/unite-tag'
 Plug 'Shougo/unite-outline'
-Plug 'Shougo/vimproc.vim', { 'dir': '~/.vim/plugged/vimproc.vim', 'do': './make make_mac.mak' }
+Plug 'Shougo/vimproc.vim', { 'dir': '~/.vim/plugged/vimproc.vim', 'do': './make -f make_mac.mak' }
 Plug 'Shougo/tabpagebuffer.vim'
 " Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
