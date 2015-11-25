@@ -127,7 +127,6 @@ Plug 'tpope/vim-repeat'
 " Plug 'TailMinusF'
 
 Plug 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
-" Plug 'nicwest/QQ.vim'             " Postman for vim
 " Plug 'Shougo/vimshell.vim'        " For Shuogo/neocomplete.vim
 " Plug 'tbabej/taskwiki'
 Plug 'vimwiki/vimwiki'
@@ -137,9 +136,13 @@ Plug 'tpope/vim-fugitive'
 " Plug 'gregsexton/gitv'
 " Plug 'idanarye/vim-merginal'
 
-Plug 'baverman/vial' | Plug 'baverman/vial-http'
+" HTTP client
+" Plug 'nicwest/QQ.vim'
+" Plug 'baverman/vial' | Plug 'baverman/vial-http'
+" Plug 'aquach/vim-http-client'
+
 " Plug 'henrik/vim-ruby-runner', { 'for': ['ruby'] }
-"
+
 " Docs
 " Plug 'rizzatti/dash.vim', { 'on': ['Dash', 'Dash!'] }
 " Plug 'rizzatti/dash.vim'
