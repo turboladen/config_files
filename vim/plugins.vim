@@ -1,9 +1,6 @@
 ""------------------------------------------------""
-"" Vundle.vim setup
+"" vim-plug setup
 ""------------------------------------------------""
-set nocompatible
-filetype off
-
 " vim-plug start
 call plug#begin('~/.vim/plugged')
 
@@ -37,25 +34,25 @@ Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 " Ruby, Rails, etc
-Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
-Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'eruby'] }
-Plug 'noprompt/vim-yardoc', { 'for': ['ruby', 'eruby'] }
+Plug 'vim-ruby/vim-ruby',                 { 'for': ['ruby', 'eruby'] }
+Plug 'thoughtbot/vim-rspec',              { 'for': ['ruby', 'eruby'] }
+Plug 'noprompt/vim-yardoc',               { 'for': ['ruby', 'eruby'] }
 
 " HTML, Markup
-Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
-Plug 'tpope/vim-haml', { 'for': 'haml' }
-Plug 'heartsentwined/vim-emblem', { 'for': 'emblem' }
-Plug 'slim-template/vim-slim', { 'for': 'slim' }
-Plug 'mustache/vim-mustache-handlebars', { 'for': 'mustache' }
-Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
+Plug 'avakhov/vim-yaml',                  { 'for': 'yaml' }
+Plug 'tpope/vim-haml',                    { 'for': 'haml' }
+Plug 'heartsentwined/vim-emblem',         { 'for': 'emblem' }
+Plug 'slim-template/vim-slim',            { 'for': 'slim' }
+Plug 'mustache/vim-mustache-handlebars',  { 'for': ['mustache', 'html.handlebars'] }
+Plug 'gabrielelana/vim-markdown',         { 'for': 'markdown' }
 
 " Other languages
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
-Plug 'jimenezrick/vimerl', { 'for': 'erlang' }
+Plug 'elixir-lang/vim-elixir',            { 'for': 'elixir' }
+Plug 'jimenezrick/vimerl',                { 'for': 'erlang' }
 Plug 'tpope/vim-git'
 Plug 'tejr/vim-tmux'
-Plug 'sql.vim', { 'for': 'sql' }
-Plug 'exu/pgsql.vim', { 'for': 'sql' }
+Plug 'sql.vim',                           { 'for': 'sql' }
+Plug 'exu/pgsql.vim',                     { 'for': 'sql' }
 
 ""----------------------------------------------------------------------------
 " Shortcuts, navigation
