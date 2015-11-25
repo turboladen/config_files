@@ -52,9 +52,11 @@ Plug 'gabrielelana/vim-markdown',         { 'for': 'markdown' }
 Plug 'elixir-lang/vim-elixir',            { 'for': 'elixir' }
 Plug 'jimenezrick/vimerl',                { 'for': 'erlang' }
 Plug 'tpope/vim-git'
-Plug 'tejr/vim-tmux'
 Plug 'sql.vim',                           { 'for': 'sql' }
 Plug 'exu/pgsql.vim',                     { 'for': 'sql' }
+
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 ""----------------------------------------------------------------------------
 " Shortcuts, navigation
@@ -112,6 +114,8 @@ Plug '/Users/sloveless/Development/not_my_projects/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
+
+" Plug 'TailMinusF'
 
 Plug 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
 " Plug 'nicwest/QQ.vim'             " Postman for vim
