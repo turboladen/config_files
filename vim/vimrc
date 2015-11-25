@@ -157,7 +157,8 @@ endif
 
 " Completion
 let g:neocomplete#enable_at_startup = 1
-set omnifunc=syntaxcomplete#Complete
+" setlocal omnifunc=syntaxcomplete#Complete
+
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS

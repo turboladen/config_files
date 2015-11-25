@@ -152,3 +152,5 @@ map <C-l> <C-w>l
 " Unite Mimic CtrlP
 nnoremap <C-p> :Unite -start-insert bookmark tab buffer_tab file_rec/git<CR>
 
+" Omni-complete based on ctags
+inoremap <C-]> <C-x><C-]>

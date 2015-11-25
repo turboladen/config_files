@@ -16,6 +16,13 @@ function! RubyMethodFold(line)
   return 0
 endfunction
 
-" set foldexpr=RubyMethodFold(v:lnum)
-" set foldmethod=expr
+set foldexpr=RubyMethodFold(v:lnum)
+set foldmethod=expr
 let ruby_fold=1
+
+autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
+autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
