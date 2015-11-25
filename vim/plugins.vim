@@ -147,6 +147,9 @@ Plug 'tpope/vim-fugitive'
 " Plug 'rizzatti/dash.vim', { 'on': ['Dash', 'Dash!'] }
 " Plug 'rizzatti/dash.vim'
 
+" Protect against weird unicode copy/paste
+Plug 'vim-utils/vim-troll-stopper'
+
 ""----------------------------------------------------------------------------
 " PLUGIN END
 ""----------------------------------------------------------------------------
