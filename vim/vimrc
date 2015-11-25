@@ -40,7 +40,10 @@ set breakat=90
 set laststatus=2          " show a status line even if there's only 1 window
 set colorcolumn=80,120    " Show rulers
 set t_Co=256              " 256 colors
-set term=xterm-256color
+if !has('nvim')
+  set term=xterm-256color
+end
+
 set termencoding=utf-8
 set magic                 " More familiar regexing
 

@@ -86,21 +86,30 @@ Plug 'rking/ag.vim'
 " Language-specific plugins
 ""----------------------------------------------------------------------------
 " Ruby, Rails
-Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
-Plug 'tpope/vim-projectionist' | Plug 'tpope/vim-rake', { 'for': ['ruby', 'eruby'] }
-Plug 'tpope/vim-ragtag', { 'for': ['ruby', 'eruby'] }
-Plug 'rorymckinley/vim-rubyhash', { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-rails',   { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-rake',    { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-ragtag',  { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-projectionist'
+
+if !has('nvim')
+  Plug 'rorymckinley/vim-rubyhash', { 'for': ['ruby', 'eruby'] }
+end
+
 Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby', 'eruby'] }
-Plug 'ruby-matchit', { 'for': ['ruby', 'eruby'] }
+Plug 'ruby-matchit',                { 'for': ['ruby', 'eruby'] }
 " Plug 'jgdavey/vim-blockle', { 'for': ['ruby', 'eruby'] }
-Plug 'tpope/vim-bundler', { 'for': ['ruby', 'eruby'] }
-Plug 'lucapette/vim-ruby-doc', { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-bundler'
+Plug 'lucapette/vim-ruby-doc',      { 'for': ['ruby', 'eruby'] }
 
 ""----------------------------------------------------------------------------
 " Text-completion
 ""----------------------------------------------------------------------------
 Plug 'closetag.vim'
-" Plug 'Valloric/YouCompleteMe'
+
+if !has('nvim')
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+endif
+" Plug 'Shougo/neocomplete.vim'
 Plug 'tpope/vim-endwise'
 
 ""----------------------------------------------------------------------------
