@@ -18,3 +18,13 @@ function! RSpecCommandForManualRunning()
   let @+ = command
   echo command
 endfunction
+
+""
+" Updates ctags for the project directory, then updates Neocomplete's cache.
+function! UpdateCTags()
+  :!ctags .
+
+  if exists(":NeoCompleteEnable")
+    :NeoCompleteTagMakeCache
+  endif
+endfunction

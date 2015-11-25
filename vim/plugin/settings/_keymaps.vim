@@ -59,7 +59,7 @@ map <Leader>a :call RunAllSpecs()<CR>
 map <leader>bc :bprevious<CR>:bdelete #<CR>
 
 " Basic options are set in ~/.ctags
-map <Leader>ct :!ctags .<CR>
+map <Leader>ct :call UpdateCTags()<CR>
 
 " Since I remap <C-l> (default redraw command), add a mapping for that.
 nnoremap <Leader>d :redraw!<CR>
