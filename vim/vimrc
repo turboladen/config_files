@@ -110,8 +110,10 @@ set secure
 ""---------------------------------------------------------------------------""
 " Backup, tmp settings
 ""---------------------------------------------------------------------------""
-set backupdir^=~/.vim/backup//
-set directory^=~/.vim/tmp//
+" set backupdir^=~/.vim/backup//
+" set directory^=~/.vim/tmp//
+set nobackup
+set nowritebackup
 set noswapfile
 
 ""---------------------------------------------------------------------------""
