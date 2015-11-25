@@ -3,6 +3,7 @@
 "
 "  Partially borrowed from:
 "    * http://mixandgo.com/blog/vim-config-for-rails-ninjas
+"    * http://amix.dk/vim/vimrc.html
 ""---------------------------------------------------------------------------""
 autocmd!
 " set noshowmode
@@ -31,6 +32,7 @@ augroup END
 ""---------------------------------------------------------------------------""
 set cursorline
 set number                " Show line nums in the gutter
+set relativenumber
 set wrap                  " Wrap long lines
 " set whichwrap+=<,>,h,l
 set linebreak
@@ -96,6 +98,12 @@ colorscheme seti
 " netrw
 let g:netrw_liststyle=3        " Default to tree view
 
+
+set showmatch
+set matchtime=2   " Show matching paren for 0.2 secs
+
+autocmd VimResized * :wincmd =    " Resize when tmux gets resized
+
 ""---------------------------------------------------------------------------""
 " Allow project-specific .vimrc
 ""---------------------------------------------------------------------------""
@@ -146,7 +154,7 @@ endif
 autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
 
 " Completion
-let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_at_startup = 1
 " setlocal omnifunc=syntaxcomplete#Complete
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -154,3 +162,5 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+nnoremap <C-c> :bnext\|bdelete #<CR>
