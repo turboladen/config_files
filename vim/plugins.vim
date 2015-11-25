@@ -124,6 +124,10 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'baverman/vial' | Plug 'baverman/vial-http'
 " Plug 'henrik/vim-ruby-runner', { 'for': ['ruby'] }
+"
+" Docs
+" Plug 'rizzatti/dash.vim', { 'on': ['Dash', 'Dash!'] }
+" Plug 'rizzatti/dash.vim'
 
 ""----------------------------------------------------------------------------
 " PLUGIN END

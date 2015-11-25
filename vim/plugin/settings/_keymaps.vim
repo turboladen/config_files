@@ -62,7 +62,9 @@ map <leader>bc :bprevious<CR>:bdelete #<CR>
 map <Leader>ct :call UpdateCTags()<CR>
 
 " Since I remap <C-l> (default redraw command), add a mapping for that.
-nnoremap <Leader>d :redraw!<CR>
+nnoremap <Leader>dr :redraw!<CR>
+
+nnoremap <Leader>da :Dash<SPACE>
 
 " Shougo/unite-outline
 nnoremap <Leader>fu :Unite -start-insert outline<Cr>
