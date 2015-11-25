@@ -79,7 +79,7 @@ set listchars=tab:▸\ ,trail:·,nbsp:_,extends:❯,precedes:❮
 set synmaxcol=1200
 
 " Use only 1 space after "." when joining lines instead of 2
-" set nojoinspaces
+set nojoinspaces
 
 " Don't reset cursor to start of line when moving around
 set nostartofline
