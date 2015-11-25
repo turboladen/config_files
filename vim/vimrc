@@ -164,6 +164,8 @@ if has("autocmd")
   autocmd Filetype vimwiki setlocal ts=4 sts=4 sw=4 expandtab
 endif
 
+autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
+
 " Completion
 let g:neocomplete#enable_at_startup = 1
 " setlocal omnifunc=syntaxcomplete#Complete
