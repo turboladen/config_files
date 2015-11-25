@@ -7,7 +7,6 @@
 autocmd!
 " set noshowmode
 " set showmode
-set encoding=utf-8 nobomb
 
 set nocompatible            " Required for vundle
 filetype off                " Required for vundle
@@ -31,13 +30,11 @@ augroup END
 " Theme, UI
 ""---------------------------------------------------------------------------""
 set cursorline
-set ruler
 set number                " Show line nums in the gutter
-" set nowrap                " Don't wrap long lines
 set wrap                  " Wrap long lines
+" set whichwrap+=<,>,h,l
 set linebreak
 set breakat=90
-set laststatus=2          " show a status line even if there's only 1 window
 set colorcolumn=80,120    " Show rulers
 set t_Co=256              " 256 colors
 if !has('nvim')
@@ -49,8 +46,6 @@ set magic                 " More familiar regexing
 
 " Time out on key codes but not mappings
 set notimeout
-set ttimeout
-set ttimeoutlen=100
 
 "----
 " Improve scrolling speed
@@ -101,9 +96,6 @@ colorscheme seti
 " netrw
 let g:netrw_liststyle=3        " Default to tree view
 
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-" set whichwrap+=<,>,h,l
 ""---------------------------------------------------------------------------""
 " Allow project-specific .vimrc
 ""---------------------------------------------------------------------------""
@@ -122,17 +114,8 @@ set noswapfile
 ""---------------------------------------------------------------------------""
 " tmux
 ""---------------------------------------------------------------------------""
+" Do I really want this?
 autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window %")
-
-""---------------------------------------------------------------------------""
-" Buffers
-""---------------------------------------------------------------------------""
-" Auto-reload buffers when files are changed on disk
-set autoread
-
-""---------------------------------------------------------------------------""
-" Windows
-""---------------------------------------------------------------------------""
 
 ""---------------------------------------------------------------------------""
 " Spelling
@@ -144,13 +127,9 @@ set spelllang=en_us
 " Filetypes, syntax
 ""---------------------------------------------------------------------------""
 " Detect file type and syntax
-filetype plugin indent on
 syntax on
-syntax enable
 syntax sync fromstart
-set autoindent
 set smartindent
-set smarttab
 
 " Set default spacing
 set tabstop=2

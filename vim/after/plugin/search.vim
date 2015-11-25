@@ -4,7 +4,6 @@
 " https://github.com/carlhuda/janus/blob/master/janus/vim/core/before/plugin/settings.vim
 "----
 set hlsearch      " highlight matches
-set incsearch     " incremental searching
 set noignorecase  " searches are case insensitive...
 set smartcase     " ... unless they contain at least one capital letter
 

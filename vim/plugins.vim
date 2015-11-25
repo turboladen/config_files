@@ -4,6 +4,8 @@
 " vim-plug start
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-sensible'
+
 " Color Scheme
 Plug 'trusktr/seti.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
