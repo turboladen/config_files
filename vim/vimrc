@@ -101,6 +101,9 @@ colorscheme seti
 " netrw
 let g:netrw_liststyle=3        " Default to tree view
 
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+" set whichwrap+=<,>,h,l
 ""---------------------------------------------------------------------------""
 " Allow project-specific .vimrc
 ""---------------------------------------------------------------------------""
