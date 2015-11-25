@@ -30,9 +30,10 @@ Plug 'junegunn/rainbow_parentheses.vim'
 " ftdetect plugins
 ""----------------------------------------------------------------------------
 " JS/Coffeescript
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'pangloss/vim-javascript',           { 'for': 'javascript' }
+Plug 'jelera/vim-javascript-syntax',      { 'for': 'javascript' }
+Plug 'kchmck/vim-coffee-script',          { 'for': 'coffee' }
+Plug 'mxw/vim-jsx',                       { 'for': 'javascript.jsx' }
 
 " Ruby, Rails, etc
 Plug 'vim-ruby/vim-ruby',                 { 'for': ['ruby', 'eruby'] }
@@ -61,7 +62,7 @@ Plug 'exu/pgsql.vim',                     { 'for': 'sql' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'scrooloose/nerdtree',         { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 " Plug 'tpope/vim-eunuch'
 Plug 'jwhitley/vim-matchit'
