@@ -204,7 +204,11 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>m :call RSpecCommandForManualRunning()<CR>
 
 " Do a TODO search
-nnoremap <Leader>o :Ag! todo<CR>
+if exists(":Ag")
+  nnoremap <Leader>o :Ag! todo<CR>
+else
+  nnoremap <Leader>o :grep! todo<CR>
+endif
 
 nnoremap <Leader>q :BufOnly<CR>
 
@@ -223,8 +227,10 @@ nnoremap <Leader>v :source $MYVIMRC<CR>
 "--------------------------------------
 nnoremap <silent> <Leader>w :call <SID>StripTrailingWhitespaces()<CR>
 
-" Syntastic toggle
-nnoremap <Leader>y :SyntasticToggleMode<CR>
+if exists(":SyntasticToggleMode")
+  " Syntastic toggle
+  nnoremap <Leader>y :SyntasticToggleMode<CR>
+endif
 
 "--------------------------------------
 " Other remappings
@@ -233,13 +239,17 @@ nnoremap <Leader>y :SyntasticToggleMode<CR>
 " F-keys
 "--------------------------------------
 " nerdtree
-nnoremap <silent> <F2> :NERDTreeToggle<CR>
-nnoremap <silent> <F3> :NERDTreeFind<CR>
-" let g:NERDTreeMapActivateNode="<F3>"
-" let g:NERDTreeMapPreview="<F4>"
+if exists(":NERDTreeFind")
+  nnoremap <silent> <F2> :NERDTreeToggle<CR>
+  nnoremap <silent> <F3> :NERDTreeFind<CR>
+  " let g:NERDTreeMapActivateNode="<F3>"
+  " let g:NERDTreeMapPreview="<F4>"
+endif
 
 " tagbar
-nnoremap <F8> :TagbarToggle<CR>
+if exists(":TagbarToggle")
+  nnoremap <F8> :TagbarToggle<CR>
+endif
 
 "------------------------------------------------------------------------------
 " Normal mode, single characters
@@ -257,10 +267,12 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Unite Mimic CtrlP
-" nnoremap <C-p> :Unite -start-insert bookmark tab buffer_tab file_rec/git<CR>
-nnoremap <C-p> :Unite bookmark tab buffer_tab file_rec/git<CR>
-" nnoremap <C-p> :Unite bookmark buffer_tab file_rec/async:!<CR>
+if exists(":Unite")
+  " Unite Mimic CtrlP
+  " nnoremap <C-p> :Unite -start-insert bookmark tab buffer_tab file_rec/git<CR>
+  nnoremap <C-p> :Unite bookmark tab buffer_tab file_rec/git<CR>
+  " nnoremap <C-p> :Unite bookmark buffer_tab file_rec/async:!<CR>
+endif
 
 " Omni-complete based on ctags
 inoremap <C-]> <C-x><C-]>
