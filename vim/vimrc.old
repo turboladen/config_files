@@ -1,0 +1,81 @@
+""---------------------------------------------------------------------------""
+" .vimrc
+"
+"  Partially borrowed from:
+"    * http://mixandgo.com/blog/vim-config-for-rails-ninjas
+"    * http://amix.dk/vim/vimrc.html
+""---------------------------------------------------------------------------""
+" set noshowmode
+" set showmode
+
+""---------------------------------------------------------------------------""
+" General
+""---------------------------------------------------------------------------""
+
+""---------------------------------------------------------------------------""
+" Theme, UI
+""---------------------------------------------------------------------------""
+set magic                 " More familiar regexing
+
+" Time out on key codes but not mappings
+set notimeout
+
+"----
+" Folding
+"----
+set foldmethod=syntax
+set foldlevel=1
+set foldnestmax=10
+set nofoldenable
+
+"----
+" Listchars/whitespace
+"----
+
+" Syntax coloring lines that are too long just slows down the world
+set synmaxcol=1200
+
+" Use only 1 space after "." when joining lines instead of 2
+set nojoinspaces
+
+" Don't reset cursor to start of line when moving around
+set nostartofline
+
+if has("gui_running")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    set guifont=Inconsolata:h14
+  endif
+  set bs=2
+endif
+
+" netrw
+let g:netrw_liststyle=3        " Default to tree view
+
+""---------------------------------------------------------------------------""
+" Allow project-specific .vimrc
+""---------------------------------------------------------------------------""
+set exrc
+set secure
+
+""---------------------------------------------------------------------------""
+" tmux
+""---------------------------------------------------------------------------""
+" Do I really want this?
+autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window %")
+
+""---------------------------------------------------------------------------""
+" Filetypes, syntax
+""---------------------------------------------------------------------------""
+
+" Completion
+" let g:neocomplete#enable_at_startup = 1
+" setlocal omnifunc=syntaxcomplete#Complete
+
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+nnoremap <C-c> :bnext\|bdelete #<CR>

@@ -1,142 +1,113 @@
-""---------------------------------------------------------------------------""
+""===========================================================================""
 " .vimrc
 "
 "  Partially borrowed from:
 "    * http://mixandgo.com/blog/vim-config-for-rails-ninjas
 "    * http://amix.dk/vim/vimrc.html
-""---------------------------------------------------------------------------""
+"
+" Search settings, stolen from carlhuda/janus.
+"
+" https://github.com/carlhuda/janus/blob/master/janus/vim/core/before/plugin/settings.vim
+"
+""===========================================================================""
+
 autocmd!
-" set noshowmode
-" set showmode
 
-set nocompatible            " Required for vundle
-filetype off                " Required for vundle
-
-""---------------------------------------------------------------------------""
-" Load Vundle stuff first
-""---------------------------------------------------------------------------""
+""===========================================================================""
+" Load vim-plug stuff first
+""===========================================================================""
 source ~/.vim/plugins.vim
 
-""---------------------------------------------------------------------------""
-" General
-""---------------------------------------------------------------------------""
+""===========================================================================""
+" 2. moving around, search and patterns
+""===========================================================================""
+set noignorecase  " searches are case insensitive...
+set smartcase     " ... unless they contain at least one capital letter
 
-" Reload the .vimrc file after changes
-augroup reload_vimrc
-  autocmd!
-  autocmd BufWritePost $MYVIMRC so $MYVIMRC
-augroup END
+""===========================================================================""
+" 3. tags
+""===========================================================================""
 
-""---------------------------------------------------------------------------""
-" Theme, UI
-""---------------------------------------------------------------------------""
-set cursorline
-set number                " Show line nums in the gutter
-set relativenumber
+""===========================================================================""
+" 4. displaying text
+""===========================================================================""
+set scrolloff=3
 set wrap                  " Wrap long lines
 " set whichwrap+=<,>,h,l
 set linebreak
 set breakat=90
-set colorcolumn=80,120    " Show rulers
-set t_Co=256              " 256 colors
-if !has('nvim')
-  set term=xterm-256color
-end
-
-set termencoding=utf-8
-set magic                 " More familiar regexing
-
-" Time out on key codes but not mappings
-set notimeout
-
-"----
-" Improve scrolling speed
-"----
-set ttyfast
-" set ttyscroll=3
-set lazyredraw
-set scrolloff=7
-
-"----
-" Folding
-"----
-set foldmethod=syntax
-set foldlevel=1
-set foldnestmax=10
-set nofoldenable
-
-"----
-" Listchars/whitespace
-"----
+set relativenumber
+set number
 set list          " Show invisibles/whitespace
 " set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_,extends:❯,precedes:❮
 set listchars=tab:▸\ ,trail:·,nbsp:_,extends:❯,precedes:❮
 
-" Syntax coloring lines that are too long just slows down the world
-set synmaxcol=1200
-
-" Use only 1 space after "." when joining lines instead of 2
-set nojoinspaces
-
-" Don't reset cursor to start of line when moving around
-set nostartofline
-
-if has("gui_running")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    set guifont=Inconsolata:h14
-  endif
-  set bs=2
-endif
-
+""===========================================================================""
+" 5. syntax, highlighting and spelling
+""===========================================================================""
 set background=dark
 " colorscheme Tomorrow-Night
 " colorscheme Tomorrow
 " colorscheme Tomorrow-Night-Eighties
 colorscheme seti
 
-" netrw
-let g:netrw_liststyle=3        " Default to tree view
-
-
-set showmatch
-set matchtime=2   " Show matching paren for 0.2 secs
-
-autocmd VimResized * :wincmd =    " Resize when tmux gets resized
-
-""---------------------------------------------------------------------------""
-" Allow project-specific .vimrc
-""---------------------------------------------------------------------------""
-set exrc
-set secure
-
-""---------------------------------------------------------------------------""
-" Backup, tmp settings
-""---------------------------------------------------------------------------""
-" set backupdir^=~/.vim/backup//
-" set directory^=~/.vim/tmp//
-set nobackup
-set nowritebackup
-set noswapfile
-
-""---------------------------------------------------------------------------""
-" tmux
-""---------------------------------------------------------------------------""
-" Do I really want this?
-autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window %")
-
-""---------------------------------------------------------------------------""
-" Spelling
-""---------------------------------------------------------------------------""
-set spell
-set spelllang=en_us
-
-""---------------------------------------------------------------------------""
-" Filetypes, syntax
-""---------------------------------------------------------------------------""
 " Detect file type and syntax
 syntax on
 syntax sync fromstart
+
+set spell
+set spelllang=en_us
+
+set colorcolumn=80,120    " Show rulers
+set hlsearch      " highlight matches
+set cursorline
+
+" Filetypes
+autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
+
+""===========================================================================""
+" 6. multiple windows
+""===========================================================================""
+
+""===========================================================================""
+" 7. multiple tab pages
+""===========================================================================""
+
+""===========================================================================""
+" 8. terminal
+""===========================================================================""
+if !has('nvim')
+  set term=xterm-256color
+endif
+
+set ttyfast
+" set ttyscroll=3
+
+""===========================================================================""
+" 9. using the mouse
+""===========================================================================""
+
+""===========================================================================""
+" 10. printing
+""===========================================================================""
+
+""===========================================================================""
+" 11. messages and info
+""===========================================================================""
+
+""===========================================================================""
+" 12. selecting text
+""===========================================================================""
+
+""===========================================================================""
+" 13. editing text
+""===========================================================================""
+set showmatch
+set matchtime=2   " Show matching paren for 0.2 secs
+
+""===========================================================================""
+" 14. tabs and indenting
+""===========================================================================""
 set smartindent
 
 " Set default spacing
@@ -151,16 +122,242 @@ if has("autocmd")
   autocmd Filetype vimwiki setlocal ts=4 sts=4 sw=4 expandtab
 endif
 
-autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
-
-" Completion
-" let g:neocomplete#enable_at_startup = 1
-" setlocal omnifunc=syntaxcomplete#Complete
-
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+filetype plugin indent on
+setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-nnoremap <C-c> :bnext\|bdelete #<CR>
+""===========================================================================""
+" 15. folding
+""===========================================================================""
+
+""===========================================================================""
+" 16. diff mode
+""===========================================================================""
+
+""===========================================================================""
+" 17. mapping
+""===========================================================================""
+"--------------------------------------
+" Leader commands
+"--------------------------------------
+"----
+" <Leader>[non-alpha]
+"----
+if exists(":Ack")
+  nnoremap <Leader>/ :Ack<space>
+endif
+
+if exists(":Ag")
+  " bind . to grep shortcut
+  " command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  nnoremap <Leader>. :Ag!<SPACE>
+endif
+
+"--------------------------------------
+" <Leader>A-G
+"--------------------------------------
+" thoughtbot/vim-rspec
+nnoremap <Leader>a :call RunAllSpecs()<CR>
+
+" Close a buffer but don't close the window
+nnoremap <leader>bc :bprevious<CR>:bdelete #<CR>
+
+" Basic options are set in ~/.ctags
+nnoremap <Leader>ct :call UpdateCTags()<CR>
+
+" Since I remap <C-l> (default redraw command), add a mapping for that.
+nnoremap <Leader>dr :redraw!<CR>
+
+" Dash.app docs
+if exists(":Dash")
+  nnoremap <Leader>da :Dash<SPACE>
+endif
+
+" eDIT MY vIMRC FILE
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+if exists(":Unite")
+  " Shougo/unite-outline
+  nnoremap <Leader>fu :Unite -start-insert outline<Cr>
+elseif exists("CtrlPFunky")
+  nnoremap <Leader>fu :CtrlPFunky<Cr>
+  nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+endif
+
+"--------------------------------------
+" <Leader>H-L
+"--------------------------------------
+" bind K to grep word under cursor
+if exists(":Ag")
+  nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>
+else
+  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+endif
+
+" thoughtbot/vim-rspec
+nnoremap <Leader>l :call RunLastSpec()<CR>
+
+"--------------------------------------
+" <Leader>L-R
+"--------------------------------------
+" Output the command for manually running RSpec for that line.
+nnoremap <Leader>m :call RSpecCommandForManualRunning()<CR>
+
+" Do a TODO search
+nnoremap <Leader>o :Ag! todo<CR>
+
+nnoremap <Leader>q :BufOnly<CR>
+
+"--------------------------------------
+" <Leader>S-V
+"--------------------------------------
+" thoughtbot/vim-rspec
+nnoremap <Leader>s :call RunNearestSpec()<CR>
+nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+
+" Reload all the things!
+nnoremap <Leader>v :source $MYVIMRC<CR>
+
+"--------------------------------------
+" <Leader>W-Z
+"--------------------------------------
+nnoremap <silent> <Leader>w :call <SID>StripTrailingWhitespaces()<CR>
+
+" Syntastic toggle
+nnoremap <Leader>y :SyntasticToggleMode<CR>
+
+"--------------------------------------
+" Other remappings
+"--------------------------------------
+"--------------------------------------
+" F-keys
+"--------------------------------------
+" nerdtree
+nnoremap <silent> <F2> :NERDTreeToggle<CR>
+nnoremap <silent> <F3> :NERDTreeFind<CR>
+" let g:NERDTreeMapActivateNode="<F3>"
+" let g:NERDTreeMapPreview="<F4>"
+
+" tagbar
+nnoremap <F8> :TagbarToggle<CR>
+
+"------------------------------------------------------------------------------
+" Normal mode, single characters
+"------------------------------------------------------------------------------
+" Split a line and remove whitespace from old line.
+" https://www.reddit.com/r/vim/comments/3g8y3r/finally_hacked_together_a_quick_split_line/ctw4b0i
+nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>
+
+"------------------------------------------------------------------------------
+" Ctrl- combos
+"------------------------------------------------------------------------------
+" Save some ring-finger key strokes
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Unite Mimic CtrlP
+" nnoremap <C-p> :Unite -start-insert bookmark tab buffer_tab file_rec/git<CR>
+nnoremap <C-p> :Unite bookmark tab buffer_tab file_rec/git<CR>
+" nnoremap <C-p> :Unite bookmark buffer_tab file_rec/async:!<CR>
+
+" Omni-complete based on ctags
+inoremap <C-]> <C-x><C-]>
+
+" Disable Ex mode
+nnoremap Q <nop>
+
+" When jump to next match also center screen
+noremap n nzz
+noremap N Nzz
+
+" Same when moving up and down
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+
+" After block yank and paste, move cursor to the end of operated text
+" Also, don't copy over-pasted text in visual mode
+vnoremap y y`]
+vnoremap p "_dP`]
+nnoremap p p`]
+
+" No more accidentally showing up command window (Use C-f to show it)
+nnoremap q: :q
+
+
+""===========================================================================""
+" 18. reading and writing files
+""===========================================================================""
+set nobackup
+set nowritebackup
+
+""===========================================================================""
+" 19. the swap file
+""===========================================================================""
+set noswapfile
+
+""===========================================================================""
+" 20. command line editing
+""===========================================================================""
+" Disable output and VCS files
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+
+" Disable archive files
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+
+" Ignore bundler and sass cache
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+
+" Ignore librarian-chef, vagrant, test-kitchen and Berkshelf cache
+set wildignore+=*/tmp/librarian/*,*/.vagrant/*,*/.kitchen/*,*/vendor/cookbooks/*
+
+" Ignore rails temporary asset caches
+set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
+
+" Disable temp and backup files
+set wildignore+=*.swp,*~,._*
+
+" Ignore simplecov generated coverage docs
+set wildignore+=coverage/*
+
+" Ignore RubyMine stuff
+set wildignore+=.idea/*
+
+""===========================================================================""
+" 21. executing external commands
+""===========================================================================""
+
+""===========================================================================""
+" 22. running make and jumping to errors
+""===========================================================================""
+
+""===========================================================================""
+" 23. language specific
+""===========================================================================""
+
+""===========================================================================""
+" 24. multi-byte characters
+""===========================================================================""
+set termencoding=utf-8
+
+""===========================================================================""
+" 25. various
+""===========================================================================""
+
+""===========================================================================""
+" XX. No :options section
+""===========================================================================""
+let mapleader = " "
+set lazyredraw
+set t_Co=256              " 256 colors
+
+runtime macros/matchit.vim
+
+" Reload the .vimrc file after changes
+augroup reload_vimrc
+  autocmd!
+  autocmd BufWritePost $MYVIMRC so $MYVIMRC
+augroup END
+
+autocmd VimResized * :wincmd =    " Resize when tmux gets resized
