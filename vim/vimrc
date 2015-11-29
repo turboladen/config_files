@@ -163,7 +163,7 @@ nnoremap <Leader>a :call RunAllSpecs()<CR>
 nnoremap <leader>bc :bprevious<CR>:bdelete #<CR>
 
 " Basic options are set in ~/.ctags
-nnoremap <Leader>ct :call UpdateCTags()<CR>
+nnoremap <Leader>ct :call turboladen#UpdateCTags()<CR>
 
 " Since I remap <C-l> (default redraw command), add a mapping for that.
 nnoremap <Leader>dr :redraw!<CR>
@@ -201,7 +201,7 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 " <Leader>L-R
 "--------------------------------------
 " Output the command for manually running RSpec for that line.
-nnoremap <Leader>m :call RSpecCommandForManualRunning()<CR>
+nnoremap <Leader>m :call turboladen#RSpecCommandForManualRunning()<CR>
 
 " Do a TODO search
 if exists(":Ag")
@@ -225,7 +225,7 @@ nnoremap <Leader>v :source $MYVIMRC<CR>
 "--------------------------------------
 " <Leader>W-Z
 "--------------------------------------
-nnoremap <silent> <Leader>w :call <SID>StripTrailingWhitespaces()<CR>
+nnoremap <Leader>w :call turboladen#StripTrailingWhitespaces()<CR>
 
 if exists(":SyntasticToggleMode")
   " Syntastic toggle
