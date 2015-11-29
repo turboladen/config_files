@@ -9,9 +9,14 @@ require 'fileutils'
 class Configurator < Thor
   include Thor::Actions
 
+  SOURCE_VIM_DIR = File.expand_path(File.join(Dir.pwd, '..', 'vim'))
+  DEST_VIM_DIR = File.join(Dir.home, '.vim')
+
   def self.source_root
     File.dirname(__FILE__)
   end
+
+  class_option :dry_run, type: :boolean, default: false
 
   desc 'hoe', 'Copies the hoe_templates stuff to ~/.hoe_template'
   method_options force: false
@@ -27,74 +32,55 @@ class Configurator < Thor
 
   desc 'git', "Sets up Steve's git config"
   def git
-    puts 'Setting up your git stuff now...'
+    say 'Setting up your git stuff now...'
 
-    `git config --global user.name "Steve Loveless"`
-    `git config --global user.email "steve.loveless@gmail.com"`
-    `git config --global core.editor vim`
-    `git config --global alias.ci 'commit'`
-    `git config --global alias.st 'status'`
-    `git config --global color.ui true`
+    run %[git config --global user.name "Steve Loveless"]
+    run %[git config --global user.email "steve.loveless@gmail.com"]
+    run %[git config --global core.editor vim]
+    run %[git config --global alias.ci 'commit']
+    run %[git config --global alias.st 'status']
+    run %[git config --global color.ui true]
 
-    `git config --global merge.tool vimdiff`
-    `git config --global diff.tool vimdiff`
-    `git config --global difftool.prompt false`
+    run %[git config --global merge.tool vimdiff]
+    run %[git config --global diff.tool vimdiff]
+    run %[git config --global difftool.prompt false]
 
-    puts 'Done.  Have you configured your SSH keys?'
+    say 'Done.  Have you configured your SSH keys?'
   end
 
   desc 'vim', "Sets up Steve's vim files"
   def vim
-    puts 'Setting up your Vim stuff now...'
-    unless Dir.exist?(File.join(Dir.home, '.vim', 'bundle', 'Vundle.vim'))
-      abort 'Install Vundle first!'
-    end
+    say 'Doing DRY RUN...'
 
-    source_vim_dir = File.join(Dir.pwd, 'editors')
-    dest_vim_dir = File.join(Dir.home, '.vim')
+    say_status :start, 'vim-plug installed?', :blue
+    unless Dir.exist?(File.join(DEST_VIM_DIR, 'plugged'))
+      say_status :false, 'vim-plug installed? FALSE', :red
+      abort 'Install vim-plug first!'
+    end
+    say_status :skip, 'vim-plug installed? TRUE', :yellow
+
+    @dry_run = options.dry_run?
+    destination_root = DEST_VIM_DIR
 
     dest_vimrc = File.join(Dir.home, '.vimrc')
-    unless File.exist?(dest_vimrc)
-      source_vimrc = File.join(source_vim_dir, 'vimrc')
-      puts_n_run("ln -s #{source_vimrc} #{dest_vimrc}") 
-    end
+    source_vimrc = File.join(SOURCE_VIM_DIR, 'vimrc')
+    link_vim_file(source_vimrc, dest_vimrc)
 
-    dest_vundle_file = File.join(dest_vim_dir, '_vundle')
-    unless File.exist?(dest_vundle_file)
-      source_vundle_file = File.join(source_vim_dir, '_vundle')
-      puts_n_run("ln -s #{source_vundle_file} #{dest_vundle_file}")
-    end
-
-    Dir.chdir(File.join('..', 'editors', 'vim'))
-
-    Find.find('.') do |file|
-      relative_object = File.absolute_path(file).sub(Dir.pwd, '')
-      full_dest_object = File.join(dest_vim_dir, relative_object)
-
-      if File.exist?(full_dest_object)
-        puts "Destination file/directory already exists: #{full_dest_object}"
-      else
-        if File.directory?(file)
-          puts "Creating directory: #{full_dest_object}"
-          Dir.mkdir(full_dest_object)
-        else
-          puts "Copying file '#{file}' to '#{full_dest_object}'"
-          FileUtils.cp(file, full_dest_object)
-        end
-      end
-    end
+    setup_vim_file('plugins.vim')
+    setup_vim_file('after/ftdetect/ruby.vim')
+    setup_vim_file('autoload/turboladen.vim')
   end
 
   desc 'tmux', "Sets up Steve's tmux files"
   def tmux
-    puts "Setting up your tmux stuff now..."
+    say "Setting up your tmux stuff now..."
 
     source_tmux_dir = File.join(Dir.pwd, 'tmux')
     source_tmux_file = File.join(source_tmux_dir, 'tmux.conf')
     dest_tmux_file = File.join(Dir.home, '.tmux.conf')
 
     if File.exist?(dest_tmux_file)
-      puts "'#{dest_tmux_file}' already exists. Skipping."
+      say "'#{dest_tmux_file}' already exists. Skipping."
     else
       puts_n_run("ln #{source_tmux_file} #{dest_tmux_file}")
     end
@@ -108,9 +94,52 @@ class Configurator < Thor
 
   private
 
+  def setup_vim_file(path)
+    source_file, dest_file = build_source_and_dest_paths(path)
+    ensure_dest_dir(dest_file)
+    link_vim_file(source_file, dest_file)
+  end
+
+  def build_source_and_dest_paths(source_name, dest_name = nil)
+    dest_name ||= source_name
+    source = File.join(SOURCE_VIM_DIR, source_name)
+    dest = File.join(DEST_VIM_DIR, dest_name)
+
+    [source, dest]
+  end
+
+  def ensure_dest_dir(dest)
+    dest_dir = File.dirname(dest)
+
+    say_status :start, "#{dest_dir} exists?", :blue
+    if Dir.exist?(dest_dir)
+      say_status :skip, "#{dest_dir} exists? TRUE", :yellow
+    else
+      say_status :false, "#{dest_dir} exists? FALSE", :red
+      say_status :start, "Making #{dest_dir}", :blue
+      directory(dest_dir)
+      say_status :done, "Making #{dest_dir}"
+    end
+  end
+
+  def link_vim_file(repo_file, vim_file)
+    say_status :start, "Linking #{vim_file}", :blue
+
+    status, color = if File.exist?(vim_file)
+                      %i[skip yellow]
+                    else
+                      say "Creating link: '#{vim_file}' to '#{repo_file}'"
+                      create_link(vim_file, repo_file, symbolic: false)
+
+                      %i[done green]
+                    end
+
+    say_status status, "Linking #{vim_file}", color
+  end
+
   def puts_n_run(cmd)
-    puts "Running command: #{cmd}"
-    `#{cmd}`
+    say "Running command: #{cmd}"
+    `#{cmd}` unless @dry_run
   end
 end
 
