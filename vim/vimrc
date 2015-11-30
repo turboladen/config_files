@@ -383,3 +383,10 @@ augroup reload_vimrc
 augroup END
 
 autocmd VimResized * :wincmd =    " Resize when tmux gets resized
+
+""===========================================================================""
+" YY. Plugin options that must be here.
+""===========================================================================""
+
+" neocomplete
+let g:neocomplete#enable_at_startup = 1   " Moved to ~/.vimrc
