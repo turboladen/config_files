@@ -50,7 +50,7 @@ class Configurator < Thor
 
   desc 'vim', "Sets up Steve's vim files"
   def vim
-    say 'Doing DRY RUN...'
+    say 'Doing DRY RUN...' if options.dry_run?
 
     say_status :start, 'vim-plug installed?', :blue
     unless Dir.exist?(File.join(DEST_VIM_DIR, 'plugged'))
@@ -66,9 +66,26 @@ class Configurator < Thor
     source_vimrc = File.join(SOURCE_VIM_DIR, 'vimrc')
     link_vim_file(source_vimrc, dest_vimrc)
 
-    setup_vim_file('plugins.vim')
-    setup_vim_file('after/ftdetect/ruby.vim')
-    setup_vim_file('autoload/turboladen.vim')
+    setup_vim_file 'plugins.vim'
+    setup_vim_file 'after/ftdetect/ruby.vim'
+    # setup_vim_file 'after/plugin/ack.vim'
+    setup_vim_file 'after/plugin/ag.vim'
+    # setup_vim_file 'after/plugin/airline.vim'
+    setup_vim_file 'after/plugin/bufferline.vim'
+    # setup_vim_file 'after/plugin/ctrlp.vim'
+    setup_vim_file 'after/plugin/fugitive.vim'
+    setup_vim_file 'after/plugin/lightline.vim'
+    setup_vim_file 'after/plugin/neocomplete.vim'
+    setup_vim_file 'after/plugin/nerdtree.vim'
+    setup_vim_file 'after/plugin/rainbow_parentheses.vim'
+    setup_vim_file 'after/plugin/syntastic.vim'
+    setup_vim_file 'after/plugin/tmuxline.vim'
+    setup_vim_file 'after/plugin/unite.vim'
+    setup_vim_file 'after/plugin/vial-http.vim'
+    setup_vim_file 'after/plugin/vim-ruby-doc.vim'
+    setup_vim_file 'after/plugin/vimwiki.vim'
+    setup_vim_file 'after/plugin/YouCompleteMe.vim'
+    setup_vim_file 'autoload/turboladen.vim'
   end
 
   desc 'tmux', "Sets up Steve's tmux files"
@@ -117,7 +134,7 @@ class Configurator < Thor
     else
       say_status :false, "#{dest_dir} exists? FALSE", :red
       say_status :start, "Making #{dest_dir}", :blue
-      directory(dest_dir)
+      FileUtils.mkdir_p(dest_dir)
       say_status :done, "Making #{dest_dir}"
     end
   end
