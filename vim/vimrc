@@ -185,6 +185,16 @@ elseif exists("CtrlPFunky")
   nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 endif
 
+" fugitive. Follows mappings for the zsh git plugin.
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>ggp :Gpush<CR>
+noremap <Leader>gl :Gpull<CR>
+noremap <Leader>gr :Gremove<CR>
+noremap <Leader>gs :Gstatus<CR>
+
 "--------------------------------------
 " <Leader>H-L
 "--------------------------------------
