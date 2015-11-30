@@ -10,6 +10,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_aggregate_errors = 1
+
 let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
 let g:syntastic_css_checkers = ['csslint']              " npm install -g csslint
 let g:syntastic_elixir_checkers = ['elixir']
@@ -31,6 +37,4 @@ let g:syntastic_enable_elixir_checker = 1
 let g:syntastic_ruby_rubocop_args = "--force-exclusion --display-cop-names --no-color"
 let g:syntastic_markdown_mdl_args = "--style ~/.mdl_style.rb"
 " let g:syntastic_text_language_check_args = '--language=en-US'
-let g:syntastic_aggregate_errors = 1
-
 " let g:syntastic_debug = 3
