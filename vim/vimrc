@@ -192,6 +192,7 @@ noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>ggp :Gpush<CR>
 noremap <Leader>gl :Gpull<CR>
+noremap <Leader>gm :Gmove<Space>
 noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gs :Gstatus<CR>
 
