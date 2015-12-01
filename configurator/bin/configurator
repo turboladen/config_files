@@ -68,7 +68,6 @@ class Configurator < Thor
 
     setup_vim_file 'plugins.vim'
     setup_vim_file 'after/ftdetect/ruby.vim'
-    # setup_vim_file 'after/plugin/ack.vim'
     setup_vim_file 'after/plugin/ag.vim'
     # setup_vim_file 'after/plugin/airline.vim'
     setup_vim_file 'after/plugin/bufferline.vim'
