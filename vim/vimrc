@@ -187,12 +187,15 @@ endif
 
 " fugitive. Follows mappings for the zsh git plugin.
 noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gbl :Gblame<CR>
+noremap <Leader>gbr :Gbrowse<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>ggp :Gpush<CR>
-noremap <Leader>gl :Gpull<CR>
-noremap <Leader>gm :Gmove<Space>
+noremap <Leader>ggr :Ggrep<SPACE>
+noremap <Leader>glg :Glog<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gm :Gmove<SPACE>
 noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gs :Gstatus<CR>
 
