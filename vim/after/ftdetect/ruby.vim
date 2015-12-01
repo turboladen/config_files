@@ -1,12 +1,14 @@
 "-----------------------------------------------------------------------------
 " Ruby settings
 "-----------------------------------------------------------------------------
+let ruby_spellcheck_strings = 1
+
 "-----------------------------------------------------------------------------
 " Set up folding.
 "-----------------------------------------------------------------------------
 set foldexpr=turboladen#RubyMethodFold(v:lnum)
 set foldmethod=expr
-let ruby_fold=1
+let ruby_fold = 1
 
 autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
