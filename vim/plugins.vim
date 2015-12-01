@@ -134,7 +134,7 @@ Plug 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
 Plug 'vimwiki/vimwiki'
 
 " Git-specific
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive' | Plug 'tommcdo/vim-fubitive'
 " Plug 'gregsexton/gitv'
 " Plug 'idanarye/vim-merginal'
 
