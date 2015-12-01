@@ -9,7 +9,7 @@ Plug 'tpope/vim-sensible'
 " Color Scheme
 Plug 'trusktr/seti.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
-" Plug 'croaky/vim-colors-github'
+Plug 'junegunn/seoul256.vim'
 
 ""----------------------------------------------------------------------------
 " UI tweaks

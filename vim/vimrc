@@ -51,6 +51,8 @@ set background=dark
 " colorscheme Tomorrow
 " colorscheme Tomorrow-Night-Eighties
 colorscheme seti
+" let g:seoul256_background = 234
+" colorscheme seoul256
 
 " Detect file type and syntax
 syntax on
