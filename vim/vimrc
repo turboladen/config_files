@@ -545,6 +545,12 @@ au VimEnter * RainbowParentheses
 au Syntax * RainbowParentheses
 
 "-------------------------
+" tmuxline.vim
+"-------------------------
+let g:tmuxline_preset = 'full'
+" let g:tmuxline_powerline_separators = 0
+
+"-------------------------
 " vim-plug
 "-------------------------
 au FileType vim-plug setlocal nospell
