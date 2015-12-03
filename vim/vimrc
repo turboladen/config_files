@@ -365,6 +365,15 @@ set wildignore+=.idea/*
 ""===========================================================================""
 " 22. running make and jumping to errors
 ""===========================================================================""
+"--------
+" Setting for skwp/greplace.vim
+"--------
+if executable('ag')
+  " Use ag over grep
+  " set grepprg="ag --nogroup --nocolor"
+  set grepprg=ag
+  let g:grep_cmd_opts = '--line-numbers --noheading'
+endif
 
 ""===========================================================================""
 " 23. language specific
