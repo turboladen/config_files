@@ -134,6 +134,9 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 ""===========================================================================""
 " 15. folding
 ""===========================================================================""
+set foldlevelstart=10
+set foldnestmax=10      " 10 nested fold max
+
 
 ""===========================================================================""
 " 16. diff mode
