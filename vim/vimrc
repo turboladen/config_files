@@ -461,6 +461,12 @@ nnoremap <silent> <Leader>C :call fzf#run({
 "-------------------------
 let g:gundo_preview_bottom = 1
 
+"-------------------------
+" gabrieleana/vim-markdown
+"-------------------------
+let g:markdown_mapping_switch_status = '<Leader>ms'
+
+"-------------------------
 " Shougo/neocomplete
 "-------------------------
 let g:neocomplete#enable_at_startup = 1   " Moved to ~/.vimrc
