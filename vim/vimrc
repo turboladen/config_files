@@ -154,104 +154,104 @@ set foldnestmax=10      " 10 nested fold max
 " if exists(":Ag")
   " bind . to grep shortcut
   " command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-  nnoremap <Leader>. :Ag!<SPACE>
+  nnoremap <LEADER>. :Ag!<SPACE>
 " endif
 
 " greplace.vim
-nnoremap <Leader>/ :Gsearch<SPACE>
-nnoremap <Leader>\ :Greplace<SPACE>
+nnoremap <LEADER>/ :Gsearch<SPACE>
+nnoremap <LEADER>\ :Greplace<SPACE>
 
 "--------------------------------------
 " <Leader>A-G
 "--------------------------------------
 " thoughtbot/vim-rspec
-nnoremap <Leader>a :call RunAllSpecs()<CR>
+nnoremap <LEADER>a :call RunAllSpecs()<CR>
 
 " Close a buffer but don't close the window
-nnoremap <leader>bc :bprevious<CR>:bdelete #<CR>
+nnoremap <LEADER>bc :bprevious<CR>:bdelete #<CR>
 
 " Basic options are set in ~/.ctags
-nnoremap <Leader>ct :call turboladen#UpdateCTags()<CR>
+nnoremap <LEADER>ct :call turboladen#UpdateCTags()<CR>
 
 " Since I remap <C-l> (default redraw command), add a mapping for that.
-nnoremap <Leader>dr :redraw!<CR>
+nnoremap <LEADER>dr :redraw!<CR>
 
 " Dash.app docs
 if exists(":Dash")
-  nnoremap <Leader>da :Dash<SPACE>
+  nnoremap <LEADER>da :Dash<SPACE>
 endif
 
 " eDIT MY vIMRC FILE
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <LEADER>ev :vsplit $MYVIMRC<CR>
 
 if exists(":Unite")
   " Shougo/unite-outline
-  nnoremap <Leader>fu :Unite -start-insert outline<Cr>
+  nnoremap <LEADER>fu :Unite -start-insert outline<CR>
 elseif exists("CtrlPFunky")
-  nnoremap <Leader>fu :CtrlPFunky<Cr>
-  nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+  nnoremap <LEADER>fu :CtrlPFunky<CR>
+  nnoremap <LEADER>fU :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 endif
 
 " fugitive. Follows mappings for the zsh git plugin.
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gbl :Gblame<CR>
-noremap <Leader>gbr :Gbrowse<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>ggp :Gpush<CR>
-noremap <Leader>ggr :Ggrep<SPACE>
-noremap <Leader>glg :Glog<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gm :Gmove<SPACE>
-noremap <Leader>gr :Gremove<CR>
-noremap <Leader>gs :Gstatus<CR>
+noremap <LEADER>ga :Gwrite<CR>
+noremap <LEADER>gbl :Gblame<CR>
+noremap <LEADER>gbr :Gbrowse<CR>
+noremap <LEADER>gc :Gcommit<CR>
+noremap <LEADER>gd :Gvdiff<CR>
+noremap <LEADER>ggp :Gpush<CR>
+noremap <LEADER>ggr :Ggrep<SPACE>
+noremap <LEADER>glg :Glog<CR>
+noremap <LEADER>gll :Gpull<CR>
+noremap <LEADER>gm :Gmove<SPACE>
+noremap <LEADER>gr :Gremove<CR>
+noremap <LEADER>gs :Gstatus<CR>
 
 "--------------------------------------
 " <Leader>H-L
 "--------------------------------------
 " bind K to grep word under cursor
 " if exists(":Ag")
-  nnoremap <Leader>k :Ag! "\b<C-R><C-W>\b"<CR>
+  nnoremap <LEADER>k :Ag! "\b<C-R><C-W>\b"<CR>
 " else
-"   nnoremap <Leader>K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+"   nnoremap <LEADER>K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " endif
 
 " thoughtbot/vim-rspec
-nnoremap <Leader>l :call RunLastSpec()<CR>
+nnoremap <LEADER>l :call RunLastSpec()<CR>
 
 "--------------------------------------
 " <Leader>L-R
 "--------------------------------------
 " Output the command for manually running RSpec for that line.
-nnoremap <Leader>m :call turboladen#RSpecCommandForManualRunning()<CR>
+nnoremap <LEADER>m :call turboladen#RSpecCommandForManualRunning()<CR>
 
 " Do a TODO search
 if exists(":Ag")
-  nnoremap <Leader>o :Ag! todo<CR>
+  nnoremap <LEADER>o :Ag! todo<CR>
 else
-  nnoremap <Leader>o :grep! todo<CR>
+  nnoremap <LEADER>o :grep! todo<CR>
 endif
 
-nnoremap <Leader>q :BufOnly<CR>
+nnoremap <LEADER>q :BufOnly<CR>
 
 "--------------------------------------
 " <Leader>S-V
 "--------------------------------------
 " thoughtbot/vim-rspec
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <LEADER>s :call RunNearestSpec()<CR>
+nnoremap <LEADER>t :call RunCurrentSpecFile()<CR>
 
 " Reload all the things!
-nnoremap <Leader>v :source $MYVIMRC<CR>
+nnoremap <LEADER>v :source $MYVIMRC<CR>
 
 "--------------------------------------
 " <Leader>W-Z
 "--------------------------------------
-nnoremap <Leader>w :call turboladen#StripTrailingWhitespaces()<CR>
+nnoremap <LEADER>w :call turboladen#StripTrailingWhitespaces()<CR>
 
 if exists(":SyntasticToggleMode")
   " Syntastic toggle
-  nnoremap <Leader>y :SyntasticToggleMode<CR>
+  nnoremap <LEADER>y :SyntasticToggleMode<CR>
 endif
 
 "--------------------------------------
@@ -300,7 +300,7 @@ inoremap <C-]> <C-x><C-]>
 inoremap jk <ESC>
 
 " Disable Ex mode
-nnoremap Q <nop>
+nnoremap Q <NOP>
 
 " When jump to next match also center screen
 noremap n nzz
@@ -431,10 +431,10 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " https://github.com/junegunn/dotfiles/blob/da378217ad008d422bc5b577802cad237a2930e1/vimrc#L1197
 "-------------------------
 set rtp+=/usr/local/opt/fzf
-nnoremap <silent> <Leader><Leader> :FZF -m<CR>
+nnoremap <silent> <LEADER><LEADER> :FZF -m<CR>
 
-nnoremap <silent> <Leader>fs :call fzf#run({ 'tmux_height': winheight('.') / 2, 'sink': 'botright split' })<CR>
-nnoremap <silent> <Leader>fv :call fzf#run({ 'tmux_width': winwidth('.') / 2, 'sink': 'vertical botright split' })<CR>
+nnoremap <silent> <LEADER>fs :call fzf#run({ 'tmux_height': winheight('.') / 2, 'sink': 'botright split' })<CR>
+nnoremap <silent> <LEADER>fv :call fzf#run({ 'tmux_width': winwidth('.') / 2, 'sink': 'vertical botright split' })<CR>
 
 function! BufList()
   redir => ls
@@ -448,7 +448,7 @@ function! BufOpen(e)
 endfunction
 
 " fuzzy find buffer
-nnoremap <silent> <Leader><Enter> :call fzf#run({
+nnoremap <silent> <LEADER><ENTER> :call fzf#run({
 \   'source':      reverse(BufList()),
 \   'sink':        function('BufOpen'),
 \   'options':     '+m',
@@ -456,7 +456,7 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 \ })<CR>
 
 " Change colors on the fly
-nnoremap <silent> <Leader>C :call fzf#run({
+nnoremap <silent> <LEADER>C :call fzf#run({
 \   'source':
 \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
 \         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
@@ -522,7 +522,7 @@ let g:lightline = {
 "-------------------------
 " gabrieleana/vim-markdown
 "-------------------------
-let g:markdown_mapping_switch_status = '<Leader>ms'
+let g:markdown_mapping_switch_status = '<LEADER>ms'
 
 "-------------------------
 " Shougo/neocomplete
@@ -628,21 +628,21 @@ let g:unite_source_grep_default_opts='--no-color --line-number --binary-skip'
 " let g:unite_source_grep_recursive_opt=''
 
 " Mimic Ack
-" nnoremap <space>/ :Unite grep:.<CR>
+" nnoremap <SPACE>/ :Unite grep:.<CR>
 
 " Mimic yankring/yankstack
 " let g:unite_source_history_yank_enable = 1
-" nnoremap <space>y :Unite history/yank<CR>
+" nnoremap <SPACE>y :Unite history/yank<CR>
 
 " Mimic LustyJuggler
-" nnoremap <space>s :Unite -quick-match buffer<CR>
+" nnoremap <SPACE>s :Unite -quick-match buffer<CR>
 
 "------------------------------------------------------------------------------
 " baverman/vial-http
 "------------------------------------------------------------------------------
-au BufNewFile __vial_http__ nnoremap <buffer> <silent> <c-k> :b __vial_http_req__<cr>
-au BufNewFile __vial_http_req__ nnoremap <buffer> <silent> <c-k> :b __vial_http_hdr__<cr>
-au BufNewFile __vial_http_hdr__ nnoremap <buffer> <silent> <c-k> :b __vial_http__<cr>
+au BufNewFile __vial_http__ nnoremap <buffer> <silent> <C-k> :b __vial_http_req__<CR>
+au BufNewFile __vial_http_req__ nnoremap <buffer> <silent> <C-k> :b __vial_http_hdr__<CR>
+au BufNewFile __vial_http_hdr__ nnoremap <buffer> <silent> <C-k> :b __vial_http__<CR>
 au BufNewFile __vial_http__ setlocal nospell
 
 "-------------------------
