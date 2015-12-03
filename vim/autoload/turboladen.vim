@@ -4,6 +4,55 @@
 "
 "###############################################################################
 
+function! turboladen#LightLineModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "✹"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! turboladen#LightLineReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! turboladen#LightLineFilename()
+  return ('' != turboladen#LightLineReadonly() ? turboladen#LightLineReadonly() . ' ' : '') .
+       \ (&ft == 'unite' ? unite#get_status_string() :
+       \ '' != expand('%:p:.') ? expand('%:p:.') : '[No Name]') .
+       \ ('' != turboladen#LightLineModified() ? ' ' . turboladen#LightLineModified() : '')
+endfunction
+
+function! turboladen#LightLineFugitive()
+  return exists('*fugitive#head') ? ' ' . fugitive#head() : ''
+endfunction
+
+function! turboladen#LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! turboladen#LightLineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! turboladen#LightLineFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! turboladen#LightLineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
 function! turboladen#RubyMethodFold(line)
   let stack = synstack(a:line, (match(getline(a:line), '^\s*\zs'))+1)
 

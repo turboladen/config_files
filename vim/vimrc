@@ -497,6 +497,29 @@ endif
 let g:gundo_preview_bottom = 1
 
 "-------------------------
+" lightline
+"-------------------------
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename'] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'turboladen#LightLineFugitive',
+      \   'readonly': 'turboladen#LightLineReadonly',
+      \   'modified': 'turboladen#LightLineModified',
+      \   'filename': 'turboladen#LightLineFilename',
+      \   'fileformat': 'turboladen#LightLineFileformat',
+      \   'filetype': 'turboladen#LightLineFiletype',
+      \   'fileencoding': 'turboladen#LightLineFileencoding',
+      \   'mode': 'turboladen#LightLineMode'
+      \ }
+      \ }
+
+      " \ 'separator': { 'left': '', 'right': '' },
+      " \ 'subseparator': { 'left': '', 'right': '' }
+
+"-------------------------
 " gabrieleana/vim-markdown
 "-------------------------
 let g:markdown_mapping_switch_status = '<Leader>ms'
