@@ -539,6 +539,12 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd BufReadPost nerdtree://* set bufhidden=delete
 
 "-------------------------
+" RainbowParentheses
+"-------------------------
+au VimEnter * RainbowParentheses
+au Syntax * RainbowParentheses
+
+"-------------------------
 " vim-plug
 "-------------------------
 au FileType vim-plug setlocal nospell
