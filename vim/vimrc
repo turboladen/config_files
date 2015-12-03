@@ -46,14 +46,6 @@ set listchars=tab:▸\ ,trail:·,nbsp:_,extends:❯,precedes:❮
 ""===========================================================================""
 " 5. syntax, highlighting and spelling
 ""===========================================================================""
-set background=dark
-" colorscheme Tomorrow-Night
-" colorscheme Tomorrow
-" colorscheme Tomorrow-Night-Eighties
-colorscheme seti
-" let g:seoul256_background = 234
-" colorscheme seoul256
-
 " Detect file type and syntax
 syntax on
 syntax sync fromstart
@@ -62,8 +54,18 @@ set spell
 set spelllang=en_us
 
 set colorcolumn=80,120    " Show rulers
-set hlsearch      " highlight matches
+set hlsearch              " highlight matches
 set cursorline
+
+" colorscheme Tomorrow-Night
+" colorscheme Tomorrow
+" colorscheme Tomorrow-Night-Eighties
+colorscheme seti
+" let g:onedark_terminal_italics = 1
+" colorscheme onedark
+" let g:seoul256_background = 234
+" colorscheme seoul256
+" set background=dark
 
 " Filetypes
 autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
