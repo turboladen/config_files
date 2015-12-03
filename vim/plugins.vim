@@ -15,17 +15,11 @@ Plug 'joshdick/onedark.vim'
 ""----------------------------------------------------------------------------
 " UI tweaks
 ""----------------------------------------------------------------------------
-" Plug 'bling/vim-airline'
 Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-runner'
-Plug 'bling/vim-bufferline'
 Plug 'airblade/vim-gitgutter'
-" Plug 'chrisbra/NrrwRgn'
 Plug 'BufOnly.vim'                      " For cleaning out buffers
-" Plug 'wincent/terminus'               " Would like to use but it disables
-                                        " copying to system clipboard.
-
 Plug 'yssl/QFEnter'                     " For opening items in QuickFix
 Plug 'junegunn/rainbow_parentheses.vim'
 
