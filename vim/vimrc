@@ -289,6 +289,10 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Center screen on Down/Up jumping
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+
 " Unite Mimic CtrlP
 " nnoremap <C-p> :Unite -start-insert bookmark tab buffer_tab file_rec/git<CR>
 nnoremap <C-p> :Unite bookmark file_rec/git<CR>
@@ -303,10 +307,6 @@ nnoremap Q <nop>
 " When jump to next match also center screen
 noremap n nzz
 noremap N Nzz
-
-" Same when moving up and down
-noremap <C-d> <C-d>zz
-noremap <C-u> <C-u>zz
 
 " After block yank and paste, move cursor to the end of operated text
 " Also, don't copy over-pasted text in visual mode
