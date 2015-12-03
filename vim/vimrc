@@ -421,6 +421,12 @@ let g:ag_highlight=1            " highlight term after search
 let g:ag_working_path_mode="r"  " Search from project root
 
 "-------------------------
+" fugitive
+"-------------------------
+" Delete the buffer once I'm done with it.
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+"-------------------------
 " fzf
 " https://github.com/junegunn/dotfiles/blob/da378217ad008d422bc5b577802cad237a2930e1/vimrc#L1197
 "-------------------------
