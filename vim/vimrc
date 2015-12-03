@@ -599,3 +599,8 @@ let g:rspec_command = 'Dispatch ' . turboladen#RSpecShellCommand() . ' {spec}'
 " vim-ruby-doc
 "-------------------------
 let g:ruby_doc_command='open'
+
+"-------------------------
+" vimwiki
+"-------------------------
+let g:vimwiki_list = [{'path': '$HOME/Development/projects/vimwiki'}]
