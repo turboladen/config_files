@@ -115,6 +115,7 @@ Plug 'closetag.vim'
 "   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 " endif
 Plug 'Shougo/neocomplete.vim'
+Plug 'supermomonga/neocomplete-rsense.vim'
 Plug 'tpope/vim-endwise'
 
 ""----------------------------------------------------------------------------
