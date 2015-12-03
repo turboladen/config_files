@@ -479,3 +479,8 @@ let g:markdown_mapping_switch_status = '<Leader>ms'
 " Shougo/neocomplete
 "-------------------------
 let g:neocomplete#enable_at_startup = 1   " Moved to ~/.vimrc
+
+"-------------------------
+" vim-plug
+"-------------------------
+au FileType vim-plug setlocal nospell
