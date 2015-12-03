@@ -457,6 +457,10 @@ nnoremap <silent> <Leader>C :call fzf#run({
 " inoremap <silent> <C-X><C-T> <C-o>:call <SID>tmux_words(expand('<cWORD>'))<CR>
 
 "-------------------------
+" gundo.vim
+"-------------------------
+let g:gundo_preview_bottom = 1
+
 " Shougo/neocomplete
 "-------------------------
 let g:neocomplete#enable_at_startup = 1   " Moved to ~/.vimrc
