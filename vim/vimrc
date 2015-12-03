@@ -533,6 +533,12 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 "-------------------------
+" nerdtree
+"-------------------------
+" Delete the buffer once I'm done with it.
+autocmd BufReadPost nerdtree://* set bufhidden=delete
+
+"-------------------------
 " vim-plug
 "-------------------------
 au FileType vim-plug setlocal nospell
