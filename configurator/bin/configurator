@@ -60,7 +60,7 @@ class Configurator < Thor
     say_status :skip, 'vim-plug installed? TRUE', :yellow
 
     @dry_run = options.dry_run?
-    destination_root = DEST_VIM_DIR
+    self.destination_root = DEST_VIM_DIR
 
     dest_vimrc = File.join(Dir.home, '.vimrc')
     source_vimrc = File.join(SOURCE_VIM_DIR, 'vimrc')
@@ -68,22 +68,7 @@ class Configurator < Thor
 
     setup_vim_file 'plugins.vim'
     setup_vim_file 'after/ftdetect/ruby.vim'
-    setup_vim_file 'after/plugin/ag.vim'
-    # setup_vim_file 'after/plugin/airline.vim'
     setup_vim_file 'after/plugin/bufferline.vim'
-    # setup_vim_file 'after/plugin/ctrlp.vim'
-    setup_vim_file 'after/plugin/fugitive.vim'
-    setup_vim_file 'after/plugin/lightline.vim'
-    setup_vim_file 'after/plugin/neocomplete.vim'
-    setup_vim_file 'after/plugin/nerdtree.vim'
-    setup_vim_file 'after/plugin/rainbow_parentheses.vim'
-    setup_vim_file 'after/plugin/syntastic.vim'
-    setup_vim_file 'after/plugin/tmuxline.vim'
-    setup_vim_file 'after/plugin/unite.vim'
-    setup_vim_file 'after/plugin/vial-http.vim'
-    setup_vim_file 'after/plugin/vim-ruby-doc.vim'
-    setup_vim_file 'after/plugin/vimwiki.vim'
-    setup_vim_file 'after/plugin/YouCompleteMe.vim'
     setup_vim_file 'autoload/turboladen.vim'
   end
 
