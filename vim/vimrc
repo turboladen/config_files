@@ -268,10 +268,6 @@ if exists(":NERDTreeFind")
   " let g:NERDTreeMapPreview="<F4>"
 endif
 
-" tagbar
-if exists(":TagbarToggle")
-  nnoremap <F8> :TagbarToggle<CR>
-endif
 
 "------------------------------------------------------------------------------
 " Normal mode, single characters
@@ -279,6 +275,8 @@ endif
 " Split a line and remove whitespace from old line.
 " https://www.reddit.com/r/vim/comments/3g8y3r/finally_hacked_together_a_quick_split_line/ctw4b0i
 nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>
+" tagbar
+nnoremap <F8> :TagbarToggle<CR>
 
 "------------------------------------------------------------------------------
 " Ctrl- combos
@@ -316,6 +314,10 @@ nnoremap p p`]
 
 " No more accidentally showing up command window (Use C-f to show it)
 nnoremap q: :q
+
+" Split a line and remove whitespace from old line.
+" https://www.reddit.com/r/vim/comments/3g8y3r/finally_hacked_together_a_quick_split_line/ctw4b0i
+nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>
 
 
 ""===========================================================================""
