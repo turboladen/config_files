@@ -398,6 +398,65 @@ autocmd VimResized * :wincmd =    " Resize when tmux gets resized
 ""===========================================================================""
 " YY. Plugin options that must be here.
 ""===========================================================================""
+"---------
+" fzf
+" https://github.com/junegunn/dotfiles/blob/da378217ad008d422bc5b577802cad237a2930e1/vimrc#L1197
+"---------
+set rtp+=/usr/local/opt/fzf
+nnoremap <silent> <Leader><Leader> :FZF -m<CR>
 
-" neocomplete
+nnoremap <silent> <Leader>fs :call fzf#run({ 'tmux_height': winheight('.') / 2, 'sink': 'botright split' })<CR>
+nnoremap <silent> <Leader>fv :call fzf#run({ 'tmux_width': winwidth('.') / 2, 'sink': 'vertical botright split' })<CR>
+
+function! BufList()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! BufOpen(e)
+  execute 'buffer '. matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+" fuzzy find buffer
+nnoremap <silent> <Leader><Enter> :call fzf#run({
+\   'source':      reverse(BufList()),
+\   'sink':        function('BufOpen'),
+\   'options':     '+m',
+\   'tmux_height': '40%'
+\ })<CR>
+
+" Change colors on the fly
+nnoremap <silent> <Leader>C :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':       'colo',
+\   'options':    '+m',
+\   'tmux_width': 20,
+\   'launcher':   'xterm -geometry 20x30 -e bash -ic %s'
+\ })<CR>
+
+" function! s:tmux_words(query)
+"   let g:_tmux_q = a:query
+"   let matches = fzf#run({
+"   \ 'source':      'tmuxwords.rb --all-but-current --scroll 500 --min 5',
+"   \ 'sink':        function('Tmux_feedkeys'),
+"   \ 'options':     '--no-multi --query='.a:query,
+"   \ 'tmux_height': '40%'
+"   \ })
+" endfunction
+
+" function! Tmux_feedkeys(data)
+"   echom empty(g:_tmux_q)
+"   execute "normal! ".(empty(g:_tmux_q) ? 'a' : 'ciW')."\<C-R>=a:data\<CR>"
+"   startinsert!
+" endfunction
+
+" inoremap <silent> <C-X><C-T> <C-o>:call <SID>tmux_words(expand('<cWORD>'))<CR>
+
+"-------------------------
+" Shougo/neocomplete
+"-------------------------
 let g:neocomplete#enable_at_startup = 1   " Moved to ~/.vimrc

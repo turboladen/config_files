@@ -84,6 +84,8 @@ Plug 'Shougo/vimproc.vim', { 'dir': '~/.vim/plugged/vimproc.vim', 'do': './make 
 Plug 'Shougo/tabpagebuffer.vim'
 " Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf'
 
 ""----------------------------------------------------------------------------
 " Language-specific plugins
