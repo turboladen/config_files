@@ -161,6 +161,10 @@ if exists(":Ag")
   nnoremap <Leader>. :Ag!<SPACE>
 endif
 
+" greplace.vim
+nnoremap <Leader>/ :Gsearch<SPACE>
+nnoremap <Leader>\ :Greplace<SPACE>
+
 "--------------------------------------
 " <Leader>A-G
 "--------------------------------------
