@@ -115,17 +115,27 @@ Plug 'tpope/vim-endwise'
 ""----------------------------------------------------------------------------
 " Tools
 ""----------------------------------------------------------------------------
-" Plug 'henrik/vim-indexed-search'
+" Show "Match X of Y" when searching
+Plug 'henrik/vim-indexed-search'
+
+" Project-wide search/replace with :Gsearch and :Greplace
 Plug 'skwp/greplace.vim'
+
+" Adds gS and gJ to split/join code blocks.
 Plug 'AndrewRadev/splitjoin.vim'
+
+" Linting
 " Plug 'scrooloose/syntastic'
 Plug '/Users/sloveless/Development/not_my_projects/syntastic'
+
+" Sidebar of methods/functions
 Plug 'majutsushi/tagbar'
+
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
-
 " Plug 'TailMinusF'
 
+" Adds :HLT commands for viewing the hilight setting for the cursor position.
 Plug 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
 " Plug 'Shougo/vimshell.vim'        " For Shuogo/neocomplete.vim
 " Plug 'tbabej/taskwiki'
