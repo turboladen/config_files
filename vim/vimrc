@@ -157,7 +157,7 @@ set foldnestmax=10      " 10 nested fold max
 
 " greplace.vim
 nnoremap <LEADER>/ :Gsearch<SPACE>
-nnoremap <LEADER>\ :Greplace<SPACE>
+nnoremap <LEADER>\ :Greplace<CR>
 
 "--------------------------------------
 " <Leader>A-G
