@@ -487,8 +487,8 @@ nnoremap <silent> <LEADER>C :call fzf#run({
 "-------------------------
 " skwp/greplace.vim
 "-------------------------
-if executable('ag')
-  let g:grep_cmd_opts = '--line-numbers --noheading'
+if executable('sift')
+  let g:grep_cmd_opts = '--line-number --no-color --no-conf --binary-skip'
 endif
 
 "-------------------------
