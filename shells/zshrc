@@ -182,4 +182,3 @@ unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
 
-export HOMEBREW_GITHUB_API_TOKEN=12f5e67f38e2df781d950a9ccad3131dc653f278
