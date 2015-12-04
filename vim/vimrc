@@ -113,6 +113,7 @@ set matchtime=2   " Show matching paren for 0.2 secs
 ""===========================================================================""
 " 14. tabs and indenting
 ""===========================================================================""
+filetype plugin indent on
 set smartindent
 
 " Set default spacing
@@ -121,13 +122,10 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-if has("autocmd")
-  autocmd Filetype html setlocal softtabstop=4
-  autocmd Filetype qf setlocal nospell
-  autocmd Filetype vimwiki setlocal ts=4 sts=4 sw=4 expandtab
-endif
+autocmd Filetype html setlocal softtabstop=4
+autocmd Filetype qf setlocal nospell
+autocmd Filetype vimwiki setlocal ts=4 sts=4 sw=4 expandtab
 
-filetype plugin indent on
 setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
