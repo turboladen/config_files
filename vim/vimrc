@@ -366,7 +366,7 @@ set wildignore+=.idea/*
 " 22. running make and jumping to errors
 ""===========================================================================""
 if executable('sift')
-  set grepprg=sift\ --no-color
+  set grepprg=sift\ --no-color\ --no-conf
 elseif executable('ag')
   " Use ag over grep
   " set grepprg="ag --nogroup --nocolor"
@@ -410,7 +410,7 @@ autocmd VimResized * :wincmd =    " Resize when tmux gets resized
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 "-------------------------
 if executable('sift')
-  let g:ag_prg="sift --no-color --line-number --binary-skip"
+  let g:ag_prg="sift --no-color --line-number --binary-skip --no-conf"
   let g:ag_format="%f:%l:%m"
 elseif executable('ag')
   " let g:ag_prg="ag --context --vimgrep --only-matching --silent"
@@ -624,7 +624,7 @@ let g:unite_source_history_yank_enable = 1
 " let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4 --hidden
 "       \ --ignore .DS_Store -g ""'
 let g:unite_source_grep_command='sift'
-let g:unite_source_grep_default_opts='--no-color --line-number --binary-skip'
+let g:unite_source_grep_default_opts='--no-color --line-number --binary-skip --no-conf'
 " let g:unite_source_grep_recursive_opt=''
 
 " Mimic Ack
