@@ -68,8 +68,9 @@ class Configurator < Thor
 
     setup_vim_file 'plugins.vim'
     setup_vim_file 'after/ftdetect/ruby.vim'
-    setup_vim_file 'after/plugin/bufferline.vim'
+    setup_vim_file 'after/plugin/bundler.vim'
     setup_vim_file 'autoload/turboladen.vim'
+    setup_vim_file 'doc/turboladen.txt'
   end
 
   desc 'tmux', "Sets up Steve's tmux files"
