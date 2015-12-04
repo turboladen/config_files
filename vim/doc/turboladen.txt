@@ -1,10 +1,13 @@
 *turboladen.txt*          Special docs for turboladen.
 
+                                    The
               _              _           _           _~
              | |_ _   _ _ __| |__   ___ | | __ _  __| | ___ _ __~
              | __| | | | '__| '_ \ / _ \| |/ _` |/ _` |/ _ \ '_ \~
              | |_| |_| | |  | |_) | (_) | | (_| | (_| |  __/ | | |~
               \__|\__,_|_|  |_.__/ \___/|_|\__,_|\__,_|\___|_| |_|~
+
+                                Cheat Sheet
 
 Author:     https://github.com/turboladen
 Homepage:   https://github.com/turboladen/config_files
@@ -13,44 +16,266 @@ Homepage:   https://github.com/turboladen/config_files
 CONTENTS                                                    *TurboladenContents*
                                                                     *turboladen*
 
-    1. Core Vim stuff ............................ |TurboladenCore|
-    2. Git stuff ................................. |TurboladenGit|
-    3. Nav stuff ................................. |TurboladenNav|
+    2. Moving Around ............................ |turboladen-moving-around|
+        2.1. Buffers & Windows .................  |turboladen-buffers-and-windows|
+        2.2. Plugins ............................ |turboladen-nav-plugins|
+            2.2.1. Ag ........................... |turboladen-ag|
+            2.2.2. greplace ..................... |turboladen-greplace|
+            2.2.3. NERDTree ..................... |turboladen-nerdtree|
+            2.2.4. tagbar ....................... |turboladen-tagbar|
+            2.2.5. vim-gitgutter ................ |turboladen-vim-gitgutter|
+            2.2.6. vim-markdown ................. |turboladen-vim-markdown|
+            2.2.7. vim-vinegar .................. |turboladen-vim-vinegar|
+    3. Tags ..................................... |turboladen-tags|
+    5. Syntax, Highlighting & Spelling .......... |turboladen-syntax|
+    11. Messages & Info ......................... |turboladen-messages-info|
+    13. Editing Text ............................ |turboladen-editing-text|
+        13.1 Plugins ............................ |turboladen-editing-plugins|
+            13.1.1 commentary ................... |turboladen-vim-commentary|
+            13.1.2 exchange ..................... |turboladen-vim-exchange|
+            13.1.3 multiple-cursors ............. |turboladen-vim-multiple-cursors|
+            13.1.4 rubyhash ..................... |turboladen-vim-rubyhash|
+            13.1.5 splitjoin .................... |turboladen-splitjoin|
+            13.1.6 surround ..................... |turboladen-vim-surround|
+    15. Folding ................................. |turboladen-folding|
+    25. Various ................................. |turboladen-various|
+        25.1. Quick-fix ......................... |turboladen-quick-fix|
+        25.2. Plugins ........................... |turboladen-various-plugins|
+            25.2.1 vim-ruby-doc ................. |turboladen-vim-ruby-doc|
 
 ================================================================================
-1. CORE VIM STUFF                                               *TurboladenCore*
+2. Moving Around, Searching & Patterns                  *turboladen-moving-around*
+
+--------------------------------------------------------------------------------
+2.1 Buffers & Windows                             *turboladen-buffers-and-windows*
+
+    * `:new` {file}       - New horizontally split window, empty file
+    * `:vnew` {file}      - New vertically split window, empty file
+    * `:hide`             - Quit the current window, but don't close the buffer
+    * <C-w><C-p>        - Go to previous window
+    * <C-w>r / R        - Rotate windows
+    * <C-w>x            - Exchange windows, this with the next one Note: BROKEN
+    * <C-w>HJKL         - Send window to left/top/bottom/right Note: BROKEN
+    * <C-w>-/+          - Make window smaller/bigger
+    * <C-w>=            - Make windows the same size
+    * <Leader>bc        - Close the buffer but keep the window
+    * <C-6>             - Open the alternate (usually last) buffer. Works with a
+                            count modifier.
+    * `zz` / `z.`           - Center the cursor in the window.
+    * `z{height}<CR>`     - Make window {height} lines tall.
+
+netrw (Explorer Mode)
+---------------------
+
+    * `i`   - Toggle view mode
+    * `d`   - Create a new directory
+    * `%`   - Create and open a new file
+    * `D`   - Delete a directory or file
+    * `R`   - Rename a file
+    * `o`   - Open file in a horizontal split
+    * `v`   - Open file in a vertical split
+
+--------------------------------------------------------------------------------
+2.2 Navigation Plugins                                    *turboladen-nav-plugins*
+
+--------------------------------------------------------------------------------
+2.2.1 |ag|                                                           *turboladen-ag*
+
+https://github.com/rking/ag.vim
+
+Note: Format: `:Ag [options] {pattern} [{directory}]`
+
+    * <LEADER>.         - :Ag<SPACE>
+    * <LEADER>K         - Search for word under cursor
+
+--------------------------------------------------------------------------------
+2.2.2 |greplace|                                               *turboladen-greplace*
+
+https://github.com/skwp/greplace.vim
+
+
+Note: Format: :Gsearch [<grep-option(s)>] [[<pattern>] [<filename(s)>]]
+
+    * <LEADER>/         - :Gsearch for files and show matches
+    * <LEADER>\         - :Greplace for files and show matches
+
+--------------------------------------------------------------------------------
+2.2.3 NERDTree                                              *turboladen-nerdtree*
+
+https://github.com/scrooloose/nerdtree
+
+    * `F2`    - Toggle open/close
+    * `F3`    - Open to current file
+    * `B`     - Toggle show/hide bookmarks
+
+--------------------------------------------------------------------------------
+2.2.2 tagbar                                                   *turboladen-tagbar*
+
+https://github.com/majutsushi/tagbar
+
+    * `F8`    - :ToggleTagbar
+
+--------------------------------------------------------------------------------
+2.2.4 vim-gitgutter                                     *turboladen-vim-gitgutter*
+
+https://github.com/airblade/vim-gitgutter
+
+    * `]c`    - Jump to next change
+    * `[c`    - Jump to previous change
+
+--------------------------------------------------------------------------------
+2.2.5 vim-markdown                                       *turboladen-vim-markdown*
+
+https://github.com/gabrielelana/vim-markdown
+
+    * `[[`          - Goto previous H* section
+    * `]]`          - Goto next H* section
+    * `<Leader>e`   - Open a code section in a new buffer, using syntax highlighting
+    * `<Leader>ft`  - Format the current table (Tabular)
+
+--------------------------------------------------------------------------------
+2.2.6 vim-vinegar                                         *turboladen-vim-vinegar*
+
+https://github.com/tpope/vim-vinegar
+
+    * `-`       - Hop up to the directory listing.
+    * `.`       - When viewing the listing, pre-populate in the `:` command
+    * `~`       - Go home
+
+================================================================================
+3. Tags                                                          *turboladen-tags*
+
+    * <Leader>ct          - Rebuild tags
+    * <C-]>               - Use word under cursor as tag to search for
+    * <C-t>               - Go back to where you came from after `CTRL-]`
+    * `:ts`                 - List tags that match the last search
+    * `:tn` / `:tp`           - Go to next/previous matching tag
+
+================================================================================
+5. Syntax, Highlighting & Spelling                             *turboladen-syntax*
 
 MAPPINGS
 
 Spelling
 
-    'spell'
-        Turn on spell checker
-
-    ]s or [s
-        Navigate forward/backward to misspellings
-
-    z=
-        spelling suggestions
-
-    zg
-        highlighted word as a "good" word
-
-    zug
-        marking highlighted word as a "good" word
-
-    zw
-        highlighted word as "wrong" (misspelled)
-
-    zuw
-        marking highlighted word as "wrong" (misspelled)
-
-    :runtime spell/cleanadd.vim
-        Clean up spelling file
+    * 'spell'           - Turn on spell checker
+    * `]s` / `[s`           - Navigate forward/backward to misspellings
+    * `z=`                - list spelling suggestions
+    * `zg`                - Mark highlighted word as a "good" word
+    * `zug`               - Undo marking highlighted word as a "good" word
+    * `zw`                - Mark highlighted word as "wrong" (misspelled)
+    * `zuw`               - Undo marking highlighted word as "wrong" (misspelled)
+    * 'runtime' spell/cleanadd.vim   - Clean up spelling file
 
 Resources
 
-    - http://vimcasts.org/episodes/spell-checking/
+    * http://vimcasts.org/episodes/spell-checking/
 
+================================================================================
+11. Messages & Info                                     *turboladen-messages-info*
+
+    * K         - Open man page/docs for word under cursor
+
+================================================================================
+13. Editing Text                                         *turboladen-editing-text*
+
+--------------------------------------------------------------------------------
+13.1 Editing Plugins                                  *turboladen-editing-plugins*
+
+--------------------------------------------------------------------------------
+13.1.1 |commentary|                                      *turboladen-vim-commentary*
+
+https://github.com/tpope/vim-commentary
+
+    * `gcc` - Comment out a line (takes a count)
+    * `gc`  - Comment out target of a motion (ex. gcap to comment out a paragraph)
+
+--------------------------------------------------------------------------------
+13.1.1 |exchange|                                          *turboladen-vim-exchange*
+
+https://github.com/tommcdo/vim-exchange
+http://vimcasts.org/episodes/swapping-two-regions-of-text-with-exchange-vim/
+
+    * `cx{motion}`    - Select first text object for exchanging. Repeat (or .) on
+                        on second text to exchange with.
+    * `cxx{motion}`   - Like `cx` but for the current line.
+    * `X{motion}`     - Like `cx` but for visual mode.
+    * `cxc`           - Clear any exchange `{motion}`.
+
+--------------------------------------------------------------------------------
+13.1.2 |multiple-cursors|                          *turboladen-vim-multiple-cursors*
+
+https://github.com/terryma/vim-multiple-cursors
+
+    * `<C-n>`         - Press on top of a word to highlight that word. Press again
+                        to jump to the next instance of that word. Once all are
+                        selected, use normal or visual vim commands to alter.
+    * `<C-p>`         - Jump back to previous highlighted word.
+    * `<C-x>`         - Skip the currently highlighted word.
+
+--------------------------------------------------------------------------------
+13.1.3 |rubyhash|                                          *turboladen-vim-rubyhash*
+
+https://github.com/rorymckinley/vim-rubyhash
+
+    * <LEADER>rr     - Convert all keys to Ruby 1.9 format
+    * <LEADER>rs     - Convert all keys to symbols
+    * <LEADER>rt     - Convert all keys to strings
+
+--------------------------------------------------------------------------------
+13.1.4 |splitjoin|                                            *turboladen-splitjoin*
+
+https://github.com/AndrewRadev/splitjoin.vim
+
+    * `gJ`    - (with cursor on first line of a block) to join a block
+    * `gS`    - split a one-liner into multiple lines
+
+--------------------------------------------------------------------------------
+13.1.5 |surround|                                          *turboladen-vim-surround*
+
+https://github.com/tpope/vim-surround
+
+    * `cs[from][to]`      - With cursor in a string, change [from] to [to] (ex `cs"'`)
+    * `ds[delimiter]`     - Remove [delimiters] from string.
+    * `ys{motion}[char]`  - (Insert) Surround `{motion}` with `[char]`
+    * `S[char]`           - (Visual) Surround selected with `[char]`
+
+================================================================================
+15. Folding                                                   *turboladen-folding*
+
+    * `zi`                  = Enable folding
+    * `zo` / `zc` / `za`        = Open/close/toggle fold
+    * `zO` / `zC` / `zA`        = Open/close/toggle fold recursively
+    * `zr` / `zm`             = Reduce/more folds
+    * `zR` / `zM`             = Reduce/more folds recursively
+    * `zv`                  = Expand folds to reveal cursor
+
+================================================================================
+25. Various                                                   *turboladen-various*
+
+--------------------------------------------------------------------------------
+25.1 Quick-fix                                              *turboladen-quick-fix*
+
+Once the quick-fix window is open:
+
+    * `e`           - open file and close the quick-fix window
+    * `o`           - open (same as enter)
+    * `go`          - preview file (open but maintain focus on ag.vim results)
+    * `t` / `T`       - open in new tab (/silently)
+    * `h` / `H`       - open in horizontal split (/silently)
+    * `v` / `gv`      - open in vertical split (/silently)
+    * `q`           - close the quick-fix window
+
+--------------------------------------------------------------------------------
+25.2 Various Plugins                                  *turboladen-various-plugins*
+
+--------------------------------------------------------------------------------
+25.2.1 vim-ruby-doc                                      *turboladen-vim-ruby-doc*
+
+https://github.com/lucapette/vim-ruby-doc
+
+    * <LEADER>RB      - Search rubydocs.info for Ruby
+    * <LEADER>RR      - Search api.rubyonrails.org for Rails
+    * <LEADER>RS      - Search relishapp.com for RSpec
 
 " vim: filetype=help textwidth=80 tabstop=4 shiftwidth=4 softtabstop=4
