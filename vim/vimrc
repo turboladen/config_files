@@ -663,6 +663,9 @@ let g:rspec_command = 'Dispatch ' . turboladen#RSpecShellCommand() . ' {spec}'
 " vim-ruby-doc
 "-------------------------
 let g:ruby_doc_command='open'
+let g:ruby_doc_ruby_mapping='<leader>RB'
+let g:ruby_doc_rails_mapping='<leader>RR'
+let g:ruby_doc_rspec_mapping='<leader>RS'
 
 "-------------------------
 " vimwiki
