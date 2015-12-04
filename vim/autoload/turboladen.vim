@@ -92,6 +92,12 @@ function! turboladen#RSpecShellCommand()
   endif
 endfunction
 
+function! turboladen#SetUpTurboladenDocs()
+  !cp '/Users/sloveless/Development/projects/config_files/vim/doc/turboladen.txt' '/Users/sloveless/.vim/doc/turboladen.txt'
+  " :helptags l:vim_doc_dir
+  :helptags /Users/sloveless/.vim/doc
+endfunction
+
 ""
 " Clean out the whitespaces from the file.
 " function! <SID>turboladen#StripTrailingWhitespaces()

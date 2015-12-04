@@ -1,0 +1,56 @@
+*turboladen.txt*          Special docs for turboladen.
+
+              _              _           _           _~
+             | |_ _   _ _ __| |__   ___ | | __ _  __| | ___ _ __~
+             | __| | | | '__| '_ \ / _ \| |/ _` |/ _` |/ _ \ '_ \~
+             | |_| |_| | |  | |_) | (_) | | (_| | (_| |  __/ | | |~
+              \__|\__,_|_|  |_.__/ \___/|_|\__,_|\__,_|\___|_| |_|~
+
+Author:     https://github.com/turboladen
+Homepage:   https://github.com/turboladen/config_files
+
+================================================================================
+CONTENTS                                                    *TurboladenContents*
+                                                                    *turboladen*
+
+    1. Core Vim stuff ............................ |TurboladenCore|
+    2. Git stuff ................................. |TurboladenGit|
+    3. Nav stuff ................................. |TurboladenNav|
+
+================================================================================
+1. CORE VIM STUFF                                               *TurboladenCore*
+
+MAPPINGS
+
+Spelling
+
+    'spell'
+        Turn on spell checker
+
+    ]s or [s
+        Navigate forward/backward to misspellings
+
+    z=
+        spelling suggestions
+
+    zg
+        highlighted word as a "good" word
+
+    zug
+        marking highlighted word as a "good" word
+
+    zw
+        highlighted word as "wrong" (misspelled)
+
+    zuw
+        marking highlighted word as "wrong" (misspelled)
+
+    :runtime spell/cleanadd.vim
+        Clean up spelling file
+
+Resources
+
+    - http://vimcasts.org/episodes/spell-checking/
+
+
+" vim: filetype=help textwidth=80 tabstop=4 shiftwidth=4 softtabstop=4
