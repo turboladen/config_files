@@ -179,6 +179,10 @@ Resources
 ================================================================================
 13. Editing Text                                         *turboladen-editing-text*
 
+Mappings:
+
+    * `<leader>=`           - Reindent whole file
+
 --------------------------------------------------------------------------------
 13.1 Editing Plugins                                  *turboladen-editing-plugins*
 

@@ -295,8 +295,10 @@ nnoremap <C-p> :Unite bookmark file_rec/git<CR>
 inoremap <C-]> <C-x><C-]>
 
 "------------------------------------------------------------------------------
-" Normal mode, single characters
+" Alpha character combos
 "------------------------------------------------------------------------------
+" Reindent whole file
+nnoremap <leader>= :call turboladen#KeepJumps("gg=G")<CR>
 inoremap jk <ESC>
 
 " Disable Ex mode

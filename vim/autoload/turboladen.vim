@@ -65,7 +65,14 @@ function! turboladen#RubyMethodFold(line)
   return 0
 endfunction
 
-""
+" Allows running a normal-mode command, but keeps your cursor in the same spot
+" the command was run from.
+function turboladen#KeepJumps(command)
+  let winview = winsaveview()
+  execute "keepjumps normal! " . a:command
+  call winrestview(winview)
+endfunction
+
 " Builds a the RSpec command for running the test on your current line, then
 " echos it and copies it to the system clipboard. Useful for when wanting to
 " run the same test in a different terminal.
