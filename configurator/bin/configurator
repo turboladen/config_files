@@ -44,6 +44,7 @@ class Configurator < Thor
     run %[git config --global merge.tool vimdiff]
     run %[git config --global diff.tool vimdiff]
     run %[git config --global difftool.prompt false]
+    run %[git config --global credential.helper osxkeychain]
 
     say 'Done.  Have you configured your SSH keys?'
   end
