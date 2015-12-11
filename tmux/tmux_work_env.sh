@@ -3,7 +3,7 @@
 CURRENT_SESSION=${PWD##*/}
 
 # Start up the tmux session with specific name. First window is for editing.
-tmux new-session -s $CURRENT_SESSION -n editor -d
+tmux new-session -s $CURRENT_SESSION -n vim -d
 tmux send-keys -t $CURRENT_SESSION:1.1 "vim" C-m
 
 # RSpec pane for running tests
