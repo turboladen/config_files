@@ -90,13 +90,18 @@ endfunction
 ""
 " Returns the RSpec command to run based on your environment.
 function! turboladen#RSpecShellCommand()
-  if filereadable("bin/spring")
-    return 'bin/spring rspec '
-  elseif filereadable("bin/rspec")
+  if filereadable("bin/rspec")
     return 'bin/rspec '
   else
     return 'bundle exec rspec '
   endif
+endfunction
+
+function! turboladen#RSpecVimCommand()
+  let cmd = turboladen#RSpecShellCommand()
+
+  " Use vim-dispatch to run tests in a tmux window
+  return 'Dispatch ' . cmd . ' {spec}'
 endfunction
 
 function! turboladen#SetUpTurboladenDocs()
