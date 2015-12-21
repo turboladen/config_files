@@ -346,6 +346,7 @@ See |folding|.
     * `zr` / `zm`             = Reduce/more folds
     * `zR` / `zM`             = Reduce/more folds recursively
     * `zv`                  = Expand folds to reveal cursor
+    * `zj` / `zk`             = Jump to next / previous fold
 
 ================================================================================
 25. Various                                                   *turboladen-various*
