@@ -137,7 +137,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug '/Users/sloveless/Development/not_my_projects/syntastic'
 
 " Sidebar of methods/functions
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
