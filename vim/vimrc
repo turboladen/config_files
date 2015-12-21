@@ -253,10 +253,8 @@ nnoremap <leader>v :source $MYVIMRC<CR>
 "--------------------------------------
 nnoremap <leader>w :call turboladen#StripTrailingWhitespaces()<CR>
 
-if exists(":SyntasticToggleMode")
-  " Syntastic toggle
-  nnoremap <LEADER>y :SyntasticToggleMode<CR>
-endif
+" Syntastic toggle
+nnoremap <leader>y :SyntasticToggleMode<CR>
 
 "--------------------------------------
 " Other remappings
