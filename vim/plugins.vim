@@ -11,6 +11,7 @@ Plug 'trusktr/seti.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'junegunn/seoul256.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'romainl/Apprentice'
 
 ""----------------------------------------------------------------------------
 " UI tweaks
