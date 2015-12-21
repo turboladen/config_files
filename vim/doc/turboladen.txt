@@ -294,7 +294,7 @@ http://vimcasts.org/episodes/swapping-two-regions-of-text-with-exchange-vim/
     * `cxc`           - Clear any exchange `{motion}`.
 
 --------------------------------------------------------------------------------
-13.1.2 |multiple-cursors|                          *turboladen-vim-multiple-cursors*
+13.1.4 |multiple-cursors|                              *turboladen-multiple-cursors*
 
 https://github.com/terryma/vim-multiple-cursors
 
