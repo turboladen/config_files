@@ -13,10 +13,11 @@ Author:     https://github.com/turboladen
 Homepage:   https://github.com/turboladen/config_files
 
 ================================================================================
-CONTENTS                                                    *TurboladenContents*
+CONTENTS                                                    *turboladen-content*
                                                                     *turboladen*
 
-    2. Moving Around ............................ |turboladen-moving-around|
+    1. Important .................................|turboladen-important|
+    2. Moving Around, Searching, Patterns........ |turboladen-moving-around|
         2.1. Buffers & Windows .................  |turboladen-buffers-and-windows|
         2.2. Plugins ............................ |turboladen-nav-plugins|
             2.2.1. Ag ........................... |turboladen-ag|
@@ -42,6 +43,11 @@ CONTENTS                                                    *TurboladenContents*
         25.1. Quick-fix ......................... |turboladen-quick-fix|
         25.2. Plugins ........................... |turboladen-various-plugins|
             25.2.1 vim-ruby-doc ................. |turboladen-vim-ruby-doc|
+
+================================================================================
+1. Moving Around, Searching & Patterns                  *turboladen-important*
+
+    * `<F9>`            - Toggle PASTE mode
 
 ================================================================================
 2. Moving Around, Searching & Patterns                  *turboladen-moving-around*
