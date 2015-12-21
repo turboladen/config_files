@@ -46,7 +46,8 @@ CONTENTS                                                    *turboladen-content*
     25. Various ................................. |turboladen-various|
         25.1. Quick-fix ......................... |turboladen-quick-fix|
         25.2. Plugins ........................... |turboladen-various-plugins|
-            25.2.1 vim-ruby-doc ................. |turboladen-vim-ruby-doc|
+            25.2.1 fugitive ..................... |turboladen-fugitive|
+            25.2.3 ruby-doc ..................... |turboladen-ruby-doc|
 
 ================================================================================
 1. Moving Around, Searching & Patterns                  *turboladen-important*
@@ -298,7 +299,23 @@ Once the quick-fix window is open:
 25.2 Various Plugins                                  *turboladen-various-plugins*
 
 --------------------------------------------------------------------------------
-25.2.1 vim-ruby-doc                                      *turboladen-vim-ruby-doc*
+25.2.1 |fugitive|                                              *turboladen-fugitive*
+
+    * <leader>ga        - |:Gwrite| is like `git add`
+    * <leader>gbl       - |:Gblame| vsplits `git blame`. Allows editing of commits!
+    * <leader>gbr       - |:Gbrowse| opens file in GitHub/BitBucket.
+    * <leader>gc        - |:Gcommit|
+    * <leader>gd        - |:Gvdiff| diffs staged version with working tree version.
+    * <leader>ggp       - |:Gpush|
+    * <leader>ggr       - |:Ggrep| searches working tree.
+    * <leader>glg       - |:Glog| lists previous versions in quickfix list.
+    * <leader>gll       - |:Gpull|
+    * <leader>gm        - |:Gmove| moves the file and renames the buffer.
+    * <leader>gr        - |:Gremove| removes the file and buffer.
+    * <leader>gs        - |:Gstatus| User `-` to add/reset, `p` to add/reset --patch
+
+--------------------------------------------------------------------------------
+25.2.3 |ruby-doc|                                              *turboladen-ruby-doc*
 
 https://github.com/lucapette/vim-ruby-doc
 
