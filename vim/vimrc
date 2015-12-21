@@ -77,6 +77,11 @@ autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
 ""===========================================================================""
 " 6. multiple windows
 ""===========================================================================""
+" Open new split window below.
+set splitbelow
+
+" Open new vsplit window to the right.
+set splitright
 
 ""===========================================================================""
 " 7. multiple tab pages
