@@ -54,6 +54,9 @@ set listchars=tab:▸\ ,trail:·,nbsp:_,extends:❯,precedes:❮
 syntax on
 syntax sync fromstart
 
+" Turn off syntax over 500 chars
+set synmaxcol=500
+
 set spell
 set spelllang=en_us
 
