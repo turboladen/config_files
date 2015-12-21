@@ -568,25 +568,22 @@ let g:markdown_mapping_switch_status = '<leader>ms'
 "-------------------------
 " Shougo/neocomplete
 "-------------------------
-let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1   " Moved to ~/.vimrc
-let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#max_list = 10
+let g:neocomplete#auto_completion_start_length = 4
+let g:neocomplete#enabled_ignore_case = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#enable_fuzzy_completion = 0
 let g:neocomplete#use_vimproc = 1
 
 " <TAB>: completion
 
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-"   let g:neocomplete#sources#omni#input_patterns = {}
+" if !exists('g:neocomplete#force_omni_input_patterns')
+"   let g:neocomplete#force_omni_input_patterns = {}
 " endif
-
-" let g:neocomplete#sources#omni#input_patterns.python = ''
-" let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.ruby =
-      \ '[^. *\t]\.\w*\|\h\w*::'
+" let g:neocomplete#force_omni_input_patterns.ruby =
+"       \ '[^. *\t]\.\w*\|\h\w*::'
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
