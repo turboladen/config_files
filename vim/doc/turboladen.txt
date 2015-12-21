@@ -37,7 +37,8 @@ CONTENTS                                                    *turboladen-content*
     12. Selecting Text .......................... |turboladen-selecting-text|
         12.1. Plugins ........................... |turobladen-selecting-plugins|
             12.1.1 indentLine ................... |turboladen-indentLine|
-            12.1.3 textobj-rubyblock ............ |turboladen-textobj-rubyblock|
+            12.1.2 textobj-rubyblock ............ |turboladen-textobj-rubyblock|
+            12.1.3 vim-ruby ..................... |turboladen-vim-ruby-selecting|
     13. Editing Text ............................ |turboladen-editing-text|
         13.1 Plugins ............................ |turboladen-editing-plugins|
             13.1.1 casetrate .................... |turboladen-casetrate|
@@ -228,11 +229,27 @@ https://github.com/Yggdroot/indentLine
 --------------------------------------------------------------------------------
 12.1.2 |textobj-rubyblock|                            *turboladen-textobj-rubyblock*
 
+|text-objects|:
+
+    * `<ar>`            - Select <a>ll <r>uby block
+    * `<ir>`            - Select <i>nner <r>uby block
+
 --------------------------------------------------------------------------------
 12.1.3 |vim-ruby|                                    *turboladen-vim-ruby-selecting*
 
 See |ruby-motion|.
 
+Mappings:
+
+    * `]m` / `[m`       - Jump to starts of method defs.
+    * `]M` / `[M`       - Jump to ends of methods defs.
+
+Text objects:
+
+    * `am`            - "a method"
+    * `im`            - "inner method"
+    * `aM`            - "a module" or class
+    * `iM`            - "inner module" or class
 
 ================================================================================
 13. Editing Text                                         *turboladen-editing-text*
