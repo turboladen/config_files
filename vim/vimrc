@@ -309,10 +309,6 @@ inoremap jk <ESC>
 " Disable Ex mode
 nnoremap Q <NOP>
 
-" When jump to next match also center screen
-noremap n nzz
-noremap N Nzz
-
 " After block yank and paste, move cursor to the end of operated text
 " Also, don't copy over-pasted text in visual mode
 vnoremap y y`]
