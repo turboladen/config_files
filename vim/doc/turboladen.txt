@@ -33,6 +33,7 @@ CONTENTS                                                    *turboladen-content*
     12. Selecting Text .......................... |turboladen-selecting-text|
         12.1. Plugins ........................... |turobladen-selecting-plugins|
             12.1.1 indentLine ................... |turboladen-indentLine|
+            12.1.3 textobj-rubyblock ............ |turboladen-textobj-rubyblock|
     13. Editing Text ............................ |turboladen-editing-text|
         13.1 Plugins ............................ |turboladen-editing-plugins|
             13.1.1 commentary ................... |turboladen-vim-commentary|

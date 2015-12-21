@@ -68,9 +68,13 @@ Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/nerdtree',         { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 " Plug 'tpope/vim-eunuch'
-Plug 'jwhitley/vim-matchit'
+" Plug 'jwhitley/vim-matchit'
+Plug 'tmhedberg/matchit'
+" Plug 'ruby-matchit',                { 'for': ['ruby', 'eruby'] }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
 
 " Searching
 " Plug 'kien/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
@@ -97,7 +101,6 @@ if !has('nvim')
 end
 
 Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby', 'eruby'] }
-Plug 'ruby-matchit',                { 'for': ['ruby', 'eruby'] }
 " Plug 'jgdavey/vim-blockle', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-bundler'
 Plug 'lucapette/vim-ruby-doc',      { 'for': ['ruby', 'eruby'] }
