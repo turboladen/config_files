@@ -11,7 +11,6 @@
 "
 ""===========================================================================""
 
-autocmd!
 let mapleader = " "
 
 ""===========================================================================""
@@ -75,9 +74,6 @@ colorscheme seti
 " colorscheme seoul256
 " set background=dark
 
-" Filetypes
-autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
-
 ""===========================================================================""
 " 6. multiple windows
 ""===========================================================================""
@@ -137,12 +133,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-autocmd Filetype html setlocal softtabstop=4
-autocmd Filetype qf setlocal nospell
-autocmd Filetype vimwiki setlocal ts=4 sts=4 sw=4 expandtab
-
 setlocal omnifunc=syntaxcomplete#Complete
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
 ""===========================================================================""
 " 15. folding
@@ -414,7 +405,47 @@ augroup reload_vimrc
   autocmd BufWritePost $MYVIMRC so $MYVIMRC
 augroup END
 
-autocmd VimResized * :wincmd =    " Resize when tmux gets resized
+augroup vimrc
+  autocmd!
+
+  " Filetypes
+  autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
+
+  autocmd Filetype html setlocal softtabstop=4
+  autocmd Filetype qf setlocal nospell
+  autocmd Filetype vimwiki setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd Filetype vim setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd Filetype zsh setlocal ts=2 sts=2 sw=2 expandtab
+  " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  " autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+
+  " Resize when tmux gets resized
+  autocmd VimResized * :wincmd =
+
+  " Use RainbowParentheses
+  autocmd VimEnter * RainbowParentheses
+  autocmd Syntax * RainbowParentheses
+
+  " Delete the buffer once I'm done with it.
+  autocmd BufReadPost fugitive://* set bufhidden=delete
+  autocmd BufReadPost nerdtree://* set bufhidden=delete
+
+  " Open grep commands, specifically Ggrep, in QuickFix
+  autocmd QuickFixCmdPost *grep* cwindow
+
+  "-------------------
+  " baverman/vial-http
+  "-------------------
+  au BufNewFile __vial_http__ nnoremap <buffer> <silent> <C-k> :b __vial_http_req__<CR>
+  au BufNewFile __vial_http_req__ nnoremap <buffer> <silent> <C-k> :b __vial_http_hdr__<CR>
+  au BufNewFile __vial_http_hdr__ nnoremap <buffer> <silent> <C-k> :b __vial_http__<CR>
+  au BufNewFile __vial_http__ setlocal nospell
+
+  "-------------------
+  " vim-plug
+  "-------------------
+  au FileType vim-plug setlocal nospell
+augroup END
 
 ""===========================================================================""
 " YY. Plugin options that must be here.
