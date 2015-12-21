@@ -67,7 +67,7 @@ endfunction
 
 " Allows running a normal-mode command, but keeps your cursor in the same spot
 " the command was run from.
-function turboladen#KeepJumps(command)
+function! turboladen#KeepJumps(command)
   let winview = winsaveview()
   execute "keepjumps normal! " . a:command
   call winrestview(winview)
