@@ -258,6 +258,8 @@ endif
 "--------------------------------------
 " F-keys
 "--------------------------------------
+nnoremap <F7> :IndentLinesToggle<CR>
+
 " nerdtree
 if exists(":NERDTreeFind")
   nnoremap <silent> <F2> :NERDTreeToggle<CR>
@@ -524,9 +526,11 @@ if executable('sift')
 endif
 
 "-------------------------
-" gundo.vim
+" indentLine
 "-------------------------
-let g:gundo_preview_bottom = 1
+let g:indentLine_color_term = 239
+let g:indentLine_char = '︙'
+let g:indentLine_enabled = 0
 
 "-------------------------
 " lightline

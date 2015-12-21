@@ -30,6 +30,9 @@ CONTENTS                                                    *turboladen-content*
     3. Tags ..................................... |turboladen-tags|
     5. Syntax, Highlighting & Spelling .......... |turboladen-syntax|
     11. Messages & Info ......................... |turboladen-messages-info|
+    12. Selecting Text .......................... |turboladen-selecting-text|
+        12.1. Plugins ........................... |turobladen-selecting-plugins|
+            12.1.1 indentLine ................... |turboladen-indentLine|
     13. Editing Text ............................ |turboladen-editing-text|
         13.1 Plugins ............................ |turboladen-editing-plugins|
             13.1.1 commentary ................... |turboladen-vim-commentary|
@@ -179,6 +182,20 @@ Resources
 
 ================================================================================
 11. Messages & Info                                     *turboladen-messages-info*
+
+================================================================================
+12. Selecting Text                                     *turboladen-selecting-text*
+
+--------------------------------------------------------------------------------
+12.1 Selecting Plugins                              *turboladen-selecting-plugins*
+
+--------------------------------------------------------------------------------
+12.1.2 |indentLine|                                          *turboladen-indentLine*
+
+https://github.com/Yggdroot/indentLine
+
+    * `<F7>`          - Toggle indentation lines
+
 
     * K         - Open man page/docs for word under cursor
 

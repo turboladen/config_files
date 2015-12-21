@@ -24,6 +24,9 @@ Plug 'BufOnly.vim'                      " For cleaning out buffers
 Plug 'yssl/QFEnter'                     " For opening items in QuickFix
 Plug 'junegunn/rainbow_parentheses.vim'
 
+" Show vertical line for indentation level
+Plug 'Yggdroot/indentLine'
+
 ""----------------------------------------------------------------------------
 " ftdetect plugins
 ""----------------------------------------------------------------------------
