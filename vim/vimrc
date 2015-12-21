@@ -259,9 +259,10 @@ nnoremap <leader>w :call turboladen#StripTrailingWhitespaces()<CR>
 " Syntastic toggle
 nnoremap <leader>y :SyntasticToggleMode<CR>
 
-"--------------------------------------
+"-------------------------------------------------------------------------------
 " Other remappings
-"--------------------------------------
+"-------------------------------------------------------------------------------
+
 "--------------------------------------
 " F-keys
 "--------------------------------------
@@ -337,6 +338,9 @@ set noswapfile
 ""===========================================================================""
 " 20. command line editing
 ""===========================================================================""
+" Only remember this many commands
+set history=300
+
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 
