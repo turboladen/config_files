@@ -143,7 +143,6 @@ Plug 'tpope/vim-repeat'
 
 " Adds :HLT commands for viewing the hilight setting for the cursor position.
 Plug 'gerw/vim-HiLinkTrace'       " For syntax highlighting help
-" Plug 'Shougo/vimshell.vim'        " For Shuogo/neocomplete.vim
 " Plug 'tbabej/taskwiki'
 Plug 'vimwiki/vimwiki'
 
