@@ -379,12 +379,14 @@ set wildignore+=.idea/*
 ""===========================================================================""
 " 22. running make and jumping to errors
 ""===========================================================================""
+" Programs that use :grep will use these; these don't affect the output of
+" :Ag.
 if executable('sift')
-  set grepprg=sift\ --no-color\ --no-conf
+  set grepprg=sift\ --line-number\ --binary-skip\ --no-color\ --exclude-dirs\ '.git'
+  set grepformat=%f:%l:%m
 elseif executable('ag')
-  " Use ag over grep
-  " set grepprg="ag --nogroup --nocolor"
-  set grepprg=ag\ --nocolor
+  set grepprg=ag\ --vimgrep\ --column
+  set grepformat=%f:%l:%c:%m
 endif
 
 ""===========================================================================""
