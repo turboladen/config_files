@@ -42,7 +42,6 @@ set wrap                  " Wrap long lines
 " set whichwrap+=<,>,h,l
 set linebreak
 set breakat=90
-set relativenumber
 set number
 set list          " Show invisibles/whitespace
 " set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_,extends:❯,precedes:❮
