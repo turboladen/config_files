@@ -186,14 +186,6 @@ if exists(":Dash")
 endif
 
 " eDIT MY vIMRC FILE
-
-if exists(":Unite")
-  " Shougo/unite-outline
-  nnoremap <LEADER>fu :Unite -start-insert outline<CR>
-elseif exists("CtrlPFunky")
-  nnoremap <LEADER>fu :CtrlPFunky<CR>
-  nnoremap <LEADER>fU :execute 'CtrlPFunky ' . expand('<cword>')<CR>
-endif
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
 " fugitive. Follows mappings for the zsh git plugin.
@@ -288,11 +280,6 @@ map <C-l> <C-w>l
 " Center screen on Down/Up jumping
 noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
-
-" Unite Mimic CtrlP
-" nnoremap <C-p> :Unite -start-insert bookmark tab buffer_tab file_rec/git<CR>
-nnoremap <C-p> :Unite bookmark file_rec/git<CR>
-" nnoremap <C-p> :Unite bookmark buffer_tab file_rec/async:!<CR>
 
 " Omni-complete based on ctags
 inoremap <C-]> <C-x><C-]>
@@ -658,29 +645,6 @@ let g:syntastic_markdown_mdl_args = "--style ~/.mdl_style.rb"
 "-------------------------
 let g:tmuxline_preset = 'full'
 " let g:tmuxline_powerline_separators = 0
-
-"------------------------------------------------------------------------------
-" Shuogo/unite
-"------------------------------------------------------------------------------
-let g:unite_source_history_yank_enable = 1
-" call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" call unite#filters#sorter_default#use(['sorter_rank'])
-" let g:unite_source_grep_command='ag'
-" let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4 --hidden
-"       \ --ignore .DS_Store -g ""'
-let g:unite_source_grep_command='sift'
-let g:unite_source_grep_default_opts='--no-color --line-number --binary-skip --no-conf'
-" let g:unite_source_grep_recursive_opt=''
-
-" Mimic Ack
-" nnoremap <SPACE>/ :Unite grep:.<CR>
-
-" Mimic yankring/yankstack
-" let g:unite_source_history_yank_enable = 1
-" nnoremap <SPACE>y :Unite history/yank<CR>
-
-" Mimic LustyJuggler
-" nnoremap <SPACE>s :Unite -quick-match buffer<CR>
 
 "------------------------------------------------------------------------------
 " baverman/vial-http
