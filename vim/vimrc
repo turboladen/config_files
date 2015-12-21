@@ -455,10 +455,7 @@ let g:ag_highlight=1            " highlight term after search
 let g:ag_working_path_mode="r"  " Search from project root
 
 "-------------------------
-" fugitive
 "-------------------------
-" Delete the buffer once I'm done with it.
-autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "-------------------------
 " fzf
@@ -570,7 +567,6 @@ let g:neocomplete#max_list = 10
 let g:neocomplete#use_vimproc = 1
 
 " <TAB>: completion
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " if !exists('g:neocomplete#sources#omni#input_patterns')
 "   let g:neocomplete#sources#omni#input_patterns = {}
@@ -590,18 +586,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " inoremap <expr><C-y>  neocomplete#close_popup()
 " inoremap <expr><C-e>  neocomplete#cancel_popup()
-
-"-------------------------
-" nerdtree
-"-------------------------
-" Delete the buffer once I'm done with it.
-autocmd BufReadPost nerdtree://* set bufhidden=delete
-
-"-------------------------
-" RainbowParentheses
-"-------------------------
-au VimEnter * RainbowParentheses
-au Syntax * RainbowParentheses
 
 "-------------------------
 " syntastic
@@ -649,19 +633,6 @@ let g:syntastic_markdown_mdl_args = "--style ~/.mdl_style.rb"
 "-------------------------
 let g:tmuxline_preset = 'full'
 " let g:tmuxline_powerline_separators = 0
-
-"------------------------------------------------------------------------------
-" baverman/vial-http
-"------------------------------------------------------------------------------
-au BufNewFile __vial_http__ nnoremap <buffer> <silent> <C-k> :b __vial_http_req__<CR>
-au BufNewFile __vial_http_req__ nnoremap <buffer> <silent> <C-k> :b __vial_http_hdr__<CR>
-au BufNewFile __vial_http_hdr__ nnoremap <buffer> <silent> <C-k> :b __vial_http__<CR>
-au BufNewFile __vial_http__ setlocal nospell
-
-"-------------------------
-" vim-plug
-"-------------------------
-au FileType vim-plug setlocal nospell
 
 "-------------------------
 " thoughtbot/vim-rspec
