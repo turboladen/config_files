@@ -406,7 +406,6 @@ set termencoding=utf-8
 " XX. No :options section
 ""===========================================================================""
 set lazyredraw
-set t_Co=256              " 256 colors
 
 runtime macros/matchit.vim
 
