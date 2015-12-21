@@ -321,6 +321,7 @@ Once the quick-fix window is open:
     * <leader>gd        - |:Gvdiff| diffs staged version with working tree version.
     * <leader>ggp       - |:Gpush|
     * <leader>ggr       - |:Ggrep| searches working tree.
+    * <leader>gi        - |:Git| runs any git command; use Git! to open in tmp file.
     * <leader>glg       - |:Glog| lists previous versions in quickfix list.
     * <leader>gll       - |:Gpull|
     * <leader>gm        - |:Gmove| moves the file and renames the buffer.

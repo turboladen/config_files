@@ -196,6 +196,7 @@ noremap <leader>gc :Gcommit<CR>
 noremap <leader>gd :Gvdiff<CR>
 noremap <leader>ggp :Gpush<CR>
 noremap <leader>ggr :Ggrep<SPACE>
+noremap <leader>gi :Git<SPACE>
 noremap <leader>glg :Glog<CR>
 noremap <leader>gll :Gpull<CR>
 noremap <leader>gm :Gmove<SPACE>
