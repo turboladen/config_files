@@ -305,6 +305,13 @@ inoremap <C-]> <C-x><C-]>
 "------------------------------------------------------------------------------
 " Reindent whole file
 nnoremap <leader>= :call turboladen#KeepJumps("gg=G")<CR>
+" Indent after gp
+" http://vim.wikia.com/wiki/Selecting_your_pasted_text
+nnoremap <expr> p 'p`[' . strpart(getregtype(), 0, 1) . '`]=`['
+
+" Indent after gp
+nnoremap <expr> gp 'p`[' . strpart(getregtype(), 0, 1) . '`]=`]'
+
 inoremap jk <ESC>
 
 " Disable Ex mode
