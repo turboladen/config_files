@@ -202,6 +202,12 @@ noremap <leader>gm :Gmove<SPACE>
 noremap <leader>gr :Gremove<CR>
 noremap <leader>gs :Gstatus<CR>
 
+" gitv
+noremap <leader>gva :Gitv --all<CR>
+noremap <leader>gvv :Gitv<CR>
+noremap <leader>gvg :Gitv -G<space>
+noremap <leader>gvs :Gitv -S<space>
+
 "--------------------------------------
 " <Leader>H-L
 "--------------------------------------

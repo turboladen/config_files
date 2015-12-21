@@ -148,7 +148,7 @@ Plug 'vimwiki/vimwiki'
 
 " Git-specific
 Plug 'tpope/vim-fugitive' | Plug 'tommcdo/vim-fubitive'
-" Plug 'gregsexton/gitv'
+Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 " Plug 'idanarye/vim-merginal'
 
 " HTTP client

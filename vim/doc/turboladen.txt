@@ -315,6 +315,14 @@ Once the quick-fix window is open:
     * <leader>gs        - |:Gstatus| User `-` to add/reset, `p` to add/reset --patch
 
 --------------------------------------------------------------------------------
+25.2.2 |gitv|                                                      *turboladen-gitv*
+
+    * <leader>gva           - :Gitv --all: browse repo for all refs.
+    * <leader>gvv           - :Gitv: browse repo for buffer's refs.
+    * <leader>gvg           - :Gitv -G: grep repo for lines matching <regex>
+    * <leader>gvs           - :Gitv -S: grep repo for lines matching <string>
+
+--------------------------------------------------------------------------------
 25.2.3 |ruby-doc|                                              *turboladen-ruby-doc*
 
 https://github.com/lucapette/vim-ruby-doc
