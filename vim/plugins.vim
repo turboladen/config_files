@@ -87,6 +87,9 @@ Plug 'rking/ag.vim'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf'
 
+" For case swapping
+Plug 'idanarye/vim-casetrate'
+
 ""----------------------------------------------------------------------------
 " Language-specific plugins
 ""----------------------------------------------------------------------------

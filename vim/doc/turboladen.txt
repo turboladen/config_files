@@ -36,12 +36,13 @@ CONTENTS                                                    *turboladen-content*
             12.1.3 textobj-rubyblock ............ |turboladen-textobj-rubyblock|
     13. Editing Text ............................ |turboladen-editing-text|
         13.1 Plugins ............................ |turboladen-editing-plugins|
-            13.1.1 commentary ................... |turboladen-vim-commentary|
-            13.1.2 exchange ..................... |turboladen-vim-exchange|
-            13.1.3 multiple-cursors ............. |turboladen-vim-multiple-cursors|
-            13.1.4 rubyhash ..................... |turboladen-vim-rubyhash|
-            13.1.5 splitjoin .................... |turboladen-splitjoin|
-            13.1.6 surround ..................... |turboladen-vim-surround|
+            13.1.1 casetrate .................... |turboladen-casetrate|
+            13.1.2 commentary ................... |turboladen-commentary|
+            13.1.3 exchange ..................... |turboladen-exchange|
+            13.1.4 multiple-cursors ............. |turboladen-multiple-cursors|
+            13.1.5 rubyhash ..................... |turboladen-rubyhash|
+            13.1.6 splitjoin .................... |turboladen-splitjoin|
+            13.1.7 surround ..................... |turboladen-surround|
     15. Folding ................................. |turboladen-folding|
     25. Various ................................. |turboladen-various|
         25.1. Quick-fix ......................... |turboladen-quick-fix|
@@ -212,7 +213,19 @@ Mappings:
 13.1 Editing Plugins                                  *turboladen-editing-plugins*
 
 --------------------------------------------------------------------------------
-13.1.1 |commentary|                                      *turboladen-vim-commentary*
+13.1.1 |casetrate|                                             *turboladen-castrate*
+
+https://github.com/idanarye/vim-casetrate
+
+    * `\cc`     - Change cursor word to camelCase
+    * `\cp`     - Change cursor word to PascalCase
+    * `\cs`     - Change cursor word to snake_case
+    * `\cu`     - Change cursor word to UPPER_CASE
+    * `\cm`     - Change cursor word to Mixed_Case
+    * `\cl`     - Change cursor word to lisp-case
+
+--------------------------------------------------------------------------------
+13.1.2 |commentary|                                          *turboladen-commentary*
 
 https://github.com/tpope/vim-commentary
 
