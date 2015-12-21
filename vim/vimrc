@@ -231,8 +231,10 @@ nnoremap <leader>l :call RunLastSpec()<CR>
 nnoremap <leader>m :call turboladen#RSpecCommandForManualRunning()<CR>
 
 " Do a TODO search
-if exists(":Ag")
-  nnoremap <LEADER>o :Ag! todo<CR>
+if exists(":Ggrep")
+  nnoremap <leader>o :Ggrep! -i todo<CR>
+elseif exists(":Ag")
+  nnoremap <leader>o :Ag! todo<CR>
 else
   nnoremap <leader>o :grep! todo<CR>
 endif

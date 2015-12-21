@@ -116,6 +116,10 @@ https://github.com/scrooloose/nerdtree
 --------------------------------------------------------------------------------
 2.2 Searching & Patterns                                    *turboladen-searching*
 
+    * `[I`      - Display lines containing word under the cursor; start at 0
+    * `]I`      - Display lines containing word under the cursor; start at pos()
+    * `<leader>o`           - Find TODOs
+
 --------------------------------------------------------------------------------
 2.2.1 Searching Plugins
 
