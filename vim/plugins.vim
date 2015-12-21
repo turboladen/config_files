@@ -124,8 +124,6 @@ Plug 'skwp/greplace.vim'
 " Adds gS and gJ to split/join code blocks.
 Plug 'AndrewRadev/splitjoin.vim'
 
-Plug 'sjl/gundo.vim'
-
 " Linting
 " Plug 'scrooloose/syntastic'
 Plug '/Users/sloveless/Development/not_my_projects/syntastic'

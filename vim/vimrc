@@ -267,9 +267,6 @@ if exists(":NERDTreeFind")
   " let g:NERDTreeMapActivateNode="<F3>"
   " let g:NERDTreeMapPreview="<F4>"
 endif
-
-nnoremap <F5> :GundoToggle<CR>
-
 " tagbar
 nnoremap <F8> :TagbarToggle<CR>
 
