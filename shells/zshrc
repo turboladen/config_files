@@ -153,7 +153,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 #------------------------------------------------------------------------------
 # Docker
 #------------------------------------------------------------------------------
-eval `boot2docker shellinit 2>/dev/null`
+# eval `boot2docker shellinit 2>/dev/null`
 
 #------------------------------------------------------------------------------
 # `gem install tmuxinator`
