@@ -8,10 +8,10 @@ Plug 'tpope/vim-sensible'
 
 " Color Scheme
 Plug 'trusktr/seti.vim'
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'junegunn/seoul256.vim'
-Plug 'joshdick/onedark.vim'
-Plug 'romainl/Apprentice'
+" Plug 'chriskempson/vim-tomorrow-theme'
+" Plug 'junegunn/seoul256.vim'
+" Plug 'joshdick/onedark.vim'
+" Plug 'romainl/Apprentice'
 
 ""----------------------------------------------------------------------------
 " UI tweaks
@@ -21,8 +21,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'airblade/vim-gitgutter'
 Plug 'BufOnly.vim'                      " For cleaning out buffers
-Plug 'yssl/QFEnter'                     " For opening items in QuickFix
-Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'yssl/QFEnter'                     " For opening items in QuickFix
 
 " Show vertical line for indentation level
 Plug 'Yggdroot/indentLine'
@@ -34,7 +33,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'pangloss/vim-javascript',           { 'for': 'javascript' }
 Plug 'jelera/vim-javascript-syntax',      { 'for': 'javascript' }
 Plug 'kchmck/vim-coffee-script',          { 'for': 'coffee' }
-Plug 'mxw/vim-jsx',                       { 'for': 'javascript.jsx' }
 
 " Ruby, Rails, etc
 Plug 'vim-ruby/vim-ruby',                 { 'for': ['ruby', 'eruby'] }
@@ -42,7 +40,8 @@ Plug 'thoughtbot/vim-rspec',              { 'for': ['ruby', 'eruby'] }
 Plug 'noprompt/vim-yardoc',               { 'for': ['ruby', 'eruby'] }
 
 " HTML, Markup
-Plug 'avakhov/vim-yaml',                  { 'for': 'yaml' }
+" Plug 'avakhov/vim-yaml',                  { 'for': 'yaml' }
+Plug 'ingydotnet/yaml-vim',               { 'for': 'yaml' }
 Plug 'tpope/vim-haml',                    { 'for': 'haml' }
 Plug 'heartsentwined/vim-emblem',         { 'for': 'emblem' }
 Plug 'slim-template/vim-slim',            { 'for': 'slim' }
@@ -51,11 +50,11 @@ Plug 'gabrielelana/vim-markdown',         { 'for': 'markdown' }
 
 " Other languages
 Plug 'elixir-lang/vim-elixir',            { 'for': 'elixir' }
-Plug 'jimenezrick/vimerl',                { 'for': 'erlang' }
 Plug 'tpope/vim-git'
 Plug 'sql.vim',                           { 'for': 'sql' }
 Plug 'exu/pgsql.vim',                     { 'for': 'sql' }
 
+" tmux
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
@@ -96,7 +95,7 @@ Plug 'idanarye/vim-casetrate'
 " Ruby, Rails
 Plug 'tpope/vim-rails',   { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rake',    { 'for': ['ruby', 'eruby'] }
-Plug 'tpope/vim-ragtag',  { 'for': ['ruby', 'eruby'] }
+" Plug 'tpope/vim-ragtag',  { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-projectionist'
 
 if !has('nvim')
@@ -111,7 +110,7 @@ Plug 'lucapette/vim-ruby-doc',      { 'for': ['ruby', 'eruby'] }
 ""----------------------------------------------------------------------------
 " Text-completion
 ""----------------------------------------------------------------------------
-Plug 'closetag.vim'
+" Plug 'closetag.vim'
 
 " if !has('nvim')
 "   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
@@ -121,9 +120,6 @@ Plug 'tpope/vim-endwise'
 ""----------------------------------------------------------------------------
 " Tools
 ""----------------------------------------------------------------------------
-" Show "Match X of Y" when searching
-Plug 'henrik/vim-indexed-search'
-
 " Project-wide search/replace with :Gsearch and :Greplace
 Plug 'skwp/greplace.vim'
 
@@ -149,7 +145,6 @@ Plug 'vimwiki/vimwiki'
 " Git-specific
 Plug 'tpope/vim-fugitive' | Plug 'tommcdo/vim-fubitive'
 Plug 'gregsexton/gitv', { 'on': 'Gitv' }
-" Plug 'idanarye/vim-merginal'
 
 " HTTP client
 " Plug 'nicwest/QQ.vim'
