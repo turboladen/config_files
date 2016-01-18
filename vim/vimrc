@@ -439,10 +439,6 @@ augroup vimrc
   " Resize when tmux gets resized
   autocmd VimResized * :wincmd =
 
-  " Use RainbowParentheses
-  autocmd VimEnter * RainbowParentheses
-  autocmd Syntax * RainbowParentheses
-
   " Delete the buffer once I'm done with it.
   autocmd BufReadPost fugitive://* set bufhidden=delete
   autocmd BufReadPost nerdtree://* set bufhidden=delete
