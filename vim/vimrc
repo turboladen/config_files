@@ -346,6 +346,10 @@ set noswapfile
 " Only remember this many commands
 set history=300
 
+" shell-like tab completion for command line
+set wildmode=longest,list,full
+set wildmenu
+
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 
