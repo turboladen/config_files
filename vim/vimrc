@@ -14,7 +14,7 @@
 let mapleader = " "
 
 ""===========================================================================""
-" Load vim-plug stuff first
+" 0. Load vim-plug stuff first
 ""===========================================================================""
 source ~/.vim/plugins.vim
 
@@ -53,7 +53,7 @@ set listchars=tab:▸\ ,trail:·,nbsp:_,extends:❯,precedes:❮
 syntax on
 syntax sync fromstart
 
-" Turn off syntax over 500 chars
+" Turn off syntax over 500 chars in a line
 set synmaxcol=500
 
 set spell
@@ -118,8 +118,6 @@ set noshowmode
 ""===========================================================================""
 " 13. editing text
 ""===========================================================================""
-set showmatch
-set matchtime=2   " Show matching paren for 0.2 secs
 
 ""===========================================================================""
 " 14. tabs and indenting
