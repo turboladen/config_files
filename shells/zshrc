@@ -96,12 +96,6 @@ export PATH=$PATH:/Applications/Sublime\ Text.app/Contents/SharedSupport/bin
 # Add personal tmux commands
 export PATH=$PATH:~/Development/projects/config_files/tmux
 
-#------------------------------------------------------------------------------
-# `brew install chruby`
-#------------------------------------------------------------------------------
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby ruby-2.2.3
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
