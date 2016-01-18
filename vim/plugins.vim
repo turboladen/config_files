@@ -166,4 +166,4 @@ Plug 'vim-utils/vim-troll-stopper'
 call plug#end()
 
 " Reload after saving this so I can PluginInstall.
-au BufWritePost ~/.vim/_vundle.vim so $MYVIMRC
+au BufWritePost ~/.vim/plugins.vim so $MYVIMRC
