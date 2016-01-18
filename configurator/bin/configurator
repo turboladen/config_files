@@ -95,6 +95,20 @@ class Configurator < Thor
     puts_n_run("sudo ln -s #{source_tmux_rails_file} /usr/local/bin/tmux_rails_env")
   end
 
+  desc 'ruby', "Sets up Steve's ruby stuff"
+  def ruby
+    say 'Setting up your ruby stuff now...'
+    %w[
+      gem-ctags
+      hairballs
+      rubocop
+      yard
+    ].each do |gem_name|
+      say "Installing #{gem_name}..."
+      Gem.install(gem_name)
+    end
+  end
+
   private
 
   def setup_vim_file(path)
