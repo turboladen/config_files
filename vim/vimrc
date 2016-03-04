@@ -429,6 +429,11 @@ augroup END
 augroup vimrc
   autocmd!
 
+  if has('nvim')
+    " autocmd! BufWritePost,BufEnter * Neomake
+    autocmd! BufWritePost * Neomake
+  endif
+
   " Filetypes
   autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
 
@@ -611,45 +616,83 @@ let g:NERDTreeIndicatorMapCustom = {
 let g:markdown_mapping_switch_status = '<leader>ms'
 
 "-------------------------
+" neomake
+"-------------------------
+if has("nvim")
+  let g:neomake_ruby_rubocop_maker = {
+        \ 'exe': 'bundle',
+        \ 'args': ['exec', 'rubocop', '--force-exclusion', '--display-cop-names', '--no-color'],
+        \ 'errorformat': '%f:%l:%c: %t: %m',
+        \ 'postprocess': function('neomake#makers#ft#ruby#RubocopEntryProcess')
+        \ }
+
+
+  let yard_errorformat =
+        \ '%W[warn]:\ %m\ in\ file\ `%f`\ near\ line\ %l,%Z,'.
+        \ '%E[error]:\ %m\ in\ file\ `%f`\ near\ line\ %l,%Z,'.
+        \ '%-G%.%.#'
+  let g:neomake_ruby_yard_maker = {
+        \ 'exe': 'yard',
+        \ 'args': ['stats'],
+        \ 'errorformat': yard_errorformat
+        \ }
+
+  let g:neomake_coffee_checkers = ['coffeelint']
+  let g:neomake_css_checkers = ['csslint']              " npm install -g csslint
+  let g:neomake_elixir_checkers = ['elixir']
+  let g:neomake_haml_checkers = ['hamllint']
+  let g:neomake_html_checkers = ['tidy']
+  let g:neomake_javascript_checkers = ['jshint']
+  let g:neomake_json_checkers = ['jsonlint']            " npm install -g jsonlint
+  let g:neomake_markdown_checkers = ['mdl']             " gem install mdl
+  let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'yard']
+  let g:neomake_sh_checkers = ['shellcheck']            " brew install shellcheck
+  let g:neomake_scss_checkers = ['scsslint']            " brew install shellcheck
+
+  " let g:neomake_open_list = 2
+endif
+
+"-------------------------
 " syntastic
 "-------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+if !has("nvim")
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
 
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_aggregate_errors = 1
+  let g:syntastic_error_symbol='✗'
+  let g:syntastic_warning_symbol='⚠'
+  let g:syntastic_style_error_symbol = '✗'
+  let g:syntastic_style_warning_symbol = '⚠'
+  let g:syntastic_aggregate_errors = 1
 
-let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
-let g:syntastic_css_checkers = ['csslint']              " npm install -g csslint
-let g:syntastic_elixir_checkers = ['elixir']
-let g:syntastic_eruby_checkers = ['ruby']
-let g:syntastic_haml_checkers = ['haml', 'haml_lint']   " gem install haml-lint
-let g:syntastic_handlebars_checkers = ['handlebars']
-let g:syntastic_javascript_checkers = ['standard']      " npm install -g standard
-let g:syntastic_markdown_checkers = ['mdl']             " gem install mdl
-" let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek', 'yard']
-let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'yard']
-let g:syntastic_sass_checkers = ['sass']
-let g:syntastic_sh_checkers = ['sh']
-let g:syntastic_slim_checkers = ['slimrb']
-" let g:syntastic_text_checkers = ['language_check']      " pip install --user --upgrade language-check
-let g:syntastic_yaml_checkers = ['jsyaml']              " npm install -g js-yaml
-let g:syntastic_zsh_checkers = ['zsh']
+  let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
+  let g:syntastic_css_checkers = ['csslint']              " npm install -g csslint
+  let g:syntastic_elixir_checkers = ['elixir']
+  let g:syntastic_eruby_checkers = ['ruby']
+  let g:syntastic_haml_checkers = ['haml', 'haml_lint']   " gem install haml-lint
+  let g:syntastic_handlebars_checkers = ['handlebars']
+  let g:syntastic_javascript_checkers = ['jshint']      " npm install -g jshint
+  let g:syntastic_markdown_checkers = ['mdl']             " gem install mdl
+  let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'yard']
+  let g:syntastic_sass_checkers = ['sass']
+  let g:syntastic_sh_checkers = ['sh']
+  let g:syntastic_slim_checkers = ['slimrb']
+  " let g:syntastic_text_checkers = ['language_check']      " pip install --user --upgrade language-check
+  let g:syntastic_yaml_checkers = ['jsyaml']              " npm install -g js-yaml
+  let g:syntastic_zsh_checkers = ['zsh']
 
-let g:syntastic_enable_elixir_checker = 1
-let g:syntastic_ruby_rubocop_args = "--force-exclusion --display-cop-names --no-color"
-let g:syntastic_markdown_mdl_args = "--style ~/.mdl_style.rb"
-" let g:syntastic_text_language_check_args = '--language=en-US'
-" let g:syntastic_debug = 3
+  let g:syntastic_enable_elixir_checker = 1
+  let g:syntastic_ruby_rubocop_args = "--force-exclusion --display-cop-names --no-color"
+  let g:syntastic_markdown_mdl_args = "--style ~/.mdl_style.rb"
+  " let g:syntastic_text_language_check_args = '--language=en-US'
+  " let g:syntastic_debug = 3
+endif
 
 "-------------------------
 " tmuxline.vim

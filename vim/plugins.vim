@@ -123,8 +123,12 @@ Plug 'skwp/greplace.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 
 " Linting
-" Plug 'scrooloose/syntastic'
-Plug '/Users/sloveless/Development/not_my_projects/syntastic'
+if has('nvim')
+  Plug 'benekastah/neomake'
+else
+  " Plug 'scrooloose/syntastic'
+  Plug '/Users/sloveless/Development/not_my_projects/syntastic'
+endif
 
 " Sidebar of methods/functions
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
