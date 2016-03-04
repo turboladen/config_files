@@ -269,16 +269,9 @@ nnoremap <F8> :TagbarToggle<CR>
 " F9 is for pastemode
 
 " nerdtree
-if exists(":NERDTreeFind")
-  " Mapping twice since F2/F3 are easier on the HHKB and F9/F10 are easier
-  " with the Mac keyboard.
-  nnoremap <silent> <F2> :NERDTreeToggle<CR>
-  nnoremap <silent> <F3> :NERDTreeFind<CR>
-  nnoremap <silent> <F11> :NERDTreeToggle<CR>
-  nnoremap <silent> <F12> :NERDTreeFind<CR>
-  " let g:NERDTreeMapActivateNode="<F3>"
-  " let g:NERDTreeMapPreview="<F4>"
-endif
+nnoremap <silent> <F2> :NERDTreeToggle<CR> :NERDTreeMirror<CR>
+nnoremap <silent> <F3> :NERDTreeFind<CR> :NERDTreeMirror<CR>
+
 "------------------------------------------------------------------------------
 " Ctrl- combos
 "------------------------------------------------------------------------------
