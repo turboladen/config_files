@@ -98,11 +98,17 @@ class Configurator < Thor
   desc 'ruby', "Sets up Steve's ruby stuff"
   def ruby
     say 'Setting up your ruby stuff now...'
-    %w[
-      gem-ctags
-      hairballs
-      rubocop
-      yard
+    [
+      'ctags',
+      'gem-ctags',
+      'hairballs',
+      'haml-lint',      # for nvim
+      'mdl',            # markdown linter for vim
+      'powder',
+      'pre-commit',
+      'rubocop',
+      'scss-lint',      # for nvim
+      'yard'
     ].each do |gem_name|
       say "Installing #{gem_name}..."
       Gem.install(gem_name)
