@@ -82,6 +82,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'rking/ag.vim'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " For case swapping
 Plug 'idanarye/vim-casetrate'
