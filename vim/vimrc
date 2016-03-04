@@ -472,14 +472,18 @@ augroup END
 "-------------------------
 " ag.vim
 " https://robots.thoughtbot.com/faster-grepping-in-vim
+" https://www.reddit.com/r/vim/comments/3mtevg/sift_grep_on_steroids/cvhyy8e
 "-------------------------
-" if executable('sift')
-"   let g:ag_prg="sift --no-color --line-number --binary-skip"
-"   let g:ag_format="%f:%l:%m"
-" elseif executable('ag')
-if executable('ag')
-  " let g:ag_prg="ag --context --vimgrep --only-matching --silent"
+if has("nvim")
   let g:ag_prg="ag --vimgrep --only-matching --silent"
+else
+  if executable('sift')
+    let g:ag_prg="sift --no-color -n --binary-skip"
+    let g:ag_format="%f:%l:%m"
+  elseif executable('ag')
+    " let g:ag_prg="ag --context --vimgrep --only-matching --silent"
+    let g:ag_prg="ag --vimgrep --only-matching --silent"
+  endif
 endif
 
 let g:ag_highlight=1            " highlight term after search
