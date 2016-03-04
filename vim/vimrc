@@ -119,6 +119,8 @@ set noshowmode
 ""===========================================================================""
 " 13. editing text
 ""===========================================================================""
+" More info for completion.
+set completeopt+=longest,preview
 
 ""===========================================================================""
 " 14. tabs and indenting
@@ -132,7 +134,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-setlocal omnifunc=syntaxcomplete#Complete
+" setlocal omnifunc=syntaxcomplete#Complete
 
 ""===========================================================================""
 " 15. folding
@@ -287,6 +289,7 @@ noremap <C-u> <C-u>zz
 
 " Omni-complete based on ctags
 inoremap <C-]> <C-x><C-]>
+" inoremap <C-x><C-]> <C-]>
 
 "------------------------------------------------------------------------------
 " Alpha character combos
