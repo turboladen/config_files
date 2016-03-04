@@ -443,7 +443,7 @@ augroup vimrc
   " autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 
   " Resize when tmux gets resized
-  autocmd VimResized * :wincmd =
+  " autocmd VimResized * :wincmd =
 
   " Delete the buffer once I'm done with it.
   autocmd BufReadPost fugitive://* set bufhidden=delete
