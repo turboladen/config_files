@@ -85,7 +85,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 " For case swapping
-Plug 'idanarye/vim-casetrate'
+" Plug 'idanarye/vim-casetrate'
 
 ""----------------------------------------------------------------------------
 " Language-specific plugins

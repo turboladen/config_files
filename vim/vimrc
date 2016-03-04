@@ -489,7 +489,7 @@ let g:ag_working_path_mode="r"  " Search from project root
 "-------------------------
 " casetrate
 "-------------------------
-let g:casetrate_leader = '\c'
+" let g:casetrate_leader = '\c'
 
 "-------------------------
 " fzf
