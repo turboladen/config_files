@@ -93,6 +93,11 @@ netrw (Explorer Mode)
     * `o`   - Open file in a horizontal split
     * `v`   - Open file in a vertical split
 
+Mappings:
+
+    * `]ri` / `[ri`         - Jump to next / previous "it", "before", or "after"
+    * `]rd` / `[rd`         - Jump to next / previous "describe" or "context"
+
 --------------------------------------------------------------------------------
 2.1.2. Buffers & Windows Plugins                      *turboladen-buffers-plugins*
 

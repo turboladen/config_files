@@ -4,6 +4,46 @@
 "
 "###############################################################################
 
+function! turboladen#FindRspecIts(direction)
+  if a:direction == 'forward'
+    let a:direction_flag = ''
+  elseif a:direction == 'backward'
+    let a:direction_flag = 'b'
+  endif
+
+  let flags = a:direction_flag . 'ws'
+
+  let [lnum, col] = searchpos("\^(it \\|before\\|after\)", flags)
+
+  echom 'Found line ' . lnum . ' and col ' . col
+
+  if lnum == 0 && col == 0
+    return
+  else
+    call cursor(lnum, col)
+  endif
+endfunction
+
+function! turboladen#FindRubyMethod(direction)
+  if a:direction == 'forward'
+    let a:direction_flag = ''
+  elseif a:direction == 'backward'
+    let a:direction_flag = 'b'
+  endif
+
+  let flags = a:direction_flag . 'ws'
+
+  let [lnum, col] = searchpos('\<def\>', flags)
+
+  echom 'Found line ' . lnum . ' and col ' . col
+
+  if lnum == 0 && col == 0
+    return
+  else
+    call cursor(lnum, col)
+  endif
+endfunction
+
 function! turboladen#LightLineModified()
   if &filetype == "help"
     return ""
@@ -129,6 +169,14 @@ endfunction
 " Updates ctags for the project directory, then updates Neocomplete's cache.
 function! turboladen#UpdateCTags()
   :!ctags .
+
+  if exists(":NeoCompleteEnable")
+    :NeoCompleteTagMakeCache
+  endif
+endfunction
+
+function! turboladen#UpdateRipperTags()
+  :!ripper-tags -R .
 
   if exists(":NeoCompleteEnable")
     :NeoCompleteTagMakeCache

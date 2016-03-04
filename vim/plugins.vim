@@ -20,7 +20,7 @@ Plug 'BufOnly.vim'                      " For cleaning out buffers
 " Plug 'yssl/QFEnter'                     " For opening items in QuickFix
 
 " Show vertical line for indentation level
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 ""----------------------------------------------------------------------------
 " ftdetect plugins
@@ -43,6 +43,7 @@ Plug 'heartsentwined/vim-emblem',         { 'for': 'emblem' }
 Plug 'slim-template/vim-slim',            { 'for': 'slim' }
 Plug 'mustache/vim-mustache-handlebars',  { 'for': ['mustache', 'html.handlebars'] }
 Plug 'gabrielelana/vim-markdown',         { 'for': 'markdown' }
+Plug 'mattn/emmet-vim',                   { 'for': ['html', 'mustache', 'html.handlebars', 'eelixir'] }
 
 " Other languages
 Plug 'avdgaag/vim-phoenix'
@@ -61,12 +62,10 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'scrooloose/nerdtree',         { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'scrooloose/nerdtree',         { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeMirror'] }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeMirror'] }
 " Plug 'tpope/vim-eunuch'
-" Plug 'jwhitley/vim-matchit'
 Plug 'tmhedberg/matchit'
-" Plug 'ruby-matchit',                { 'for': ['ruby', 'eruby'] }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
 Plug 'kana/vim-textobj-user'
@@ -80,6 +79,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 " Plug 'Shougo/tabpagebuffer.vim'
 " Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
+" Plug 'kalafut/vim-sift'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'

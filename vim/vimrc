@@ -278,10 +278,11 @@ nnoremap <silent> <F3> :NERDTreeFind<CR> :NERDTreeMirror<CR>
 " Ctrl- combos
 "------------------------------------------------------------------------------
 " Save some ring-finger key strokes
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+imap <C-BS> <C-W>
 
 " Center screen on Down/Up jumping
 noremap <C-d> <C-d>zz
@@ -296,6 +297,19 @@ inoremap <C-]> <C-x><C-]>
 "------------------------------------------------------------------------------
 " Reindent whole file
 nnoremap <leader>= :call turboladen#KeepJumps("gg=G")<CR>
+
+" Sometimes ]m jumping for Ruby doesn't work.
+nnoremap ]rm :call turboladen#FindRubyMethod('forward')<CR>
+nnoremap [rm :call turboladen#FindRubyMethod('backward')<CR>
+nnoremap ]rM /\(\<class\>\\|\<module\>\) \u<CR>
+nnoremap [rM ?\(\<class\>\\|\<module\>\) \u<CR>
+
+" RSpec jumping
+nnoremap ]ri :call turboladen#FindRspecIts('forward')<CR>
+nnoremap [ri :call turboladen#FindRspecIts('backward')<CR>
+nnoremap ]rd /\(describe\\|context\)\s\('\\|"\)<CR>
+nnoremap [rd ?\(describe\\|context\)\s\('\\|"\)<CR>
+
 " Indent after gp
 " http://vim.wikia.com/wiki/Selecting_your_pasted_text
 nnoremap <expr> p 'p`[' . strpart(getregtype(), 0, 1) . '`]=`['
@@ -310,9 +324,9 @@ nnoremap Q <NOP>
 
 " After block yank and paste, move cursor to the end of operated text
 " Also, don't copy over-pasted text in visual mode
-vnoremap y y`]
-vnoremap p "_dP`]
-nnoremap p p`]
+" vnoremap y y`]
+" vnoremap p "_dP`]
+" nnoremap p p`]
 
 " No more accidentally showing up command window (Use C-f to show it)
 nnoremap q: :q
@@ -393,6 +407,9 @@ set termencoding=utf-8
 ""===========================================================================""
 " 25. various
 ""===========================================================================""
+" Default search/replace to work globally.
+set gdefault
+
 " Use different cursor for insert mode.
 " https://gist.github.com/andyfowler/1195581
 if exists('$TMUX')

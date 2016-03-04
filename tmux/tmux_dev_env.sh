@@ -6,7 +6,7 @@ CURRENT_SESSION=${PWD##*/}
 tmux new-session -s $CURRENT_SESSION -n vim -d
 
 # VIM window
-tmux send-keys -t $CURRENT_SESSION 'vim' C-m
+tmux send-keys -t $CURRENT_SESSION 'nvim' C-m
 # tmux rename-window vim
 
 # RSpec pane for running tests

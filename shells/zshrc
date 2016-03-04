@@ -102,6 +102,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Node
 export PATH=$PATH:/usr/local/share/npm/bin
 
+# Local bin
+export PATH=$PATH:~/bin
+
 # Bower
 alias bower='noglob bower'
 
@@ -151,12 +154,14 @@ bindkey -M vicmd 'j' history-substring-search-down
 #------------------------------------------------------------------------------
 
 # Append PWD/bin to the path for Rails projects
-export PATH=$PATH:./bin
+# export PATH=$PATH:./bin
 
 export EDITOR=vim
 # set -o vi
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+export VMAIL_HTML_PART_READER='elinks -dump'
 
 # https://github.com/rweng/pry-rails
 export DISABLE_PRY_RAILS=1
@@ -167,3 +172,74 @@ autoload run-help
 HELPDIR=/usr/local/share/zsh/help
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fstash - easier way to deal with stashes
+# type fstash to get a list of your stashes
+# enter shows you the contents of the stash
+# ctrl-d shows a diff of the stash against your current HEAD
+# ctrl-b checks the stash out as a branch, for easier merging
+fstash() {
+  zmodload zsh/mapfile
+
+  local out q k sha
+  while out=$(
+    git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
+    fzf --ansi --no-sort --query="$q" --print-query \
+        --expect=ctrl-d,ctrl-b);
+  do
+    # mapfile -t out <<< "$out"
+    $mapfile[out] <<< "$out"
+    q="${out[0]}"
+    k="${out[1]}"
+    sha="${out[-1]}"
+    sha="${sha%%}"
+
+    [[ -z "$sha" ]] && continue
+    if [[ "$k" == 'ctrl-d' ]]; then
+      git diff $sha
+    elif [[ "$k" == 'ctrl-b' ]]; then
+      git stash branch "stash-$sha" $sha
+      break;
+    else
+      git stash show -p $sha
+    fi
+  done
+}
+
+unalias z 2> /dev/null
+z() {
+  if [[ -z "$*" ]]; then
+    cd "$(_z -l 2>&1 | fzf +s --tac | sed 's/^[0-9,.]* *//')"
+  else
+    _z "$@"
+  fi
+}
+
+
+# c - browse chrome history
+chrome_fzf() {
+  local cols sep
+  cols=$(( COLUMNS / 3 ))
+  sep='{{::}}'
+
+  # Copy History DB to circumvent the lock
+  # - See http://stackoverflow.com/questions/8936878 for the file path
+  cp -f ~/Library/Application\ Support/Google/Chrome/Default/History /tmp/h
+
+  sqlite3 -separator $sep /tmp/h \
+    "select substr(title, 1, $cols), url
+     from urls order by last_visit_time desc" |
+  awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\n", $1, $2}' |
+  fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs open
+}
+
+# chruby integreation
+frb() {
+  local rb
+  rb=$((echo system; chruby | cut -c 4-) |
+      awk '{print $1}' |
+      fzf-tmux -l 30 +m --reverse)
+  chruby $rb
+}
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
