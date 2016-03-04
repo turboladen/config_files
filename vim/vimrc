@@ -10,7 +10,6 @@
 " https://github.com/carlhuda/janus/blob/master/janus/vim/core/before/plugin/settings.vim
 "
 ""===========================================================================""
-
 let mapleader = " "
 
 ""===========================================================================""
@@ -57,7 +56,10 @@ syntax sync fromstart
 set synmaxcol=500
 
 set spell
-set spelllang=en_us
+
+if exists("+spelllang")
+  set spelllang=en_us
+endif
 
 set colorcolumn=80,120    " Show rulers
 set hlsearch              " highlight matches
@@ -90,12 +92,11 @@ set splitright
 ""===========================================================================""
 " 8. terminal
 ""===========================================================================""
-if !has('nvim')
+if !has("nvim")
   set term=xterm-256color
+  set ttyfast
+  set ttyscroll=3
 endif
-
-set ttyfast
-" set ttyscroll=3
 
 ""===========================================================================""
 " 9. using the mouse
@@ -138,7 +139,6 @@ setlocal omnifunc=syntaxcomplete#Complete
 ""===========================================================================""
 set foldlevelstart=10
 set foldnestmax=10      " 10 nested fold max
-
 
 ""===========================================================================""
 " 16. diff mode
@@ -426,7 +426,7 @@ augroup END
 augroup vimrc
   autocmd!
 
-  if has('nvim')
+  if has("nvim")
     " autocmd! BufWritePost,BufEnter * Neomake
     autocmd! BufWritePost * Neomake
   endif
