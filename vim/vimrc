@@ -178,11 +178,6 @@ nnoremap <leader>ct :call turboladen#UpdateCTags()<CR>
 " Since I remap <C-l> (default redraw command), add a mapping for that.
 nnoremap <leader>dr :redraw!<CR>
 
-" Dash.app docs
-if exists(":Dash")
-  nnoremap <leader>da :Dash<SPACE>
-endif
-
 " eDIT MY vIMRC FILE
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
