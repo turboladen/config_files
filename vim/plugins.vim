@@ -107,10 +107,10 @@ Plug 'lucapette/vim-ruby-doc',      { 'for': ['ruby', 'eruby'] }
 " Text-completion
 ""----------------------------------------------------------------------------
 " Plug 'closetag.vim'
+" Plug 'craigemery/vim-autotag'
 
-" if !has('nvim')
-"   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-" endif
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+
 Plug 'tpope/vim-endwise'
 
 ""----------------------------------------------------------------------------
