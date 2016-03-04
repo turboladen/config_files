@@ -45,7 +45,8 @@ Plug 'mustache/vim-mustache-handlebars',  { 'for': ['mustache', 'html.handlebars
 Plug 'gabrielelana/vim-markdown',         { 'for': 'markdown' }
 
 " Other languages
-Plug 'elixir-lang/vim-elixir',            { 'for': 'elixir' }
+Plug 'avdgaag/vim-phoenix'
+Plug 'elixir-lang/vim-elixir',            { 'for': ['elixir', 'eelixir'] }
 Plug 'tpope/vim-git'
 Plug 'sql.vim',                           { 'for': 'sql' }
 Plug 'exu/pgsql.vim',                     { 'for': 'sql' }
