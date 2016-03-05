@@ -1,5 +1,7 @@
-require 'configurator/version'
+require_relative 'configurator/git'
+require_relative 'configurator/vim'
+require_relative 'configurator/ruby'
+require_relative 'configurator/version'
 
-module Configurator
-  # Your code goes here...
+class Configurator < Thor
 end

@@ -3,14 +3,12 @@
 require 'thor'
 require 'find'
 require 'fileutils'
+require_relative '../lib/configurator'
 
 # This thing is just a tool for setting up my environment. Make sure to
 # install dependencies first.
 class Configurator < Thor
   include Thor::Actions
-
-  SOURCE_VIM_DIR = File.expand_path(File.join(Dir.pwd, '..', 'vim'))
-  DEST_VIM_DIR = File.join(Dir.home, '.vim')
 
   def self.source_root
     File.dirname(__FILE__)
@@ -20,137 +18,22 @@ class Configurator < Thor
 
   desc 'git', "Sets up Steve's git config"
   def git
-    say 'Setting up your git stuff now...'
-
-    run %(git config --global user.name "Steve Loveless")
-    run %(git config --global user.email "steve.loveless@gmail.com")
-    run %(git config --global core.editor vim)
-    run %(git config --global alias.ci 'commit')
-    run %(git config --global alias.st 'status')
-    run %(git config --global color.ui true)
-
-    run %(git config --global merge.tool vimdiff)
-    run %(git config --global diff.tool vimdiff)
-    run %(git config --global difftool.prompt false)
-    run %(git config --global credential.helper osxkeychain)
-
-    say 'Done.  Have you configured your SSH keys?'
+    Configurator::Git.new(args, options).run
   end
 
   desc 'vim', "Sets up Steve's vim files"
   def vim
-    say 'Doing DRY RUN...' if options.dry_run?
-
-    say_status :start, 'vim-plug installed?', :blue
-    unless Dir.exist?(File.join(DEST_VIM_DIR, 'plugged'))
-      say_status :false, 'vim-plug installed? FALSE', :red
-      abort 'Install vim-plug first!'
-    end
-    say_status :skip, 'vim-plug installed? TRUE', :yellow
-
-    @dry_run = options.dry_run?
-    self.destination_root = DEST_VIM_DIR
-
-    dest_vimrc = File.join(Dir.home, '.vimrc')
-    source_vimrc = File.join(SOURCE_VIM_DIR, 'vimrc')
-    link_vim_file(source_vimrc, dest_vimrc)
-
-    setup_vim_file 'plugins.vim'
-    setup_vim_file 'after/ftdetect/ruby.vim'
-    setup_vim_file 'after/plugin/bundler.vim'
-    setup_vim_file 'autoload/turboladen.vim'
-    setup_vim_file 'doc/turboladen.txt'
+    Configurator::Vim.new(args, options).run
   end
 
   desc 'tmux', "Sets up Steve's tmux files"
   def tmux
-    say 'Setting up your tmux stuff now...'
-
-    source_tmux_dir = File.join(Dir.pwd, 'tmux')
-    source_tmux_file = File.join(source_tmux_dir, 'tmux.conf')
-    dest_tmux_file = File.join(Dir.home, '.tmux.conf')
-
-    if File.exist?(dest_tmux_file)
-      say "'#{dest_tmux_file}' already exists. Skipping."
-    else
-      puts_n_run("ln #{source_tmux_file} #{dest_tmux_file}")
-    end
-
-    source_tmux_dev_file = File.join(source_tmux_dir, 'tmux_dev_env.sh')
-    source_tmux_rails_file = File.join(source_tmux_dir, 'tmux_rails_env.sh')
-
-    puts_n_run("sudo ln -s #{source_tmux_dev_file} /usr/local/bin/tmux_dev_env")
-    puts_n_run("sudo ln -s #{source_tmux_rails_file} /usr/local/bin/tmux_rails_env")
+    Configurator::Tmux.new(args, options).run
   end
 
   desc 'ruby', "Sets up Steve's ruby stuff"
   def ruby
-    say 'Setting up your ruby stuff now...'
-    [
-      'ctags',
-      'gem-ctags',
-      'hairballs',
-      'haml-lint',      # for nvim
-      'mdl',            # markdown linter for vim
-      'powder',
-      'pre-commit',
-      'rubocop',
-      'scss-lint',      # for nvim
-      'yard'
-    ].each do |gem_name|
-      say "Installing #{gem_name}..."
-      Gem.install(gem_name)
-    end
-  end
-
-  private
-
-  def setup_vim_file(path)
-    source_file, dest_file = build_source_and_dest_paths(path)
-    ensure_dest_dir(dest_file)
-    link_vim_file(source_file, dest_file)
-  end
-
-  def build_source_and_dest_paths(source_name, dest_name = nil)
-    dest_name ||= source_name
-    source = File.join(SOURCE_VIM_DIR, source_name)
-    dest = File.join(DEST_VIM_DIR, dest_name)
-
-    [source, dest]
-  end
-
-  def ensure_dest_dir(dest)
-    dest_dir = File.dirname(dest)
-
-    say_status :start, "#{dest_dir} exists?", :blue
-    if Dir.exist?(dest_dir)
-      say_status :skip, "#{dest_dir} exists? TRUE", :yellow
-    else
-      say_status :false, "#{dest_dir} exists? FALSE", :red
-      say_status :start, "Making #{dest_dir}", :blue
-      FileUtils.mkdir_p(dest_dir)
-      say_status :done, "Making #{dest_dir}"
-    end
-  end
-
-  def link_vim_file(repo_file, vim_file)
-    say_status :start, "Linking #{vim_file}", :blue
-
-    status, color = if File.exist?(vim_file)
-                      %i(skip yellow)
-                    else
-                      say "Creating link: '#{vim_file}' to '#{repo_file}'"
-                      create_link(vim_file, repo_file, symbolic: false)
-
-                      %i(done green)
-                    end
-
-    say_status status, "Linking #{vim_file}", color
-  end
-
-  def puts_n_run(cmd)
-    say "Running command: #{cmd}"
-    `#{cmd}` unless @dry_run
+    Configurator::Ruby.new(args, options).run
   end
 end
 
