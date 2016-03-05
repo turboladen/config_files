@@ -34,17 +34,17 @@ class Configurator < Thor
   def git
     say 'Setting up your git stuff now...'
 
-    run %[git config --global user.name "Steve Loveless"]
-    run %[git config --global user.email "steve.loveless@gmail.com"]
-    run %[git config --global core.editor vim]
-    run %[git config --global alias.ci 'commit']
-    run %[git config --global alias.st 'status']
-    run %[git config --global color.ui true]
+    run %(git config --global user.name "Steve Loveless")
+    run %(git config --global user.email "steve.loveless@gmail.com")
+    run %(git config --global core.editor vim)
+    run %(git config --global alias.ci 'commit')
+    run %(git config --global alias.st 'status')
+    run %(git config --global color.ui true)
 
-    run %[git config --global merge.tool vimdiff]
-    run %[git config --global diff.tool vimdiff]
-    run %[git config --global difftool.prompt false]
-    run %[git config --global credential.helper osxkeychain]
+    run %(git config --global merge.tool vimdiff)
+    run %(git config --global diff.tool vimdiff)
+    run %(git config --global difftool.prompt false)
+    run %(git config --global credential.helper osxkeychain)
 
     say 'Done.  Have you configured your SSH keys?'
   end
@@ -76,7 +76,7 @@ class Configurator < Thor
 
   desc 'tmux', "Sets up Steve's tmux files"
   def tmux
-    say "Setting up your tmux stuff now..."
+    say 'Setting up your tmux stuff now...'
 
     source_tmux_dir = File.join(Dir.pwd, 'tmux')
     source_tmux_file = File.join(source_tmux_dir, 'tmux.conf')
@@ -149,12 +149,12 @@ class Configurator < Thor
     say_status :start, "Linking #{vim_file}", :blue
 
     status, color = if File.exist?(vim_file)
-                      %i[skip yellow]
+                      %i(skip yellow)
                     else
                       say "Creating link: '#{vim_file}' to '#{repo_file}'"
                       create_link(vim_file, repo_file, symbolic: false)
 
-                      %i[done green]
+                      %i(done green)
                     end
 
     say_status status, "Linking #{vim_file}", color
