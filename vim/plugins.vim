@@ -43,7 +43,8 @@ Plug 'heartsentwined/vim-emblem',         { 'for': 'emblem' }
 Plug 'slim-template/vim-slim',            { 'for': 'slim' }
 Plug 'mustache/vim-mustache-handlebars',  { 'for': ['mustache', 'html.handlebars'] }
 Plug 'gabrielelana/vim-markdown',         { 'for': 'markdown' }
-Plug 'mattn/emmet-vim',                   { 'for': ['html', 'mustache', 'html.handlebars', 'eelixir'] }
+" Plug 'mattn/emmet-vim',                   { 'for': ['html', 'mustache', 'html.handlebars', 'eelixir'] }
+Plug 'mattn/emmet-vim'
 
 " Other languages
 Plug 'avdgaag/vim-phoenix'
@@ -62,6 +63,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree',         { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeMirror'] }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeMirror'] }
 " Plug 'tpope/vim-eunuch'
@@ -112,8 +114,11 @@ Plug 'lucapette/vim-ruby-doc',      { 'for': ['ruby', 'eruby'] }
 " Plug 'craigemery/vim-autotag'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+" Plug 'ajh17/VimCompletesMe'
+" let b:vcm_tab_complete = 'tags'
 
 Plug 'tpope/vim-endwise'
+Plug 'rhysd/committia.vim'
 
 ""----------------------------------------------------------------------------
 " Tools
@@ -125,8 +130,10 @@ Plug 'skwp/greplace.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 
 " Linting
-if has('nvim')
+if has("nvim")
   Plug 'benekastah/neomake'
+  Plug 'kassio/neoterm'
+  let g:neoterm_rspec_lib_cmd=turboladen#RSpecShellCommand()
 else
   " Plug 'scrooloose/syntastic'
   Plug '/Users/sloveless/Development/not_my_projects/syntastic'

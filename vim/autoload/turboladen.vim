@@ -131,9 +131,9 @@ endfunction
 " Returns the RSpec command to run based on your environment.
 function! turboladen#RSpecShellCommand()
   if filereadable("bin/rspec")
-    return 'bin/rspec '
+    return "bin/rspec "
   else
-    return 'bundle exec rspec '
+    return "bundle exec rspec "
   endif
 endfunction
 

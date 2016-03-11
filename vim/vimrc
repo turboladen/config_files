@@ -171,7 +171,11 @@ nnoremap <leader>\ :Greplace<CR>
 " <Leader>A-G
 "--------------------------------------
 " thoughtbot/vim-rspec
-nnoremap <leader>a :call RunAllSpecs()<CR>
+if has("nvim")
+  nnoremap <leader>a :call neoterm#test#run('all')<CR>
+else
+  nnoremap <leader>a :call RunAllSpecs()<CR>
+endif
 
 " Close a buffer but don't close the window
 nnoremap <silent><leader>bc :bprevious<CR>:bdelete #<CR>
@@ -242,8 +246,13 @@ nnoremap <leader>q :BufOnly<CR>
 " <Leader>S-V
 "--------------------------------------
 " thoughtbot/vim-rspec
-nnoremap <leader>s :call RunNearestSpec()<CR>
-nnoremap <leader>t :call RunCurrentSpecFile()<CR>
+if has("nvim")
+  nnoremap <leader>s :call neoterm#test#run('current')<CR>
+  nnoremap <leader>t :call neoterm#test#run('file')<CR>
+else
+  nnoremap <leader>s :call RunNearestSpec()<CR>
+  nnoremap <leader>t :call RunCurrentSpecFile()<CR>
+endif
 
 " Reload all the things!
 nnoremap <leader>v :source $MYVIMRC<CR>
@@ -594,11 +603,11 @@ if has("nvim")
         \ 'postprocess': function('neomake#makers#ft#ruby#RubocopEntryProcess')
         \ }
 
-
   let yard_errorformat =
         \ '%W[warn]:\ %m\ in\ file\ `%f`\ near\ line\ %l,%Z,'.
         \ '%E[error]:\ %m\ in\ file\ `%f`\ near\ line\ %l,%Z,'.
         \ '%-G%.%.#'
+
   let g:neomake_ruby_yard_maker = {
         \ 'exe': 'yard',
         \ 'args': ['stats'],
@@ -671,7 +680,7 @@ let g:tmuxline_preset = 'full'
 "-------------------------
 " thoughtbot/vim-rspec
 "-------------------------
-let g:rspec_runner = "os_x_iterm"
+let g:rspec_runner = "os_x_iterm2"
 let g:rspec_command = turboladen#RSpecVimCommand()
 
 "-------------------------
