@@ -1,16 +1,16 @@
 "-----------------------------------------------------------------------------
 " vim-ruby settings
 "-----------------------------------------------------------------------------
-let ruby_operators = 1
-let ruby_spellcheck_strings = 1
-let ruby_space_errors = 1
+let g:ruby_operators = 1
+let g:ruby_spellcheck_strings = 1
+let g:ruby_space_errors = 1
 
 "-----------------------------------------------------------------------------
 " Set up folding.
 "-----------------------------------------------------------------------------
 set foldexpr=turboladen#RubyMethodFold(v:lnum)
 set foldmethod=expr
-let ruby_fold = 1
+let g:ruby_fold = 1
 
 "-----------------------------------------------------------------------------
 " Set up omni.
@@ -24,9 +24,11 @@ let g:rubycomplete_load_gemfile = 1
 " Ruby Debugging
 " Make those debugger statements painfully obvious
 "-----------------------------------------------------------------------------
-au BufEnter *.rb syn match error contained "\<binding.pry\>"
-au BufEnter *.rb syn match error contained "\<debugger\>"
-au BufEnter *.rb syn match error contained "\<byebug\>"
+augroup highlight_ruby_debug
+  au BufEnter *.rb syn match error contained "\<binding.pry\>"
+  au BufEnter *.rb syn match error contained "\<debugger\>"
+  au BufEnter *.rb syn match error contained "\<byebug\>"
+augroup END
 
 "-----------------------------------------------------------------------------
 " yardoc
