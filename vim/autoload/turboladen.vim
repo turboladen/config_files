@@ -68,9 +68,9 @@ endfunction
 
 function! turboladen#LightLineFilename()
   return ('' != turboladen#LightLineReadonly() ? turboladen#LightLineReadonly() . ' ' : '') .
-       \ (&ft == 'unite' ? unite#get_status_string() :
-       \ '' != expand('%:p:.') ? expand('%:p:.') : '[No Name]') .
-       \ ('' != turboladen#LightLineModified() ? ' ' . turboladen#LightLineModified() : '')
+        \ (&ft == 'unite' ? unite#get_status_string() :
+        \ '' != expand('%:p:.') ? expand('%:p:.') : '[No Name]') .
+        \ ('' != turboladen#LightLineModified() ? ' ' . turboladen#LightLineModified() : '')
 endfunction
 
 function! turboladen#LightLineFugitive()
@@ -168,11 +168,8 @@ endfunction
 ""
 " Updates ctags for the project directory, then updates Neocomplete's cache.
 function! turboladen#UpdateCTags()
-  :!ctags .
-
-  if exists(":NeoCompleteEnable")
-    :NeoCompleteTagMakeCache
   endif
+  :Dispatch ctags .
 endfunction
 
 function! turboladen#UpdateRipperTags()

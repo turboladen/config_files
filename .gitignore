@@ -6,3 +6,5 @@ tags
 
 configurator/.bundle/
 configurator/pkg/
+
+.tags
