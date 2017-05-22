@@ -18,6 +18,7 @@ Plug 'christoomey/vim-tmux-runner'
 Plug 'airblade/vim-gitgutter'
 Plug 'BufOnly.vim'                      " For cleaning out buffers
 " Plug 'yssl/QFEnter'                     " For opening items in QuickFix
+Plug 'junegunn/limelight.vim'
 
 " Show vertical line for indentation level
 " Plug 'Yggdroot/indentLine'
@@ -46,12 +47,22 @@ Plug 'gabrielelana/vim-markdown',         { 'for': 'markdown' }
 " Plug 'mattn/emmet-vim',                   { 'for': ['html', 'mustache', 'html.handlebars', 'eelixir'] }
 Plug 'mattn/emmet-vim'
 
+" Rust
+Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+Plug 'racer-rust/vim-racer', { 'for': ['rust'] }
+Plug 'cespare/vim-toml'
+Plug 'timonv/vim-cargo', { 'for': ['rust'] }
+
 " Other languages
 Plug 'avdgaag/vim-phoenix'
 Plug 'elixir-lang/vim-elixir',            { 'for': ['elixir', 'eelixir'] }
 Plug 'tpope/vim-git'
 Plug 'sql.vim',                           { 'for': 'sql' }
 Plug 'exu/pgsql.vim',                     { 'for': 'sql' }
+" Plug 'sclo/haproxy.vim'
+Plug 'haproxy'
+
+Plug 'calvinchengx/vim-mapserver'
 
 " tmux
 Plug 'tmux-plugins/vim-tmux'
@@ -64,9 +75,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-unimpaired'
-Plug 'scrooloose/nerdtree',         { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeMirror'] }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeMirror'] }
-" Plug 'tpope/vim-eunuch'
+Plug 'justinmk/vim-dirvish'
 Plug 'tmhedberg/matchit'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
@@ -74,16 +83,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
 " Searching
-" Plug 'kien/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
-  " { 'on': ['CtrlP', 'CtrlPMRU', 'CtrlPFunky'] } |
-
-" Plug 'Shougo/vimproc.vim', { 'dir': '~/.vim/plugged/vimproc.vim', 'do': './make -f make_mac.mak' }
-" Plug 'Shougo/tabpagebuffer.vim'
-" Plug 'mileszs/ack.vim'
-Plug 'rking/ag.vim'
-" Plug 'kalafut/vim-sift'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " For case swapping
@@ -98,9 +98,7 @@ Plug 'tpope/vim-rake',    { 'for': ['ruby', 'eruby'] }
 " Plug 'tpope/vim-ragtag',  { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-projectionist'
 
-if !has('nvim')
-  Plug 'rorymckinley/vim-rubyhash', { 'for': ['ruby', 'eruby'] }
-end
+Plug 'rorymckinley/vim-rubyhash', { 'for': ['ruby', 'eruby'] }
 
 Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby', 'eruby'] }
 " Plug 'jgdavey/vim-blockle', { 'for': ['ruby', 'eruby'] }
@@ -114,6 +112,17 @@ Plug 'lucapette/vim-ruby-doc',      { 'for': ['ruby', 'eruby'] }
 " Plug 'craigemery/vim-autotag'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+
+Plug 'Konfekt/FastFold'
+
+Plug 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 " Plug 'ajh17/VimCompletesMe'
 " let b:vcm_tab_complete = 'tags'
 
@@ -130,14 +139,8 @@ Plug 'skwp/greplace.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 
 " Linting
-if has("nvim")
-  Plug 'benekastah/neomake'
-  Plug 'kassio/neoterm'
-  let g:neoterm_rspec_lib_cmd=turboladen#RSpecShellCommand()
-else
-  " Plug 'scrooloose/syntastic'
-  Plug '/Users/sloveless/Development/not_my_projects/syntastic'
-endif
+" Plug 'scrooloose/syntastic'
+Plug '/Users/sloveless/Development/not_my_projects/syntastic'
 
 " Sidebar of methods/functions
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
@@ -153,21 +156,15 @@ Plug 'vimwiki/vimwiki'
 
 " Git-specific
 Plug 'tpope/vim-fugitive' | Plug 'tommcdo/vim-fubitive'
-Plug 'gregsexton/gitv', { 'on': 'Gitv' }
-
-" HTTP client
-" Plug 'nicwest/QQ.vim'
-" Plug 'baverman/vial' | Plug 'baverman/vial-http'
-" Plug 'aquach/vim-http-client'
-
-" Plug 'henrik/vim-ruby-runner', { 'for': ['ruby'] }
-
-" Docs
-" Plug 'rizzatti/dash.vim', { 'on': ['Dash', 'Dash!'] }
-" Plug 'rizzatti/dash.vim'
+" Plug 'gregsexton/gitv', { 'on': 'Gitv' }
+" Plug 'junegunn/gv.vim', { 'on': ['GV', 'GV!', 'GV?'] }
+Plug 'junegunn/gv.vim'
 
 " Protect against weird unicode copy/paste
 Plug 'vim-utils/vim-troll-stopper'
+
+Plug 'vim-scripts/SyntaxRange'
+Plug 'vim-scripts/ingo-library'
 
 ""----------------------------------------------------------------------------
 " PLUGIN END
@@ -175,4 +172,6 @@ Plug 'vim-utils/vim-troll-stopper'
 call plug#end()
 
 " Reload after saving this so I can PluginInstall.
-au BufWritePost ~/.vim/plugins.vim so $MYVIMRC
+augroup reload_plugins
+  au BufWritePost ~/.vim/plugins.vim so $MYVIMRC
+augroup END
