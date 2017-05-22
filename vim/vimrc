@@ -92,11 +92,9 @@ set splitright
 ""===========================================================================""
 " 8. terminal
 ""===========================================================================""
-if !has("nvim")
-  set term=xterm-256color
-  set ttyfast
-  set ttyscroll=3
-endif
+set term=xterm-256color
+set ttyfast
+set ttyscroll=3
 
 ""===========================================================================""
 " 9. using the mouse
@@ -147,7 +145,7 @@ set foldnestmax=10      " 10 nested fold max
 ""===========================================================================""
 
 ""===========================================================================""
-" 17. mapping
+" 17. mappings
 ""===========================================================================""
 "--------------------------------------
 " Leader commands
@@ -156,11 +154,11 @@ set foldnestmax=10      " 10 nested fold max
 " <Leader>[non-alpha]
 "----
 " if exists(":Ag")
-  " bind . to grep shortcut
-  " command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-  nnoremap <leader>. :Ag!<SPACE>
-  " Use no-bang command when using with fzf.vim
-  " nnoremap <leader>. :Ag<SPACE>
+" bind . to grep shortcut
+" command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap <leader>. :Ag!<SPACE>
+" Use no-bang command when using with fzf.vim
+" nnoremap <leader>. :Ag<SPACE>
 " endif
 
 " greplace.vim
@@ -171,14 +169,12 @@ nnoremap <leader>\ :Greplace<CR>
 " <Leader>A-G
 "--------------------------------------
 " thoughtbot/vim-rspec
-if has("nvim")
-  nnoremap <leader>a :call neoterm#test#run('all')<CR>
-else
-  nnoremap <leader>a :call RunAllSpecs()<CR>
-endif
+nnoremap <leader>a :call RunAllSpecs()<CR>
 
 " Close a buffer but don't close the window
 nnoremap <silent><leader>bc :bprevious<CR>:bdelete #<CR>
+nnoremap <silent><leader>bn :bnext<CR>
+nnoremap <silent><leader>bp :bprevious<CR>
 
 " Basic options are set in ~/.ctags
 nnoremap <leader>ct :call turboladen#UpdateCTags()<CR>
@@ -217,7 +213,7 @@ noremap <leader>h :call turboladen#SetUpTurboladenDocs()<CR>
 
 " bind K to grep word under cursor
 " if exists(":Ag")
-  nnoremap <leader>k :Ag! "\b<C-R><C-W>\b"<CR>
+nnoremap <leader>k :Ag! "\b<C-R><C-W>\b"<CR>
 " else
 "   nnoremap <leader>K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " endif
@@ -246,13 +242,8 @@ nnoremap <leader>q :BufOnly<CR>
 " <Leader>S-V
 "--------------------------------------
 " thoughtbot/vim-rspec
-if has("nvim")
-  nnoremap <leader>s :call neoterm#test#run('current')<CR>
-  nnoremap <leader>t :call neoterm#test#run('file')<CR>
-else
-  nnoremap <leader>s :call RunNearestSpec()<CR>
-  nnoremap <leader>t :call RunCurrentSpecFile()<CR>
-endif
+nnoremap <leader>s :call RunNearestSpec()<CR>
+nnoremap <leader>t :call RunCurrentSpecFile()<CR>
 
 " Reload all the things!
 nnoremap <leader>v :source $MYVIMRC<CR>
@@ -261,6 +252,9 @@ nnoremap <leader>v :source $MYVIMRC<CR>
 " <Leader>W-Z
 "--------------------------------------
 nnoremap <leader>w :call turboladen#StripTrailingWhitespaces()<CR>
+
+" puts the caller
+nnoremap <leader>x oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
 
 " Syntastic toggle
 nnoremap <leader>y :SyntasticToggleMode<CR>
@@ -319,12 +313,10 @@ nnoremap [ri :call turboladen#FindRspecIts('backward')<CR>
 nnoremap ]rd /\(describe\\|context\)\s\('\\|"\)<CR>
 nnoremap [rd ?\(describe\\|context\)\s\('\\|"\)<CR>
 
-" Indent after gp
+" Indent after p, gp
 " http://vim.wikia.com/wiki/Selecting_your_pasted_text
-nnoremap <expr> p 'p`[' . strpart(getregtype(), 0, 1) . '`]=`['
-
-" Indent after gp
-nnoremap <expr> gp 'p`[' . strpart(getregtype(), 0, 1) . '`]=`]'
+" nnoremap <expr> p 'p`[' . strpart(getregtype(), 0, 1) . '`]=`['
+" nnoremap <expr> gp 'p`[' . strpart(getregtype(), 0, 1) . '`]=`]'
 
 inoremap jk <ESC>
 
@@ -445,22 +437,6 @@ augroup END
 augroup vimrc
   autocmd!
 
-  if has("nvim")
-    " autocmd! BufWritePost,BufEnter * Neomake
-    autocmd! BufWritePost * Neomake
-  endif
-
-  " Filetypes
-  autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
-
-  autocmd Filetype html setlocal softtabstop=4
-  autocmd Filetype qf setlocal nospell
-  autocmd Filetype vimwiki setlocal ts=4 sts=4 sw=4 expandtab
-  autocmd Filetype vim setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd Filetype zsh setlocal ts=2 sts=2 sw=2 expandtab
-  " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  " autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
-
   " Resize when tmux gets resized
   " autocmd VimResized * :wincmd =
 
@@ -479,11 +455,25 @@ augroup vimrc
   au BufNewFile __vial_http_hdr__ nnoremap <buffer> <silent> <C-k> :b __vial_http__<CR>
   au BufNewFile __vial_http__ setlocal nospell
 
-  "-------------------
-  " vim-plug
-  "-------------------
-  au FileType vim-plug setlocal nospell
 augroup END
+augroup FTCheck
+  autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
+augroup END
+augroup FTOptions " {{{2
+  autocmd FileType dirvish setlocal nospell
+  autocmd FileType haproxy setlocal commentstring=#\ %s
+  autocmd FileType help nnoremap  q :q
+  autocmd FileType html setlocal softtabstop=4
+  autocmd FileType qf setlocal nospell
+  autocmd FileType vim-plug setlocal nospell
+  autocmd FileType vimwiki setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType zsh setlocal ts=2 sts=2 sw=2 expandtab
+  " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  " autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType ruby nnoremap <expr> p 'p`[' . strpart(getregtype(), 0, 1) . '`]=`['
+  autocmd FileType ruby nnoremap <expr> gp 'p`[' . strpart(getregtype(), 0, 1) . '`]=`['
+augroup END "}}}2
 
 ""===========================================================================""
 " YY. Plugin options that must be here.
@@ -493,16 +483,9 @@ augroup END
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " https://www.reddit.com/r/vim/comments/3mtevg/sift_grep_on_steroids/cvhyy8e
 "-------------------------
-if has("nvim")
+if executable('ag')
+  " let g:ag_prg="ag --context --vimgrep --only-matching --silent"
   let g:ag_prg="ag --vimgrep --only-matching --silent"
-else
-  if executable('sift')
-    let g:ag_prg="sift --no-color -n --binary-skip"
-    let g:ag_format="%f:%l:%m"
-  elseif executable('ag')
-    " let g:ag_prg="ag --context --vimgrep --only-matching --silent"
-    let g:ag_prg="ag --vimgrep --only-matching --silent"
-  endif
 endif
 
 let g:ag_highlight=1            " highlight term after search
@@ -569,23 +552,8 @@ let g:lightline = {
       \ }
       \ }
 
-      " \ 'separator': { 'left': '', 'right': '' },
-      " \ 'subseparator': { 'left': '', 'right': '' }
-
-"-------------------------
-" nerdtree-git-plugin
-"-------------------------
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
+" \ 'separator': { 'left': '', 'right': '' },
+" \ 'subseparator': { 'left': '', 'right': '' }
 
 "-------------------------
 " gabrieleana/vim-markdown
@@ -593,83 +561,44 @@ let g:NERDTreeIndicatorMapCustom = {
 let g:markdown_mapping_switch_status = '<leader>ms'
 
 "-------------------------
-" neomake
-"-------------------------
-if has("nvim")
-  let g:neomake_ruby_rubocop_maker = {
-        \ 'exe': 'bundle',
-        \ 'args': ['exec', 'rubocop', '--force-exclusion', '--display-cop-names', '--no-color'],
-        \ 'errorformat': '%f:%l:%c: %t: %m',
-        \ 'postprocess': function('neomake#makers#ft#ruby#RubocopEntryProcess')
-        \ }
-
-  let yard_errorformat =
-        \ '%W[warn]:\ %m\ in\ file\ `%f`\ near\ line\ %l,%Z,'.
-        \ '%E[error]:\ %m\ in\ file\ `%f`\ near\ line\ %l,%Z,'.
-        \ '%-G%.%.#'
-
-  let g:neomake_ruby_yard_maker = {
-        \ 'exe': 'yard',
-        \ 'args': ['stats'],
-        \ 'errorformat': yard_errorformat
-        \ }
-
-  let g:neomake_coffee_checkers = ['coffeelint']
-  let g:neomake_css_checkers = ['csslint']              " npm install -g csslint
-  let g:neomake_elixir_checkers = ['elixir']
-  let g:neomake_haml_checkers = ['hamllint']
-  let g:neomake_html_checkers = ['tidy']
-  let g:neomake_javascript_checkers = ['jshint']
-  let g:neomake_json_checkers = ['jsonlint']            " npm install -g jsonlint
-  let g:neomake_markdown_checkers = ['mdl']             " gem install mdl
-  let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'yard']
-  let g:neomake_sh_checkers = ['shellcheck']            " brew install shellcheck
-  let g:neomake_scss_checkers = ['scsslint']            " brew install shellcheck
-
-  " let g:neomake_open_list = 2
-endif
-
-"-------------------------
 " syntastic
 "-------------------------
-if !has("nvim")
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-  let g:syntastic_error_symbol='✗'
-  let g:syntastic_warning_symbol='⚠'
-  let g:syntastic_style_error_symbol = '✗'
-  let g:syntastic_style_warning_symbol = '⚠'
-  let g:syntastic_aggregate_errors = 1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_aggregate_errors = 1
 
-  let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
-  let g:syntastic_css_checkers = ['csslint']              " npm install -g csslint
-  let g:syntastic_elixir_checkers = ['elixir']
-  let g:syntastic_eruby_checkers = ['ruby']
-  let g:syntastic_haml_checkers = ['haml', 'haml_lint']   " gem install haml-lint
-  let g:syntastic_handlebars_checkers = ['handlebars']
-  let g:syntastic_javascript_checkers = ['jshint']      " npm install -g jshint
-  let g:syntastic_markdown_checkers = ['mdl']             " gem install mdl
-  let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'yard']
-  let g:syntastic_sass_checkers = ['sass']
-  let g:syntastic_sh_checkers = ['sh']
-  let g:syntastic_slim_checkers = ['slimrb']
-  " let g:syntastic_text_checkers = ['language_check']      " pip install --user --upgrade language-check
-  let g:syntastic_yaml_checkers = ['jsyaml']              " npm install -g js-yaml
-  let g:syntastic_zsh_checkers = ['zsh']
+let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
+let g:syntastic_css_checkers = ['csslint']              " npm install -g csslint
+let g:syntastic_elixir_checkers = ['elixir']
+let g:syntastic_eruby_checkers = ['ruby']
+let g:syntastic_haml_checkers = ['haml', 'haml_lint']   " gem install haml-lint
+let g:syntastic_handlebars_checkers = ['handlebars']
+let g:syntastic_javascript_checkers = ['jshint']      " npm install -g jshint
+let g:syntastic_markdown_checkers = ['mdl']             " gem install mdl
+let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'yard']
+let g:syntastic_sass_checkers = ['sass']
+let g:syntastic_sh_checkers = ['sh']
+let g:syntastic_slim_checkers = ['slimrb']
+" let g:syntastic_text_checkers = ['language_check']      " pip install --user --upgrade language-check
+let g:syntastic_yaml_checkers = ['jsyaml']              " npm install -g js-yaml
+let g:syntastic_zsh_checkers = ['zsh']
 
-  let g:syntastic_enable_elixir_checker = 1
-  let g:syntastic_ruby_rubocop_args = "--force-exclusion --display-cop-names --no-color"
-  let g:syntastic_markdown_mdl_args = "--style ~/.mdl_style.rb"
-  " let g:syntastic_text_language_check_args = '--language=en-US'
-  " let g:syntastic_debug = 3
-endif
+let g:syntastic_enable_elixir_checker = 1
+let g:syntastic_ruby_rubocop_args = "--force-exclusion --display-cop-names --no-color"
+let g:syntastic_markdown_mdl_args = "--style ~/.mdl_style.rb"
+" let g:syntastic_text_language_check_args = '--language=en-US'
+" let g:syntastic_debug = 3
 
 "-------------------------
 " tmuxline.vim
