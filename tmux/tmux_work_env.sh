@@ -17,7 +17,7 @@ tmux split-window -v -p 97 -t $CURRENT_SESSION:2
 # tmux select-layout -t $CURRENT_SESSION:2 main-horizontal
 
 # Run core and dependent apps
-tmux send-keys -t $CURRENT_SESSION:2.1 'z core' C-m
+tmux send-keys -t $CURRENT_SESSION:2.1 'z alpaca' C-m
 tmux send-keys -t $CURRENT_SESSION:2.1 'foreman start' C-m
 
 # Run the server
