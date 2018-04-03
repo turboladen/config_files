@@ -175,3 +175,7 @@ endfunction
 function! turboladen#UpdateRipperTags() abort
   :Dispatch ripper-tags -R .
 endfunction
+
+function! turboladen#TabularizeHashArgs() abort
+  :Tabularize /\w\+\: .\+$
+endfunction

@@ -6,15 +6,16 @@ class Configurator < Thor
       def run
         say 'Setting up your ruby stuff now...'
         [
+          'fasterer',
           'foreman',
           'gem-ctags',      # depends on `brew install ctags`
           'hairballs',
-          'haml-lint',      # for nvim
+          'haml-lint',      # for neovim
           'mdl',            # markdown linter for vim
-          'powder',
+          'neovim',         # for neovim
           'pre-commit',
           'rubocop',
-          'scss_lint',      # for nvim
+          'scss_lint',      # for neovim
           'subcontractor',
           'yard'
         ].each do |gem_name|

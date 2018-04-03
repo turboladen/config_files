@@ -13,6 +13,8 @@ Plug 'tpope/vim-repeat'
 " Project configuration
 Plug 'tpope/vim-projectionist'
 
+Plug 'vim-scripts/visSum.vim'
+
 ""----------------------------------------------------------------------------
 " UI tweaks
 ""----------------------------------------------------------------------------
@@ -29,6 +31,15 @@ Plug 'edkolev/tmuxline.vim'
 
 " Shows a git diff in the gutter and stages/undoes hunks.
 Plug 'airblade/vim-gitgutter'
+
+" Tmux scripting made easy.
+" Plug 'junegunn/heytmux'
+
+" Enhanced terminal integration for Vim
+Plug 'wincent/terminus'
+
+" vim-signature is a plugin to place, toggle and display marks.
+Plug 'kshenoy/vim-signature'
 
 ""===========================================================================""
 " 2. moving around, searching and patterns
@@ -62,20 +73,40 @@ Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
 " Plug 'yssl/QFEnter'
 
 " Language Server Protocol support for nvim
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+    \ }
 
 " (Optional) Showing function signature and inline doc.
 Plug 'Shougo/echodoc.vim'
 
+" Change code right in the quickfix window
+Plug 'stefandtw/quickfix-reflector.vim'
+
 ""===========================================================================""
 " 3. tags
 ""===========================================================================""
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" A Completion Framework for Neovim
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/ncm-rct-complete'
+Plug 'roxma/nvim-cm-racer'
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neoinclude.vim'
+
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'fishbullet/deoplete-ruby'
+" Plug 'Shougo/vimproc.vim'
 
 " tab completion for ruby things. Requires:
-"   gem install rcodetools
-Plug 'osyo-manga/vim-monster',      { 'for': ['ruby', 'eruby'] }
+"   gem install rcodetools fastri
+" Plug 'osyo-manga/vim-monster',      { 'for': ['ruby', 'eruby'] }
+
+" a collection of Ruby code manipulation tools
+" Plug 'tnoda/rcodetools-x'
+
+" deoplete rcodetools source for Ruby
+Plug 'Shougo/deoplete-rct'
 
 " Perform all your vim insert mode completions with Tab
 Plug 'ervandew/supertab'
@@ -83,11 +114,19 @@ Plug 'ervandew/supertab'
 " Sidebar of methods/functions
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 
+" An up-to-date version of gtags-cscope.vim from GNU global
+" Plug 'joereynolds/gtags-scope'
+
+" Async plugin for Vim/NeoVim to ease the use of ctags/gtags.
+" Plug 'jsfaint/gen_tags.vim'
+
 ""===========================================================================""
 " 5. syntax, highlighting and spelling
 ""===========================================================================""
 " Color Scheme
 Plug 'trusktr/seti.vim'
+
+Plug 'fenetikm/falcon'
 
 " Hyperfocus-writing in Vim
 " Plug 'junegunn/limelight.vim'
@@ -102,7 +141,7 @@ Plug 'trusktr/seti.vim'
 " 6. multiple windows
 ""===========================================================================""
 " Delete all the buffers except the current/named buffer
-Plug 'BufOnly.vim'
+Plug 'vim-scripts/BufOnly.vim'
 
 ""===========================================================================""
 " 11. messages and info
@@ -137,10 +176,8 @@ Plug 'tommcdo/vim-exchange'
 " Protect against weird unicode copy/paste
 Plug 'vim-utils/vim-troll-stopper'
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-" Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 " For case swapping
 Plug 'idanarye/vim-casetrate'
@@ -208,6 +245,11 @@ Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 Plug 'avdgaag/vim-phoenix'
 
 "----------------
+" Elm
+"----------------
+Plug 'elmcast/elm-vim'
+
+"----------------
 " Emblem
 "----------------
 Plug 'heartsentwined/vim-emblem',         { 'for': 'emblem' }
@@ -249,15 +291,15 @@ Plug 'mustache/vim-mustache-handlebars',  { 'for': ['mustache', 'html.handlebars
 " haproxy
 "----------------
 " Plug 'sclo/haproxy.vim'
-Plug 'haproxy'
+Plug 'vim-scripts/haproxy'
 
 "----------------
 " JS
 "----------------
 " Vastly improved Javascript indentation and syntax support
-Plug 'pangloss/vim-javascript',           { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript',      { 'for': 'javascript' }
 " Enhanced javascript syntax file
-Plug 'jelera/vim-javascript-syntax',      { 'for': 'javascript' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 
 "----------------
 " JSON
@@ -279,7 +321,7 @@ Plug 'calvinchengx/vim-mapserver'
 Plug 'godlygeek/tabular'
 
 " Syntax highlighting, matching rules and mappings
-Plug 'plasticboy/vim-markdown',         { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 "----------------
 " Ruby
@@ -291,13 +333,13 @@ Plug 'tpope/vim-rails',   { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rake',    { 'for': ['ruby', 'eruby'] }
 
 " Configuration files for editing and compiling Ruby
-Plug 'vim-ruby/vim-ruby',                 { 'for': ['ruby', 'eruby'] }
+Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
 
 " Better rspec syntax highlighting for Vim
 Plug 'sheerun/rspec.vim'
 
 " Ruby syntax extensions for highlighting YARD documentation
-Plug 'sheerun/vim-yardoc',               { 'for': ['ruby', 'eruby'] }
+Plug 'sheerun/vim-yardoc',          { 'for': ['ruby', 'eruby'] }
 
 " Refactoring tool for Ruby in vim
 Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby', 'eruby'] }
@@ -306,34 +348,37 @@ Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-bundler'
 
 " Browse Ruby, RSpec, and Rails API docs quickly with Vim
-Plug 'lucapette/vim-ruby-doc',      { 'for': ['ruby', 'eruby'] }
+Plug 'lucapette/vim-ruby-doc', { 'for': ['ruby', 'eruby'] }
+
+"Ruby format for vim via rufo
+" Plug 'splattael/rufo-vim',     { 'for': ['ruby', 'eruby'] }
 
 "----------------
 " Rust
 "----------------
-Plug 'rust-lang/rust.vim',    { 'for': ['rust'] }
+Plug 'rust-lang/rust.vim',   { 'for': ['rust'] }
 
 " Racer support for Vim
-Plug 'racer-rust/vim-racer',  { 'for': ['rust'] }
+Plug 'racer-rust/vim-racer', { 'for': ['rust'] }
 
 " Vim syntax for TOML
 Plug 'cespare/vim-toml'
 
 " Rust Cargo command bindings
-Plug 'timonv/vim-cargo',      { 'for': ['rust'] }
+Plug 'timonv/vim-cargo', { 'for': ['rust'] }
 
 "----------------
 " Slim
 "----------------
 " Syntax highlighting for VIM
-Plug 'slim-template/vim-slim',            { 'for': 'slim' }
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
 
 "----------------
 " SQL
 "----------------
 " Better SQL Syntax highlighting with errors.
-Plug 'sql.vim',                           { 'for': 'sql' }
-Plug 'exu/pgsql.vim',                     { 'for': 'sql' }
+Plug 'vim-scripts/sql.vim', { 'for': 'sql' }
+Plug 'exu/pgsql.vim',       { 'for': 'sql' }
 
 "----------------
 " tmux
@@ -351,6 +396,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " Plug 'avakhov/vim-yaml',                  { 'for': 'yaml' }
 " Plug 'ingydotnet/yaml-vim',               { 'for': 'yaml' }
 Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
+Plug 'tarekbecker/vim-yaml-formatter', { 'for': 'yaml' }
 
 ""===========================================================================""
 " 25. various

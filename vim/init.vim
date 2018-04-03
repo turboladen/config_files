@@ -36,6 +36,9 @@ set smartcase     " ... unless they contain at least one capital letter
 " 3. tags
 ""===========================================================================""
 set tags+=.tags;$HOME;
+" set cscopetag
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 ""===========================================================================""
 " 4. displaying text
@@ -57,7 +60,7 @@ syntax on
 syntax sync fromstart
 
 " Turn off syntax over 500 chars in a line
-set synmaxcol=500
+set synmaxcol=250
 
 set spell
 
@@ -99,11 +102,7 @@ set splitright
 ""===========================================================================""
 " 8. terminal
 ""===========================================================================""
-if !has('nvim')
-  set term=xterm-256color
-  set ttyfast
-  set ttyscroll=3
-endif
+set ttyfast
 
 ""===========================================================================""
 " 9. using the mouse
@@ -172,6 +171,11 @@ set foldnestmax=10      " 10 nested fold max
 nnoremap <leader>q :BufOnly<CR>
 
 "-----
+" Plug 'tpope/vim-dispatch'
+"-----
+nnoremap <leader>b :Dispatch bundle install<CR>
+
+"-----
 " skwp/greplace.vim
 "-----
 nnoremap <leader>/ :Gsearch<SPACE>
@@ -203,6 +207,8 @@ nmap <silent> <leader>t :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 " nmap <silent> <leader>g :TestVisit<CR>
+
+nmap <silent> <leader>r :!bin/rubocop -a %<CR>
 
 "--------------------------------------
 " <Leader>A-G
@@ -264,12 +270,15 @@ nnoremap <leader>x oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
 "--------------------------------------
 " F-keys
 "--------------------------------------
-nnoremap <F7> :IndentLinesToggle<CR>
-
 " tagbar
 nnoremap <F8> :TagbarToggle<CR>
 
 " F9 is for pastemode
+
+"-------------------------
+" tpope/vim-dispatch
+"-------------------------
+nnoremap <F10> :Dispatch<CR>
 
 "------------------------------------------------------------------------------
 " Ctrl- combos
@@ -359,19 +368,22 @@ set wildignore+=*.o,*.out,*.obj,*.rbc,*.rbo
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 
 " Ignore bundler and sass cache
-" set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 
 " Ignore rails temporary asset caches
-" set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
+set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
 
 " Disable temp and backup files
 set wildignore+=*.swp,*~,._*
 
 " Ignore simplecov generated coverage docs
-" set wildignore+=coverage/*
+set wildignore+=coverage/*
 
 " Ignore RubyMine stuff
 set wildignore+=.idea/*
+
+" Ignore Rust stuff
+set wildignore+=/target
 
 ""===========================================================================""
 " 21. executing external commands
@@ -433,14 +445,6 @@ augroup vimrc
 
   " Open grep commands, specifically Ggrep, in QuickFix
   autocmd QuickFixCmdPost *grep* cwindow
-
-  "-------------------
-  " baverman/vial-http
-  "-------------------
-  au BufNewFile __vial_http__ nnoremap <buffer> <silent> <C-k> :b __vial_http_req__<CR>
-  au BufNewFile __vial_http_req__ nnoremap <buffer> <silent> <C-k> :b __vial_http_hdr__<CR>
-  au BufNewFile __vial_http_hdr__ nnoremap <buffer> <silent> <C-k> :b __vial_http__<CR>
-  au BufNewFile __vial_http__ setlocal nospell
 augroup END
 
 augroup FTCheck
@@ -456,11 +460,17 @@ augroup FTOptions " {{{2
   autocmd FileType vim-plug setlocal nospell
   autocmd FileType vimwiki setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 cursorcolumn indentkeys-=<:>
   autocmd FileType zsh setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType ruby nnoremap <expr> p 'p`[' . strpart(getregtype(), 0, 1) . '`]=`['
   autocmd FileType ruby nnoremap <expr> gp 'p`[' . strpart(getregtype(), 0, 1) . '`]=`['
+  autocmd FileType rust setlocal colorcolumn=100
 augroup END "}}}2
 
+" augroup Tags
+"   autocmd BufWritePost * GenCtags
+"   autocmd BufWritePost * GenGTAGS
+" augroup END
 
 ""===========================================================================""
 " YY. Plugin options that must be here.
@@ -478,6 +488,19 @@ let g:ag_working_path_mode='r'  " Search from project root
 " deoplete
 "-------------------------
 let g:deoplete#enable_at_startup = 1
+
+" let g:monster#completion#rcodetools#backend = 'async_rct_complete'
+" let g:deoplete#sources#omni#input_patterns = {
+" \   'ruby' : '[^. *\t]\.\w*\|\h\w*::',
+" \}
+
+" function! Multiple_cursors_before()
+"     let b:deoplete_disable_auto_complete = 1
+" endfunction
+
+" function! Multiple_cursors_after()
+"     let b:deoplete_disable_auto_complete = 0
+" endfunction
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -521,6 +544,27 @@ if executable('sift')
 endif
 
 "-------------------------
+" joereynolds/gtags-scope
+"-------------------------
+"" To use the default key/mouse mapping:
+" let g:GtagsCscope_Auto_Map = 1
+
+" To ignore letter case when searching:
+" let g:GtagsCscope_Ignore_Case = 1
+
+" To use absolute path name:
+"       let g:GtagsCscope_Absolute_Path = 1
+
+" To deterring interruption:
+" let g:GtagsCscope_Keep_Alive = 1
+
+" If you hope auto loading:
+" let g:GtagsCscope_Auto_Load = 1
+
+" To use 'vim -t ', ':tag' and '<C-]>'
+" set cscopetag
+
+"-------------------------
 " indentLine
 "-------------------------
 let g:indentLine_color_term = 239
@@ -535,34 +579,41 @@ let g:indentLine_enabled = 0
 " set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+        \ 'rust': ['rls']
     \ }
+
+" \ 'ruby': ['language_server-ruby'],
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 "-------------------------
 " lightline
 "-------------------------
 let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename'] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'turboladen#LightLineFugitive',
-      \   'readonly': 'turboladen#LightLineReadonly',
-      \   'modified': 'turboladen#LightLineModified',
-      \   'filename': 'turboladen#LightLineFilename',
-      \   'fileformat': 'turboladen#LightLineFileformat',
-      \   'filetype': 'turboladen#LightLineFiletype',
-      \   'fileencoding': 'turboladen#LightLineFileencoding',
-      \   'mode': 'turboladen#LightLineMode'
-      \ }
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'fugitive', 'filename'] ]
+        \ },
+        \ 'component_function': {
+        \   'fugitive': 'turboladen#LightLineFugitive',
+        \   'readonly': 'turboladen#LightLineReadonly',
+        \   'modified': 'turboladen#LightLineModified',
+        \   'filename': 'turboladen#LightLineFilename',
+        \   'fileformat': 'turboladen#LightLineFileformat',
+        \   'filetype': 'turboladen#LightLineFiletype',
+        \   'fileencoding': 'turboladen#LightLineFileencoding',
+        \   'mode': 'turboladen#LightLineMode'
+        \ }
       \ }
 
       " \ 'separator': { 'left': '', 'right': '' },
       " \ 'subseparator': { 'left': '', 'right': '' }
+
 
 "-------------------------
 " limelight
@@ -575,7 +626,7 @@ let g:lightline = {
 "-------------------------
 let g:neomake_ruby_rubocop_maker = {
       \ 'exe': 'bundle',
-      \ 'args': ['exec', 'rubocop', '--format', 'emacs'],
+      \ 'args': ['exec', 'rubocop', '--format', 'emacs', '--parallel', '--force-exclusion', '--rails', '--display-cop-names'],
       \ 'errorformat': '%f:%l:%c: %t: %m,%E%f:%l: %m',
       \ 'postprocess': function('neomake#makers#ft#ruby#RubocopEntryProcess')
       \ }
@@ -609,6 +660,7 @@ let g:neomake_yaml_checkers = ['yamllint']            " pip install yamllint
 
 let g:neomake_place_signs = 1
 let g:neomake_open_list = 0
+" call neomake#configure#automake('nw', 750)
 
 "-------------------------
 " tmuxline.vim
@@ -676,8 +728,8 @@ let g:ruby_doc_rspec_mapping='<leader>rs'
 "-------------------------
 " janko-m/vim-test
 "-------------------------
-" let g:test#strategy = 'dispatch'
-let g:test#strategy = 'tslime'
+let g:test#strategy = 'dispatch'
+" let g:test#strategy = 'tslime'
 let g:test#preserve_screen = 1
 
 "-------------------------

@@ -17,6 +17,8 @@ class Configurator < Thor
           run %(git config --global merge.tool vimdiff)
           run %(git config --global diff.tool vimdiff)
           run %(git config --global difftool.prompt false)
+
+          # TODO: if OSX
           run %(git config --global credential.helper osxkeychain)
         end
 
